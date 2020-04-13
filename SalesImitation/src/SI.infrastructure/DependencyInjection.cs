@@ -7,6 +7,7 @@ namespace SI.Infrastructure {
     public static class DependencyInjection {
         public static IServiceCollection AddInfrastructure (this IServiceCollection services) {
             services.AddSingleton<IPlayerRepository, PlayerRepository> ();
+            services.AddSingleton<ISuperBonusRepository, SuperBonusRepository> ();
             return services;
         }
     }

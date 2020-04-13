@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\SI.application\SI.application.csproj" />
-    <ProjectReference Include="..\SI.common\SI.common.csproj" />
-    <ProjectReference Include="..\SI.infrastructure\SI.infrastructure.csproj" />
+    <ProjectReference Include="..\..\SI.application\SI.application.csproj" />
+    <ProjectReference Include="..\..\SI.common\SI.common.csproj" />
+    <ProjectReference Include="..\..\SI.infrastructure\SI.infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

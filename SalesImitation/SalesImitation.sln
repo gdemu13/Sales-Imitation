@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4BA63A44-94DB-4605-AD68-A1D1C2F94E46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SI.web", "src\SI.web\SI.web.csproj", "{4F67C6B9-B119-4A88-B3D1-88E237BC2662}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SI.web", "src\presenter\SI.web\SI.web.csproj", "{4F67C6B9-B119-4A88-B3D1-88E237BC2662}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SI.infrastructure", "src\SI.infrastructure\SI.infrastructure.csproj", "{401AECAB-065D-4B9F-A356-95246F977CB3}"
 EndProject
