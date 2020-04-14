@@ -11,5 +11,6 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<SuperBonus> GetPending();
         Task<Result> UpdateStatus (Guid id, SuperBonusStatuses status);
         Task<SuperBonus> GetActive();
+        Task<Result> IncreaseBonus(decimal amount, string source);
     }
 }

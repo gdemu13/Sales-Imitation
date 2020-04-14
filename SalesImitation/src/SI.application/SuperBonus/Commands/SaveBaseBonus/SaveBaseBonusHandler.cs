@@ -19,7 +19,6 @@ namespace SI.Application.SuperBonus {
                  return await _bonusRepository.InsertSuperBonusBase(request.ID, request.Amount);
             else
                 return await _bonusRepository.UpdateSuperBonusBase(bonus.ID, request.Amount);
-
         }
     }
 }

@@ -11,7 +11,7 @@ namespace SI.Administration.Web.Controllers {
     [Route("/api/Bonus")]
     public class BonusController : ApiController {
 
-        [HttpGet("Pending")]
+        [HttpGet("GetPending")]
         public async Task<SuperBonus> GetPendingBonus(){
             var request = new GetPendingBonusRequest();
             return await Mediator.Send (request);
