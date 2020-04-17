@@ -8,6 +8,8 @@ namespace SI.Infrastructure {
         public static IServiceCollection AddInfrastructure (this IServiceCollection services) {
             services.AddSingleton<IPlayerRepository, PlayerRepository> ();
             services.AddSingleton<ISuperBonusRepository, SuperBonusRepository> ();
+            services.AddSingleton<ICategoryRepository, CategoryRepository> ();
+            services.AddSingleton<IPartnerRepository, PartnerRepository> ();
             return services;
         }
     }

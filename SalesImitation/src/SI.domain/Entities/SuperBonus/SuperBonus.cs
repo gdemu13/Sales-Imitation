@@ -12,8 +12,6 @@ namespace SI.Domain.Entities {
             ID = id;
         }
 
-        public Guid ID {get; private set;}
-
         public decimal BaseAmount { get; set; }
         public decimal CurrentAmount {
             get {
