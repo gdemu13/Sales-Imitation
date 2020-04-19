@@ -24,6 +24,18 @@ namespace SI.Infrastructure.DAL.Repository {
             }
         }
 
+        public async Task<Category> Get(Guid id) {
+            string sql = "SELECT * From Categories Where ID = @ID;";
+            Category category = null;
+            using (var connection = Connection) {
+                var res = await connection.QueryFirstOrDefaultAsync<CategoryModel> (sql,new {ID =id } );
+                if(res != null) {
+                    category = new Category(res.ID, res.Name);
+                }
+            }
+            return category;
+        }
+
         public async Task<IEnumerable<Category>> GetAll() {
             string sql = "SELECT * From Categories;";
             IEnumerable<Category> categories = null;

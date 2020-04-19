@@ -7,6 +7,7 @@ using System.Collections.Generic;
 namespace SI.Domain.Abstractions.Repositories {
 
     public interface ICategoryRepository {
+        Task<Category> Get(Guid ID);
         Task<IEnumerable<Category>> GetAll();
         Task<Result> Insert (Category category);
         Task<Result> UpdateName (Guid id, string name);

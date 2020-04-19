@@ -24,6 +24,18 @@ namespace SI.Infrastructure.DAL.Repository {
             }
         }
 
+        public async Task<Partner> Get(Guid id) {
+            string sql = "SELECT * From Partners Where ID = @ID;";
+            Partner partner = null;
+            using (var connection = Connection) {
+                var res = await connection.QueryFirstOrDefaultAsync<PartnerModel> (sql,new {ID =id } );
+                if(res != null) {
+                    partner = new Partner(res.ID, res.Name);
+                }
+            }
+            return partner;
+        }
+
         public async Task<IEnumerable<Partner>> GetRange (int skip, int take) {
             string sql = @"SELECT * From Partners
                             ORDER BY Ordering

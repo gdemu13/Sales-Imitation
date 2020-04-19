@@ -10,6 +10,7 @@ namespace SI.Infrastructure {
             services.AddSingleton<ISuperBonusRepository, SuperBonusRepository> ();
             services.AddSingleton<ICategoryRepository, CategoryRepository> ();
             services.AddSingleton<IPartnerRepository, PartnerRepository> ();
+            services.AddSingleton<IProductRepository, ProductRepository> ();
             return services;
         }
     }

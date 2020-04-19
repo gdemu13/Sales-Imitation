@@ -6,10 +6,13 @@ namespace SI.Domain.Entities {
 
     public class Product : BaseEntity {
 
-        public Product (Guid id, string name, ProductPartner partner) {
+        public Product (Guid id, string name, string description, ProductPartner partner, Money price, int point) {
             ID = id;
             Name = name;
+            Description = description;
             Partner = partner;
+            Price = price;
+            Point = point;
             _images = new List<ProductImage> ();
 
             if (partner == null) {
@@ -19,7 +22,9 @@ namespace SI.Domain.Entities {
 
         public string Name { get; set; }
 
-        public Money Money { get; set; }
+        public string Description { get; set; }
+
+        public Money Price { get; set; }
 
         private List<ProductImage> _images;
         public IEnumerable<ProductImage> Images => _images.AsReadOnly ();
