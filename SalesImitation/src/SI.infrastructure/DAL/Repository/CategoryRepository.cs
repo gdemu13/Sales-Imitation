@@ -73,7 +73,7 @@ namespace SI.Infrastructure.DAL.Repository {
                     });
             }
 
-            return await Task.FromResult (new Result ());
+            return await Task.FromResult (Result.CreateSuccessReqest());
         }
 
         public async Task<Result> UpdateName (Guid id, string name) {
@@ -88,7 +88,7 @@ namespace SI.Infrastructure.DAL.Repository {
                     });
             }
 
-            return await Task.FromResult (new Result ());
+            return await Task.FromResult (Result.CreateSuccessReqest());
         }
 
         public async Task<Result> SetIsActive (Guid id, bool isActive) {
@@ -103,7 +103,7 @@ namespace SI.Infrastructure.DAL.Repository {
                     });
             }
 
-            return await Task.FromResult (new Result ());
+            return await Task.FromResult (Result.CreateSuccessReqest());
         }
     }
 }

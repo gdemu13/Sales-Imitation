@@ -17,7 +17,7 @@ namespace SI.Infrastructure.DAL.Repository {
 
         public async Task<Result> SavePlayer(Player player){
             _db.Add(player);
-            return await Task.FromResult<Result> (new Result());
+            return await Task.FromResult<Result> (Result.CreateSuccessReqest());
         }
 
         public async Task<IEnumerable<Player>> GetTopPlayersByScoreAsync(int n) {

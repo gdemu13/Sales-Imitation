@@ -19,7 +19,7 @@ namespace SI.Application.SuperBonus {
             if (bonus != null)
                 return await _bonusRepository.UpdateStatus (bonus.ID, SuperBonusStatuses.Active);
             else
-                return await Task.FromResult (new Result ());
+                return await Task.FromResult (Result.CreateSuccessReqest());
         }
     }
 }

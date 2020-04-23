@@ -38,7 +38,7 @@ namespace SI.Infrastructure.DAL.Repository {
                 Console.WriteLine (affectedRows);
             }
 
-            return await Task.FromResult (new Result ());
+            return await Task.FromResult (Result.CreateSuccessReqest());
         }
 
         public async Task<Result> UpdateSuperBonusBase (Guid id, decimal amount) {
@@ -49,7 +49,7 @@ namespace SI.Infrastructure.DAL.Repository {
                 Console.WriteLine (affectedRows);
             }
 
-            return await Task.FromResult (new Result ());
+            return await Task.FromResult (Result.CreateSuccessReqest());
         }
 
         public async Task<SuperBonus> GetPending () {
@@ -74,7 +74,7 @@ namespace SI.Infrastructure.DAL.Repository {
                 Console.WriteLine (affectedRows);
             }
 
-            return await Task.FromResult (new Result ());
+            return await Task.FromResult (Result.CreateSuccessReqest());
         }
 
         public async Task<SuperBonus> GetActive () {
@@ -91,7 +91,7 @@ namespace SI.Infrastructure.DAL.Repository {
             // var bonus = _db.FirstOrDefault (d => d.Status == SuperBonusStatuses.Pending);
             // if (bonus != null)
             //     bonus.Increase (Guid.NewGuid (), amount, source);
-            return await Task.FromResult (new Result ());
+            return await Task.FromResult (Result.CreateSuccessReqest());
         }
 
         private class SuperBonusTable {

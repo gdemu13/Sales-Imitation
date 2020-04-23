@@ -11,6 +11,7 @@ namespace SI.Infrastructure {
             services.AddSingleton<ICategoryRepository, CategoryRepository> ();
             services.AddSingleton<IPartnerRepository, PartnerRepository> ();
             services.AddSingleton<IProductRepository, ProductRepository> ();
+            services.AddSingleton<IMissionRepository, MissionRepository> ();
             return services;
         }
     }
