@@ -7,6 +7,8 @@ namespace SI.Application.Products {
     public class SaveNewProductRequest : IRequest<Result> {
         public Guid ID { get; set; }
 
+        public Guid GroupID { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }

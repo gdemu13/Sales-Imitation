@@ -31,6 +31,15 @@ namespace SI.Infrastructure.DAL.Repository {
                 var res = await connection.QueryFirstOrDefaultAsync<PartnerModel> (sql,new {ID =id } );
                 if(res != null) {
                     partner = new Partner(res.ID, res.Name);
+                     partner.Logo = new PartnerLogo (res.LogoUrl);
+                        partner.Address = new PartnerAddress (res.Street);
+                        partner.ContactInfo = new PartnerContactInfo (res.Number, res.Email);
+                        partner.ContactPerson = new PartnerContactPerson (res.ContactPersonFirstName,
+                            res.ContactPersonLastName,
+                            res.ContactPersonNumber,
+                            res.ContactPersonEmail);
+                        partner.WebSite = res.WebSite;
+                        partner.IsActive = res.IsActive;
                 }
             }
             return partner;
@@ -60,6 +69,7 @@ namespace SI.Infrastructure.DAL.Repository {
                             r.ContactPersonNumber,
                             r.ContactPersonEmail);
                         partner.WebSite = r.WebSite;
+                        partner.IsActive = r.IsActive;
                         return partner;
                     });
                 }
@@ -114,30 +124,53 @@ namespace SI.Infrastructure.DAL.Repository {
 
         public async Task<Result> Update (Guid id, Partner partner) {
 
-            // string sql = "UPDATE Categories SET Name = @Name where ID = @ID;";
+           string sql = @"UPDATE Partners
+           SET
+            Name = @Name,
+            LogoUrl = @LogoUrl,
+            Street = @Street,
+            Number = @Number,
+            Email = @Email,
+            ContactPersonFirstName = @ContactPersonFirstName,
+            ContactPersonLastName = @ContactPersonLastName,
+            ContactPersonNumber = @ContactPersonNumber,
+            ContactPersonEmail = @ContactPersonEmail,
+            WebSite = @WebSite
+            where ID = @ID
+           ;";
 
-            // using (var connection = Connection) {
-            //     var affectedRows = await connection.ExecuteAsync (sql,
-            //         new {
-            //             ID = id,
-            //                 Name = name,
-            //         });
-            // }
+            using (var connection = Connection) {
+                var affectedRows = await connection.ExecuteAsync (sql,
+                    new {
+                        ID = partner.ID,
+                            Name = partner.Name,
+                            LogoUrl = partner.Logo.Url,
+                            Street = partner.Address?.Street,
+                            Number = partner.ContactInfo?.Number,
+                            Email = partner.ContactInfo?.Email,
+                            ContactPersonFirstName = partner.ContactPerson?.FirstName,
+                            ContactPersonLastName = partner.ContactPerson?.LastName,
+                            ContactPersonNumber = partner.ContactPerson?.Number,
+                            ContactPersonEmail = partner.ContactPerson?.Email,
+                            WebSite = partner.WebSite,
+                            IsActive = partner.IsActive
+                    });
+            }
 
             return await Task.FromResult (new Result ());
         }
 
         public async Task<Result> SetIsActive (Guid id, bool isActive) {
 
-            // string sql = "UPDATE Categories SET IsActive = @IsActive where ID = @ID;";
+            string sql = "UPDATE Partners SET IsActive = @IsActive where ID = @ID;";
 
-            // using (var connection = Connection) {
-            //     var affectedRows = await connection.ExecuteAsync (sql,
-            //         new {
-            //             ID = id,
-            //                 IsActive = isActive,
-            //         });
-            // }
+            using (var connection = Connection) {
+                var affectedRows = await connection.ExecuteAsync (sql,
+                    new {
+                        ID = id,
+                            IsActive = isActive,
+                    });
+            }
 
             return await Task.FromResult (new Result ());
         }

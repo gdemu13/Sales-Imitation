@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,6 +11,12 @@ namespace SI.Administration.Web.Controllers {
 
     [Route ("/api/Products")]
     public class ProductsController : ApiController {
+
+        [HttpGet ("Get/{ID}")]
+        public async Task<Product> Get (Guid ID) {
+            var request = new GetProductRequest (ID);
+            return await Mediator.Send (request);
+        }
 
         [HttpGet ("Range")]
         public async Task<IEnumerable<Product>> GetRange ([FromQuery] GetRangeOfProductsRequest request) {

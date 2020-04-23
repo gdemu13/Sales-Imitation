@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace SI.Domain.Entities {
+    public class ConnectedProduct : BaseEntity {
 
-    public class Product : BaseEntity {
-
-        public Product (Guid id, string name, string description,
+        public ConnectedProduct (Guid id, string name, string description,
             ProductPartner partner, Money price, int point, Guid groupID) {
             ID = id;
             Name = name;
@@ -17,7 +16,6 @@ namespace SI.Domain.Entities {
             ProductGroupID = groupID;
 
             _images = new List<ProductImage> ();
-            _connectedProduct = new List<ConnectedProduct> ();
 
             if (partner == null) {
                 throw new Exception ("partner_is_required");
@@ -31,7 +29,7 @@ namespace SI.Domain.Entities {
         public Money Price { get; set; }
 
         private List<ProductImage> _images;
-        public IReadOnlyList<ProductImage> Images => _images.AsReadOnly ();
+        public IEnumerable<ProductImage> Images => _images.AsReadOnly ();
 
         public void AddImage (Guid id, string url) {
             _images.Add (new ProductImage (id, url));
@@ -43,17 +41,6 @@ namespace SI.Domain.Entities {
 
         public void RemoveImage (Guid id) {
             _images.RemoveAll (i => i.ID == id);
-        }
-
-        private List<ConnectedProduct> _connectedProduct;
-        public IReadOnlyList<ConnectedProduct> ConnectedProduct => _connectedProduct.AsReadOnly ();
-
-        public void AddConnectedProduct (ConnectedProduct product) {
-            _connectedProduct.Add (product);
-        }
-
-        public void RemoveConnectedProduct (Guid id) {
-            _connectedProduct.RemoveAll (i => i.ID == id);
         }
 
         public ProductPartner Partner { get; set; }

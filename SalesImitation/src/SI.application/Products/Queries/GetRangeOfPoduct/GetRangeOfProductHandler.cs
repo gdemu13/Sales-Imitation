@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using SI.Domain.Abstractions.Repositories;
 using System.Collections.Generic;
-using System;
 
 namespace SI.Application.Products {
     public class GetRangeOfProductsHandler : IRequestHandler<GetRangeOfProductsRequest, IEnumerable<Product>> {

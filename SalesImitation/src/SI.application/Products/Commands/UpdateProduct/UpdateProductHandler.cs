@@ -32,7 +32,7 @@ namespace SI.Application.Products {
             var price = new Money (req.Price);
 
             //product
-            var product = new Product (req.ID, req.Name, req.Description, partner, price, req.Point);
+            var product = new Product (req.ID, req.Name, req.Description, partner, price, req.Point, req.GroupID);
 
             //category
             if (req.Category != null) {

@@ -5,14 +5,21 @@ using Microsoft.AspNetCore.Mvc;
 using SI.Application.Categories;
 using SI.Common.Models;
 using SI.Domain.Entities;
+using System;
 
 namespace SI.Administration.Web.Controllers {
 
     [Route ("/api/Categories")]
     public class CategoriesController : ApiController {
 
+        [HttpGet ("Get/{ID}")]
+        public async Task<Category> Get (Guid ID) {
+            var request = new GetCategoryRequest (ID);
+            return await Mediator.Send (request);
+        }
+
         [HttpGet ("All")]
-        public async Task<IEnumerable<Category>> GetPendingBonus () {
+        public async Task<IEnumerable<Category>> All () {
             var request = new GetAllCategoriesRequest ();
             return await Mediator.Send (request);
         }
@@ -27,7 +34,7 @@ namespace SI.Administration.Web.Controllers {
             return await Mediator.Send (request);
         }
 
-         [HttpPatch ("SetIsActive")]
+        [HttpPatch ("SetIsActive")]
         public async Task<Result> SetIsActive (SetIsActiveToCategoryRequest request) {
             return await Mediator.Send (request);
         }

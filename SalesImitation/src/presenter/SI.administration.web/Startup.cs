@@ -14,36 +14,36 @@ using Microsoft.OpenApi.Models;
 using SI.Application;
 using SI.Infrastructure;
 
-namespace SI.administration.web
-{
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
+namespace SI.administration.web {
+    public class Startup {
+        public Startup (IConfiguration configuration) {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers();
+        public void ConfigureServices (IServiceCollection services) {
+            services.AddControllers ();
 
             services.AddApplication ();
             services.AddInfrastructure ();
 
-             services.AddSwaggerGen (c => {
+            services.AddSwaggerGen (c => {
                 c.SwaggerDoc ("v1", new OpenApiInfo { Title = "Sales Imitation", Version = "v1" });
             });
+
+            services.AddCors (o => o.AddPolicy ("MyPolicy", builder => {
+                builder.AllowAnyOrigin ()
+                    .AllowAnyMethod ()
+                    .AllowAnyHeader ();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+        public void Configure (IApplicationBuilder app, IWebHostEnvironment env) {
+            if (env.IsDevelopment ()) {
+                app.UseDeveloperExceptionPage ();
             }
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
@@ -55,15 +55,16 @@ namespace SI.administration.web
                 c.SwaggerEndpoint ("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseHttpsRedirection();
+            app.UseCors("MyPolicy");
 
-            app.UseRouting();
+            app.UseHttpsRedirection ();
 
-            app.UseAuthorization();
+            app.UseRouting ();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
+            app.UseAuthorization ();
+
+            app.UseEndpoints (endpoints => {
+                endpoints.MapControllers ();
             });
         }
     }

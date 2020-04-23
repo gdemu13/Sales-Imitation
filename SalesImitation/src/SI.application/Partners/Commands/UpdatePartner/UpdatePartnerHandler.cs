@@ -27,6 +27,8 @@ namespace SI.Application.Partners {
                 req.ContactPerson?.Number,
                 req.ContactPerson?.Email);
 
+            partner.WebSite = req.WebSite;
+
             return await _partnerRepository.Update (partner.ID, partner);
         }
     }

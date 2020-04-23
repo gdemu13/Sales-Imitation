@@ -2,7 +2,7 @@ using System;
 
 namespace SI.Domain.Entities {
 
-    public class Money : BaseEntity {
+    public class Money {
 
         public Money(decimal amount) {
             Amount = amount;

@@ -5,11 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 using SI.Application.Partners;
 using SI.Common.Models;
 using SI.Domain.Entities;
+using System;
 
 namespace SI.Administration.Web.Controllers {
 
     [Route ("/api/Partners")]
     public class PartnersController : ApiController {
+
+        [HttpGet ("Get/{ID}")]
+        public async Task<Partner> Get (Guid ID) {
+            var request = new GetPartnerRequest (ID);
+            return await Mediator.Send (request);
+        }
 
         [HttpGet ("Range")]
         public async Task<IEnumerable<Partner>> GetRange ([FromQuery] GetRangeOfPartnersRequest request) {

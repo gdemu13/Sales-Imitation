@@ -24,34 +24,39 @@ namespace SI.Infrastructure.DAL.Repository {
             }
         }
 
-        public async Task<Category> Get(Guid id) {
+        public async Task<Category> Get (Guid id) {
             string sql = "SELECT * From Categories Where ID = @ID;";
             Category category = null;
             using (var connection = Connection) {
-                var res = await connection.QueryFirstOrDefaultAsync<CategoryModel> (sql,new {ID =id } );
-                if(res != null) {
-                    category = new Category(res.ID, res.Name);
+                var res = await connection.QueryFirstOrDefaultAsync<CategoryModel> (sql, new { ID = id });
+                if (res != null) {
+                    category = new Category (res.ID, res.Name);
+                    category.IsActive = res.IsActive;
                 }
             }
             return category;
         }
 
-        public async Task<IEnumerable<Category>> GetAll() {
+        public async Task<IEnumerable<Category>> GetAll () {
             string sql = "SELECT * From Categories;";
             IEnumerable<Category> categories = null;
             using (var connection = Connection) {
                 var res = await connection.QueryAsync<CategoryModel> (sql);
-                if(res != null) {
-                    categories = res.Select( r =>  new Category(r.ID, r.Name));
+                if (res != null) {
+                    categories = res.Select (r => {
+                        var c = new Category (r.ID, r.Name);
+                        c.IsActive = r.IsActive;
+                        return c;
+                    });
                 }
             }
             return categories;
         }
 
         private class CategoryModel {
-            public Guid ID {get; set;}
-            public string Name {get; set;}
-            public bool IsActive {get; set;}
+            public Guid ID { get; set; }
+            public string Name { get; set; }
+            public bool IsActive { get; set; }
         }
 
         public async Task<Result> Insert (Category category) {
@@ -59,7 +64,7 @@ namespace SI.Infrastructure.DAL.Repository {
             string sql = "INSERT INTO Categories (ID, Name, IsActive) Values (@ID, @Name, @IsActive);";
 
             using (var connection = Connection) {
-                System.Console.WriteLine("repo " + sql);
+                System.Console.WriteLine ("repo " + sql);
                 var affectedRows = await connection.ExecuteAsync (sql,
                     new {
                         ID = category.ID,

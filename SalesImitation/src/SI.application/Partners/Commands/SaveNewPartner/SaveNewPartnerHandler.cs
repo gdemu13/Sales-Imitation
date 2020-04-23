@@ -28,6 +28,7 @@ namespace SI.Application.Partners {
                 req.ContactPerson?.Email);
 
             partner.WebSite = req.WebSite;
+            partner.IsActive = true;
 
             return await _partnerRepository.Insert (partner);
         }
