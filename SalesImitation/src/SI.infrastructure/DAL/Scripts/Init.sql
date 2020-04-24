@@ -109,7 +109,7 @@ if not exists (select * from sysobjects where name='Missions' and xtype='U')
 		ID uniqueidentifier PRIMARY KEY,
 		Name nvarchar(MAX) NOT NULL,
 		Description nvarchar(MAX) NOT NULL,
-		Raund INT NOT NULL UNIQUE,
+		Level INT NOT NULL UNIQUE,
 		PriceFrom decimal(9,2) NOT NULL,
 		PriceTo decimal(9,2) NOT NULL,
 		Ordering INT IDENTITY(1,1) NOT NULL

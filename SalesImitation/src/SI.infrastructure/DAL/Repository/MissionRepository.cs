@@ -24,37 +24,125 @@ namespace SI.Infrastructure.DAL.Repository {
             }
         }
 
-        public async Task<Mission> Get (Guid ID) {
+        public async Task<Mission> Get (Guid id) {
+            string sql = "SELECT * From Missions Where ID = @ID;";
             Mission mission = null;
-            return await Task.FromResult(mission);
+            using (var connection = Connection) {
+                var res = await connection.QueryFirstOrDefaultAsync (sql, new { ID = id });
+                if (res != null) {
+                    mission = new Mission (res.ID,
+                        res.Name,
+                        res.Description,
+                        res.Level,
+                        res.PriceFrom,
+                        res.PriceTo);
+                }
+            }
+            return mission;
         }
 
         public async Task<IEnumerable<Mission>> GetAll () {
-            IEnumerable<Mission> res = null;
-            return await Task.FromResult(res);
+            string sql = "SELECT * From Missions Order By Ordering;";
+            IEnumerable<Mission> missions = null;
+            using (var connection = Connection) {
+                var res = await connection.QueryAsync (sql);
+                if (res != null) {
+                    missions = res.Select (r => new Mission (r.ID,
+                        r.Name,
+                        r.Description,
+                        r.Level,
+                        r.PriceFrom,
+                        r.PriceTo));
+                }
+            }
+            return missions;
         }
 
         public async Task<Result> InsertIfLast (Mission mission, DateTime checkDate) {
-            return await Task.FromResult(Result.CreateSuccessReqest());
+            var sql = @"IF (SELECT count(ID) Level FROM Missions) = @Level - 1
+                        INSERT INTO Missions (ID, Name, Description, Level, PriceFrom, PriceTo, LastUpdateDate)
+                        VALUES (@ID, @Name, @Description, @Level, @PriceFrom, @PriceTo, @LastUpdateDate);";
+            using (var connection = Connection) {
+                var res = await connection.ExecuteAsync (sql, new {
+                    ID = mission.ID,
+                        Name = mission.Name,
+                        Description = mission.Description,
+                        Level = mission.Level,
+                        PriceFrom = mission.PriceRange.From,
+                        PriceTo = mission.PriceRange.To,
+                        LastUpdateDate = DateTime.Now,
+                });
+            }
+            System.Console.WriteLine(sql);
+            System.Console.WriteLine("" + mission.Level);
+            return await Task.FromResult (Result.CreateSuccessReqest ());
         }
 
         public async Task<Result> Update (Guid id, Mission mission, DateTime checkDate) {
-            return await Task.FromResult(Result.CreateSuccessReqest());
+            var sql = @"UPDATE Missions
+            SET
+            Name = @Name,
+            Description = @Description,
+            Level = @Level,
+            PriceFrom = @PriceFrom,
+            PriceTo = @PriceTo,
+            LastUpdateDate = @LastUpdateDate
+            where ID = @ID";
+
+            using (var connection = Connection) {
+                var res = await connection.ExecuteAsync (sql, new {
+                    ID = mission.ID,
+                        Name = mission.Name,
+                        Description = mission.Description,
+                        Level = mission.Level,
+                        PriceFrom = mission.PriceRange.From,
+                        PriceTo = mission.PriceRange.To,
+                        LastUpdateDate = DateTime.Now,
+                });
+            }
+            return await Task.FromResult (Result.CreateSuccessReqest ());
         }
 
         public async Task<DateTime> GetLastUpdateDate () {
+            string sql = "SELECT TOP 1 LastUpdateDate From Missions order by LastUpdateDate desc;";
             DateTime res = DateTime.Now;
-            return await Task.FromResult(res);
+            using (var connection = Connection) {
+                res = await connection.QueryFirstOrDefaultAsync<DateTime> (sql);
+            }
+
+            return res;
         }
 
-        public async Task<int> GetLastRoundNumber () {
+        public async Task<int> GetLastLevelNumber () {
+            string sql = "SELECT TOP 1 Level From Missions order by Level desc;";
             int res = 0;
-            return await Task.FromResult(res);
+            using (var connection = Connection) {
+                res = await connection.QueryFirstOrDefaultAsync<int> (sql);
+            }
+
+            return res;
         }
 
         public async Task<IEnumerable<Mission>> GetByPriceRange (decimal from, decimal to) {
-            IEnumerable<Mission> res = null;
-            return await Task.FromResult(res);
+          string sql = @"SELECT * From Missions where (@from <= PriceFrom AND  @to >= PriceFrom)
+                                                    OR (@from >= PriceFrom AND @from <= PriceTo)
+          Order By Ordering;";
+            IEnumerable<Mission> missions = null;
+            using (var connection = Connection) {
+                var res = await connection.QueryAsync (sql, new {
+                    from = from,
+                    to = to,
+                });
+                if (res != null) {
+                    missions = res.Select (r => new Mission (r.ID,
+                        r.Name,
+                        r.Description,
+                        r.Level,
+                        r.PriceFrom,
+                        r.PriceTo));
+                }
+            }
+            return missions;
         }
     }
 }

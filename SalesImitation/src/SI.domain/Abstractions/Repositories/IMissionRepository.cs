@@ -12,7 +12,7 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<Result> InsertIfLast (Mission mission, DateTime checkDate);
         Task<Result> Update (Guid id, Mission mission, DateTime checkDate);
         Task<DateTime> GetLastUpdateDate ();
-        Task<int> GetLastRoundNumber ();
+        Task<int> GetLastLevelNumber ();
         Task<IEnumerable<Mission>> GetByPriceRange (decimal from, decimal to);
     }
 }
