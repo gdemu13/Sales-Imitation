@@ -19,6 +19,7 @@ namespace SI.Infrastructure.Authentication.Administrator
             {
                 ID = new Guid(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 DisplayName = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+                IsAuthenticated = true;
             }
         }
 
