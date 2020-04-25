@@ -10,6 +10,7 @@ using SI.Administration.Web.ActionFilters;
 
 namespace SI.Administration.Web.Controllers {
 
+
     [Route ("/api/Categories")]
     public class CategoriesController : ApiController {
 
@@ -21,6 +22,7 @@ namespace SI.Administration.Web.Controllers {
 
         [HttpGet ("All")]
         public async Task<IEnumerable<Category>> All () {
+            // System.Console.WriteLine("uuuuuuuuuu - "+ UnobservedTaskExceptionEventArgs.);
             var request = new GetAllCategoriesRequest ();
             return await Mediator.Send (request);
         }

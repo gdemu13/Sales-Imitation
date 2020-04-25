@@ -24,7 +24,7 @@ namespace SI.web {
         public void ConfigureServices (IServiceCollection services) {
             services.AddControllersWithViews ();
             services.AddApplication ();
-            services.AddInfrastructure ();
+            services.AddInfrastructure (Configuration);
 
             services.AddSwaggerGen (c => {
                 c.SwaggerDoc ("v1", new OpenApiInfo { Title = "Sales Imitation", Version = "v1" });

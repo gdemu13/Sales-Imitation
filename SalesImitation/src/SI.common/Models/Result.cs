@@ -22,7 +22,7 @@ namespace SI.Common.Models {
           Data = data;
         }
 
-        public static Result CreateSuccessReqest (T data, string message = "success") {
+        public static Result<T> CreateSuccessReqest (T data, string message = "success") {
             return new Result<T> (true, message, data);
         }
     }

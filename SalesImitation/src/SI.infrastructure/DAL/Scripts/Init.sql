@@ -1,3 +1,20 @@
+if not exists (select * from sysobjects where name='Users' and xtype='U')
+    create table Users (
+		ID uniqueidentifier PRIMARY KEY,
+		UserName nvarchar(100) NOT NULL,
+		PasswordHash nvarchar(max) NOT NULL,
+		LastUpdateDate Date NOT NULL,
+		Ordering INT IDENTITY(1,1) NOT NULL
+    )
+	IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'Users_Ordering' AND object_id = OBJECT_ID('Users'))
+    BEGIN
+	CREATE UNIQUE INDEX Users_Ordering
+	ON Users (Ordering);
+	CREATE UNIQUE INDEX Users_UserName
+	ON Users (UserName);
+    END
+go
+
 if not exists (select * from sysobjects where name='SuperBonuses' and xtype='U')
     create table SuperBonuses (
 		ID uniqueidentifier PRIMARY KEY,
@@ -31,7 +48,7 @@ go
 if not exists (select * from sysobjects where name='Categories' and xtype='U')
     create table Categories (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) UNIQUE NOT NULL,
+		Name nvarchar(250) UNIQUE NOT NULL,
 		Ordering INT IDENTITY(1,1) NOT NULL,
 		IsActive bit NOT NULL,
     )
@@ -45,7 +62,7 @@ go
 if not exists (select * from sysobjects where name='Partners' and xtype='U')
     create table Partners (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) UNIQUE NOT NULL,
+		Name nvarchar(250) UNIQUE NOT NULL,
 		LogoUrl nvarchar(MAX) NOT NULL,
 		Street nvarchar(MAX) NOT NULL,
 		Number nvarchar(MAX) NOT NULL,
@@ -69,7 +86,7 @@ go
 if not exists (select * from sysobjects where name='Products' and xtype='U')
     create table Products (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) UNIQUE NOT NULL,
+		Name nvarchar(250) UNIQUE NOT NULL,
 		Description nvarchar(MAX) NOT NULL,
 		Price decimal(9,2) NOT NULL,
 		Point INT NOT NULL,
@@ -107,7 +124,7 @@ go
 if not exists (select * from sysobjects where name='Missions' and xtype='U')
     create table Missions (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) UNIQUE NOT NULL,
+		Name nvarchar(250) UNIQUE NOT NULL,
 		Description nvarchar(MAX) NOT NULL,
 		Level INT NOT NULL UNIQUE,
 		PriceFrom decimal(9,2) NOT NULL,
@@ -121,5 +138,3 @@ if not exists (select * from sysobjects where name='Missions' and xtype='U')
 		ON ProductImages (Ordering);
     END
 go
-
-
