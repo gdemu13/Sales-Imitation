@@ -16,7 +16,6 @@ namespace SI.Application.Categories {
 
         public async Task<Result> Handle(SaveNewCategoryRequest request, CancellationToken token){
            var category = new Category(request.ID, request.Name);
-           System.Console.WriteLine("handler save new");
            return await _categoryRepository.Insert(category);
         }
     }

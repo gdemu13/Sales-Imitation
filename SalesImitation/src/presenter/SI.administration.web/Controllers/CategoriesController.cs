@@ -6,6 +6,7 @@ using SI.Application.Categories;
 using SI.Common.Models;
 using SI.Domain.Entities;
 using System;
+using SI.Administration.Web.ActionFilters;
 
 namespace SI.Administration.Web.Controllers {
 

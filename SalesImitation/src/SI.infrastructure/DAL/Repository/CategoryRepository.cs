@@ -64,7 +64,6 @@ namespace SI.Infrastructure.DAL.Repository {
             string sql = "INSERT INTO Categories (ID, Name, IsActive) Values (@ID, @Name, @IsActive);";
 
             using (var connection = Connection) {
-                System.Console.WriteLine ("repo " + sql);
                 var affectedRows = await connection.ExecuteAsync (sql,
                     new {
                         ID = category.ID,

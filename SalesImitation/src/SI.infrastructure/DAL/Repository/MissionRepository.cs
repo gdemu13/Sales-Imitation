@@ -73,8 +73,6 @@ namespace SI.Infrastructure.DAL.Repository {
                         LastUpdateDate = DateTime.Now,
                 });
             }
-            System.Console.WriteLine(sql);
-            System.Console.WriteLine("" + mission.Level);
             return await Task.FromResult (Result.CreateSuccessReqest ());
         }
 

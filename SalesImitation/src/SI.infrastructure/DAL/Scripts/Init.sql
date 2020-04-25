@@ -31,7 +31,7 @@ go
 if not exists (select * from sysobjects where name='Categories' and xtype='U')
     create table Categories (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) NOT NULL,
+		Name nvarchar(MAX) UNIQUE NOT NULL,
 		Ordering INT IDENTITY(1,1) NOT NULL,
 		IsActive bit NOT NULL,
     )
@@ -45,7 +45,7 @@ go
 if not exists (select * from sysobjects where name='Partners' and xtype='U')
     create table Partners (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) NOT NULL,
+		Name nvarchar(MAX) UNIQUE NOT NULL,
 		LogoUrl nvarchar(MAX) NOT NULL,
 		Street nvarchar(MAX) NOT NULL,
 		Number nvarchar(MAX) NOT NULL,
@@ -69,7 +69,7 @@ go
 if not exists (select * from sysobjects where name='Products' and xtype='U')
     create table Products (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) NOT NULL,
+		Name nvarchar(MAX) UNIQUE NOT NULL,
 		Description nvarchar(MAX) NOT NULL,
 		Price decimal(9,2) NOT NULL,
 		Point INT NOT NULL,
@@ -107,7 +107,7 @@ go
 if not exists (select * from sysobjects where name='Missions' and xtype='U')
     create table Missions (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(MAX) NOT NULL,
+		Name nvarchar(MAX) UNIQUE NOT NULL,
 		Description nvarchar(MAX) NOT NULL,
 		Level INT NOT NULL UNIQUE,
 		PriceFrom decimal(9,2) NOT NULL,

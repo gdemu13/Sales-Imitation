@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SI.Application;
 using SI.Infrastructure;
+using SI.Administration.Web.ActionFilters;
+using SI.Administration.Web.Middlewares;
 
 namespace SI.administration.web {
     public class Startup {
@@ -25,9 +27,9 @@ namespace SI.administration.web {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
             services.AddControllers ();
-
             services.AddApplication ();
-            services.AddInfrastructure ();
+            services.AddInfrastructure (Configuration);
+            services.AddScoped<ErrorHandlerFilter> ();
 
             services.AddSwaggerGen (c => {
                 c.SwaggerDoc ("v1", new OpenApiInfo { Title = "Sales Imitation", Version = "v1" });
@@ -46,6 +48,8 @@ namespace SI.administration.web {
                 app.UseDeveloperExceptionPage ();
             }
 
+             app.ConfigureExceptionLoggerMiddlware ();
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger ();
 
@@ -55,7 +59,7 @@ namespace SI.administration.web {
                 c.SwaggerEndpoint ("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseCors("MyPolicy");
+            app.UseCors ("MyPolicy");
 
             app.UseHttpsRedirection ();
 
