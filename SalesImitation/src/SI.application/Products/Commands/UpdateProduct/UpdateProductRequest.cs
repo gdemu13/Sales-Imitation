@@ -17,6 +17,7 @@ namespace SI.Application.Products {
         public decimal Price { get; set; }
 
         public int Point { get; set; }
+        public bool IsActive { get; set; }
 
         public UpdateCategory Category { get; set; }
 

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using SI.Domain.Entities;
-using SI.Application.Player;
+using SI.Application.Players;
 using SI.Common.Models;
 
 namespace SI.Web.Controllers {

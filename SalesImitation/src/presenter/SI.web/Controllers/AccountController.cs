@@ -1,25 +1,42 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SI.Application.Player;
+using SI.Application.Administrators;
+using SI.Application.Players;
 using SI.Common.Models;
+using SI.Domin.Abstractions.Authentication;
 
-namespace SI.Web.Controllers {
-    [Route ("api/account/")]
-    public class AccountController : ApiController {
+namespace SI.Web.Controllers
+{
+    [Route("api/account/")]
+    public class AccountController : ApiController
+    {
 
-        public AccountController () {
-
+        ICurrentUser _currentUser;
+        public AccountController(ICurrentUser currentUser)
+        {
+            _currentUser = currentUser;
         }
 
-        [HttpGet ("geto")]
-        public int Get () {
-            return 10;
+        [HttpGet("UserInfo")]
+        public async Task<string> UserInfo()
+        {
+            return $"{_currentUser.ID} - {_currentUser.DisplayName}";
         }
 
-        [HttpPost ("register")]
-        public async Task<Result> Register ([FromBody] RegisterPlayerRequest request) {
-            return await Mediator.Send (request);
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public async Task<Result> Login([FromBody]LoginPlayerRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [HttpPost("register")]
+        [AllowAnonymous]
+        public async Task<Result> Register([FromBody] RegisterPlayerRequest request)
+        {
+            return await Mediator.Send(request);
         }
     }
 }

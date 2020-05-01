@@ -8,6 +8,7 @@ namespace SI.Domain.Abstractions.Repositories {
 
     public interface IMissionRepository {
         Task<Mission> Get (Guid ID);
+        Task<Mission> GetByLevel(int level);
         Task<IEnumerable<Mission>> GetAll ();
         Task<Result> InsertIfLast (Mission mission, DateTime checkDate);
         Task<Result> Update (Guid id, Mission mission, DateTime checkDate);

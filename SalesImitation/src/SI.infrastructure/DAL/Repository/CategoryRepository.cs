@@ -52,6 +52,21 @@ namespace SI.Infrastructure.DAL.Repository {
             }
             return categories;
         }
+  public async Task<IEnumerable<Category>> GetByIDs(IEnumerable<Guid> ids) {
+            string sql = "SELECT * From Categories where ID in @IDs;";
+            IEnumerable<Category> categories = null;
+            using (var connection = Connection) {
+                var res = await connection.QueryAsync<CategoryModel> (sql, new {IDs = ids});
+                if (res != null) {
+                    categories = res.Select (r => {
+                        var c = new Category (r.ID, r.Name);
+                        c.IsActive = r.IsActive;
+                        return c;
+                    });
+                }
+            }
+            return categories;
+        }
 
         private class CategoryModel {
             public Guid ID { get; set; }

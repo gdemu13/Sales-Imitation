@@ -5,7 +5,7 @@ using MediatR;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Entities;
 
-namespace SI.Application.Player {
+namespace SI.Application.Players {
     public class GetLeaderboardHandler : IRequestHandler<GetLeaderboardRequest, IEnumerable<SI.Domain.Entities.Player>> {
         private IPlayerRepository _playerRepository;
 
@@ -14,7 +14,6 @@ namespace SI.Application.Player {
         }
 
         public async Task<IEnumerable<SI.Domain.Entities.Player>> Handle (GetLeaderboardRequest request, CancellationToken token) {
-            var player = new SI.Domain.Entities.Player ();
             return await _playerRepository.GetTopPlayersByScoreAsync (request.ShowTop);
         }
     }

@@ -15,6 +15,27 @@ if not exists (select * from sysobjects where name='Users' and xtype='U')
     END
 go
 
+
+if not exists (select * from sysobjects where name='Players' and xtype='U')
+    create table Players (
+		ID uniqueidentifier PRIMARY KEY,
+		Username nvarchar(100) unique NOT NULL,
+		FirstName nvarchar(100) NOT NULL,
+		LastName nvarchar(100) NOT NULL,
+		Email nvarchar(100) NOT NULL,
+		Level int NOT NULL,
+		PasswordHash nvarchar(max) NOT NULL,
+		LastUpdateDate Date NOT NULL,
+		Ordering INT IDENTITY(1,1) NOT NULL
+    )
+	IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'Players_Ordering' AND object_id = OBJECT_ID('Players'))
+    BEGIN
+	CREATE UNIQUE INDEX Players_Ordering
+	ON Players (Ordering);
+	CREATE UNIQUE INDEX Players_UserName
+	ON Players (Username);
+    END
+go
 if not exists (select * from sysobjects where name='SuperBonuses' and xtype='U')
     create table SuperBonuses (
 		ID uniqueidentifier PRIMARY KEY,

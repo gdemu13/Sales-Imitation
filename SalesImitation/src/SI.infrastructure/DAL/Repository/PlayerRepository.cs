@@ -5,23 +5,138 @@ using SI.Common.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using Dapper;
 
-namespace SI.Infrastructure.DAL.Repository {
-    public class PlayerRepository : IPlayerRepository {
-        private ICollection<Player> _db = new List<Player>();
+namespace SI.Infrastructure.DAL.Repository
+{
+    public class PlayerRepository : IPlayerRepository
+    {
+        private readonly IConfiguration _config;
 
-
-        public Player GetPlayer(Guid id){
-            return _db.FirstOrDefault(p => p.ID == id);
+        public PlayerRepository(IConfiguration config)
+        {
+            _config = config;
         }
 
-        public async Task<Result> SavePlayer(Player player){
-            _db.Add(player);
-            return await Task.FromResult<Result> (Result.CreateSuccessReqest());
+        private IDbConnection Connection
+        {
+            get
+            {
+                return new SqlConnection(_config.GetConnectionString("siconnectionstring"));
+            }
         }
 
-        public async Task<IEnumerable<Player>> GetTopPlayersByScoreAsync(int n) {
-            return await Task.FromResult<IEnumerable<Player>>(_db.Take(n));
+        public async Task<(Player, DateTime?)> GetByID(Guid id)
+        {
+            string sql = "SELECT * From PLayers Where ID = @ID;";
+            Player player = null;
+            DateTime? lastUpdateDate = null;
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = id });
+                if (res != null)
+                {
+                    var pass = new PlayerHashedPassword(res.PasswordHash);
+                    player = new Player(res.ID, res.Username, pass, res.PlayerName, res.FirstName, res.LastName, res.Level);
+                    lastUpdateDate = res.LastUpdateDate;
+                }
+            }
+            return (player, lastUpdateDate);
+        }
+
+        public async Task<(Player, DateTime?)> GetByUsername(string username)
+        {
+            string sql = "SELECT * From Players Where Username = @Username;";
+            Player player = null;
+            DateTime? lastUpdateDate = null;
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new { Username = username });
+                if (res != null)
+                {
+                    var pass = new PlayerHashedPassword(res.PasswordHash);
+                    player = new Player(res.ID, res.Username, pass, res.PlayerName, res.FirstName, res.LastName, res.Level);
+                    lastUpdateDate = res.LastUpdateDate;
+                }
+            }
+            return (player, lastUpdateDate);
+        }
+
+        public async Task<Result> InsertPlayerIfUnique(Player player)
+        {
+            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level)
+            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level);";
+
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
+                        ID = player.ID,
+                        Username = player.Username,
+                        PasswordHash = player.PasswordHash.Value,
+                        FirstName = player.Firstname,
+                        LastName = player.Lastname,
+                        Email = player.Mail,
+                        LastUpdateDate = DateTime.Now,
+                        Level = player.CurrentLevel,
+                    });
+            }
+
+            return await Task.FromResult(Result.CreateSuccessReqest());
+        }
+
+        public async Task<Result> UpdatePlayer(Player player, DateTime checkDate)
+        {
+            string sql = @"UPDATE Players SET  FirstName = @FirstName,
+                                                LastName = @LastName,
+                                                Email = @Email,
+                                                Level = @Level,
+                               where ID = @ID AND LastUpdateDate = @CheckDate;";
+
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
+                        ID = player.ID,
+                        FirstName = player.Firstname,
+                        LastName = player.Lastname,
+                        Email = player.Mail,
+                        CheckDate = checkDate,
+                        Level = player.CurrentLevel,
+                    });
+            }
+
+            return await Task.FromResult(Result.CreateSuccessReqest());
+        }
+
+        public async Task<Result> UpdatePassword(Guid ID, string newPasswordHash, DateTime checkDate)
+        {
+            string sql = @"UPDATE Players SET  PasswordHash = @PasswordHash
+                               where ID = @ID AND LastUpdateDate = @CheckDate;";
+
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
+                        ID = ID,
+                        PasswordHash = newPasswordHash,
+                        LastUpdateDate = DateTime.Now,
+                        CheckDate = checkDate,
+                    });
+            }
+
+            return await Task.FromResult(Result.CreateSuccessReqest());
+        }
+
+        public Task<IEnumerable<Player>> GetTopPlayersByScoreAsync(int n)
+        {
+            return null;
         }
     }
 }

@@ -12,5 +12,7 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<Result> Insert (Product category);
         Task<Result> Update (Guid id, Product category);
         Task<Result> SetIsActive (Guid id, bool isActive);
+
+        Task<IEnumerable<ProductCategory>> GetProductCategories(decimal fromPrice, decimal toPrice);
     }
 }

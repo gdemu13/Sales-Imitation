@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using SI.Domain.Entities;
-using SI.Application.Player;
 using SI.Common.Models;
 using SI.Application.SuperBonus;
 using System;
@@ -41,7 +40,7 @@ namespace SI.Administration.Web.Controllers
         }
 
          [HttpPost("Register")]
-        public async Task<Result> Register([FromBody]RegisterAdministratorRequest request)
+    public async Task<Result> Register([FromBody]RegisterAdministratorRequest request)
         {
              return await Mediator.Send (request);
         }

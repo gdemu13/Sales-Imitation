@@ -6,7 +6,7 @@ using System.Threading;
 using SI.Domain.Entities;
 using SI.Domain.Abstractions.Repositories;
 
-namespace SI.Application.Player {
+namespace SI.Application.Players {
     public class RegistrationPlayerHandler : IRequestHandler<RegisterPlayerRequest, Result> {
         private IPlayerRepository _playerRepository;
 
@@ -15,8 +15,8 @@ namespace SI.Application.Player {
         }
 
         public async Task<Result> Handle (RegisterPlayerRequest request, CancellationToken token) {
-            var player = new SI.Domain.Entities.Player();
-            return await _playerRepository.SavePlayer(player);
+            var player = new Player(Guid.NewGuid(), request.Username, request.Password, request.Mail, request.Firstname, request.Lastname, 1);
+            return await _playerRepository.InsertPlayerIfUnique(player);
         }
     }
 }

@@ -10,17 +10,22 @@ using SI.Common.Models;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Entities;
 
-namespace SI.Infrastructure.DAL.Repository {
-    public class ProductRepository : IProductRepository {
+namespace SI.Infrastructure.DAL.Repository
+{
+    public class ProductRepository : IProductRepository
+    {
         private readonly IConfiguration _config;
 
-        public ProductRepository (IConfiguration config) {
+        public ProductRepository(IConfiguration config)
+        {
             _config = config;
         }
 
-        private IDbConnection Connection {
-            get {
-                return new SqlConnection (_config.GetConnectionString ("siconnectionstring"));
+        private IDbConnection Connection
+        {
+            get
+            {
+                return new SqlConnection(_config.GetConnectionString("siconnectionstring"));
             }
         }
 
@@ -66,7 +71,8 @@ namespace SI.Infrastructure.DAL.Repository {
         //     return product;
         // }
 
-        public async Task<Product> Get (Guid id) {
+        public async Task<Product> Get(Guid id)
+        {
             Product product = null;
             string sql = @"SELECT
                                     prod.*, part.Name as PartnerName, img.ID as ImageID,
@@ -80,41 +86,49 @@ namespace SI.Infrastructure.DAL.Repository {
                             ON		img.ProductID = prod.ID
                         WHERE	    prod.ID = @ID;";
 
-            using (var connection = Connection) {
-                var productsResult = await connection.QueryAsync (sql, new {
+            using (var connection = Connection)
+            {
+                var productsResult = await connection.QueryAsync(sql, new
+                {
                     @ID = id,
                 });
-                if (productsResult != null) {
+                if (productsResult != null)
+                {
 
                     var res = from prod in productsResult
-                    let partner = new ProductPartner (prod.PartnerID, prod.PartnerName)
-                    let price = new Money (prod.Price)
-                    let category = prod.CategoryID == null ? null : new ProductCategory (prod.CategoryID, prod.CategoryName)
-                    group prod
-                    by new Product (prod.ID, prod.Name, prod.Description,
-                        partner, price, prod.Point, prod.ProductGroupID) { Category = category } into p
-                    select p;
+                              let partner = new ProductPartner(prod.PartnerID, prod.PartnerName)
+                              let price = new Money(prod.Price)
+                              let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
+                              group prod
+                              by new Product(prod.ID, prod.Name, prod.Description,
+                                  partner, price, prod.Point, prod.ProductGroupID, prod.IsActive)
+                              { Category = category } into p
+                              select p;
 
-                    foreach (var prod in res) {
+                    foreach (var prod in res)
+                    {
                         Product pr = prod.Key;
-                        foreach (var img in prod) {
+                        foreach (var img in prod)
+                        {
                             if (img != null && img.ImageID != null)
-                                pr.AddImage (img.ImageID, img.ImageUrl);
+                                pr.AddImage(img.ImageID, img.ImageUrl);
                         }
                         product = pr;
                     }
                 }
             }
-            var connectedProducts = await GetConnectedProducts (product.ProductGroupID);
-            connectedProducts = connectedProducts.Where (p => p.ID != product.ID);
+            var connectedProducts = await GetConnectedProducts(product.ProductGroupID);
+            connectedProducts = connectedProducts.Where(p => p.ID != product.ID);
 
-            foreach (var cp in connectedProducts) {
-                product.AddConnectedProduct (cp);
+            foreach (var cp in connectedProducts)
+            {
+                product.AddConnectedProduct(cp);
             }
             return product;
         }
 
-        public async Task<IEnumerable<ConnectedProduct>> GetConnectedProducts (Guid groupID) {
+        public async Task<IEnumerable<ConnectedProduct>> GetConnectedProducts(Guid groupID)
+        {
             string sql = @"SELECT
                                     prod.*, part.Name as PartnerName, img.ID as ImageID,
                                     cat.Name as CategoryName, img.Url as ImageUrl
@@ -129,29 +143,34 @@ namespace SI.Infrastructure.DAL.Repository {
                         ORDER BY	Ordering;";
 
             List<ConnectedProduct> products = null;
-            using (var connection = Connection) {
-                var productsResult = await connection.QueryAsync (sql, new {
+            using (var connection = Connection)
+            {
+                var productsResult = await connection.QueryAsync(sql, new
+                {
                     @GroupID = groupID,
                 });
-                if (productsResult != null) {
+                if (productsResult != null)
+                {
 
                     var res = from prod in productsResult
-                    let partner = new ProductPartner (prod.PartnerID, prod.PartnerName)
-                    let price = new Money (prod.Price)
-                    let category = prod.CategoryID == null ? null : new ProductCategory (prod.CategoryID, prod.CategoryName)
-                    group prod
-                    by new ConnectedProduct (prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID) { Category = category } into p
-                    select p;
+                              let partner = new ProductPartner(prod.PartnerID, prod.PartnerName)
+                              let price = new Money(prod.Price)
+                              let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
+                              group prod
+                              by new ConnectedProduct(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID) { Category = category } into p
+                              select p;
 
-                    products = new List<ConnectedProduct> ();
-                    foreach (var prod in res) {
+                    products = new List<ConnectedProduct>();
+                    foreach (var prod in res)
+                    {
                         var pr = prod.Key;
-                        foreach (var img in prod) {
-                            Console.WriteLine (img.ImageID == null ? Guid.Empty : img.ImageID);
+                        foreach (var img in prod)
+                        {
+                            Console.WriteLine(img.ImageID == null ? Guid.Empty : img.ImageID);
                             if (img != null && img.ImageID != null)
-                                pr.AddImage (img.ImageID, img.ImageUrl);
+                                pr.AddImage(img.ImageID, img.ImageUrl);
                         }
-                        products.Add (pr);
+                        products.Add(pr);
                     }
                 }
             }
@@ -159,7 +178,33 @@ namespace SI.Infrastructure.DAL.Repository {
             return products;
         }
 
-        public async Task<IEnumerable<Product>> GetRange (int skip, int take) {
+        public async Task<IEnumerable<ProductCategory>> GetProductCategories(decimal fromPrice, decimal toPrice)
+        {
+            string sql = @"select
+                        cat.ID, cat.Name
+                        from Products prod
+                        left join Categories cat
+                        on prod.CategoryID = cat.ID
+                        where prod.Price >= @From and prod.Price <= @To and prod.IsActive = 1 and cat.IsActive = 1
+                        group by cat.ID, cat.Name;";
+
+            IEnumerable<ProductCategory> productCategories = null;
+            using (var connection = Connection)
+            {
+                var productsResult = await connection.QueryAsync(sql, new
+                {
+                    @From = fromPrice,
+                    @To = toPrice,
+                });
+
+                if (productsResult != null)
+                    productCategories = productsResult.Select(pc => new ProductCategory(pc.ID, pc.name));
+            }
+            return productCategories;
+        }
+
+        public async Task<IEnumerable<Product>> GetRange(int skip, int take)
+        {
             string sql = @"SELECT
                                     prod.*, part.Name as PartnerName, img.ID as ImageID,
                                     cat.Name as CategoryName, img.Url as ImageUrl
@@ -175,51 +220,61 @@ namespace SI.Infrastructure.DAL.Repository {
                         FETCH NEXT	@Take ROWS ONLY;";
 
             List<Product> products = null;
-            using (var connection = Connection) {
-                var productsResult = await connection.QueryAsync (sql, new {
+            using (var connection = Connection)
+            {
+                var productsResult = await connection.QueryAsync(sql, new
+                {
                     @Skip = skip,
-                        @Take = take,
+                    @Take = take,
                 });
-                if (productsResult != null) {
+                if (productsResult != null)
+                {
 
                     var res = from prod in productsResult
-                    let partner = new ProductPartner (prod.PartnerID, prod.PartnerName)
-                    let price = new Money (prod.Price)
-                    let category = prod.CategoryID == null ? null : new ProductCategory (prod.CategoryID, prod.CategoryName)
-                    group prod
-                    by new Product (prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID) { Category = category } into p
-                    select p;
+                              let partner = new ProductPartner(prod.PartnerID, prod.PartnerName)
+                              let price = new Money(prod.Price)
+                              let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
+                              group prod
+                              by new Product(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID, prod.IsActive) { Category = category } into p
+                              select p;
 
-                    products = new List<Product> ();
-                    foreach (var prod in res) {
+                    products = new List<Product>();
+                    foreach (var prod in res)
+                    {
                         Product pr = prod.Key;
-                        foreach (var img in prod) {
-                            Console.WriteLine (img.ImageID == null ? Guid.Empty : img.ImageID);
+                        foreach (var img in prod)
+                        {
+                            Console.WriteLine(img.ImageID == null ? Guid.Empty : img.ImageID);
                             if (img != null && img.ImageID != null)
-                                pr.AddImage (img.ImageID, img.ImageUrl);
+                                pr.AddImage(img.ImageID, img.ImageUrl);
                         }
-                        products.Add (pr);
+                        products.Add(pr);
                     }
                 }
             }
             //make connections by groupid
-            foreach (var prod in products) {
-                var connections = products.Where (p => p.ProductGroupID == prod.ProductGroupID && p.ID != prod.ID)
-                    .Select (p => {
-                        var cp = new ConnectedProduct (p.ID, p.Name, p.Description, p.Partner, p.Price, p.Point, p.ProductGroupID) { Category = p.Category };
-                        foreach (var i in p.Images) {
-                            cp.AddImage (i);
+            foreach (var prod in products)
+            {
+                var connections = products.Where(p => p.ProductGroupID == prod.ProductGroupID && p.ID != prod.ID)
+                    .Select(p =>
+                    {
+                        var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Point, p.ProductGroupID) { Category = p.Category };
+                        foreach (var i in p.Images)
+                        {
+                            cp.AddImage(i);
                         }
                         return cp;
                     });
-                foreach (var con in connections) {
-                    prod.AddConnectedProduct (con);
+                foreach (var con in connections)
+                {
+                    prod.AddConnectedProduct(con);
                 }
             }
             return products;
         }
 
-        private class ProductModel {
+        private class ProductModel
+        {
             public Guid ID { get; set; }
             public string Name { get; set; }
             public string LogoUrl { get; set; }
@@ -234,7 +289,8 @@ namespace SI.Infrastructure.DAL.Repository {
             public bool IsActive { get; set; }
         }
 
-        public async Task<Result> Insert (Product product) {
+        public async Task<Result> Insert(Product product)
+        {
 
             string sqlProduct = @"INSERT INTO Products
             (ID, Name, Description, Price, Point, PartnerID, CategoryID, ProductGroupID, IsActive)
@@ -246,42 +302,51 @@ namespace SI.Infrastructure.DAL.Repository {
             Values
             (@ID, @Url, @ProductID);";
 
-            using (var connection = Connection) {
-                connection.Open ();
-                using (var transaction = connection.BeginTransaction ()) {
-                    try {
-                        var affectedRows = await connection.ExecuteAsync (sqlProduct,
-                            new {
+            using (var connection = Connection)
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        var affectedRows = await connection.ExecuteAsync(sqlProduct,
+                            new
+                            {
                                 ID = product.ID,
-                                    Name = product.Name,
-                                    Description = product.Description,
-                                    Price = product.Price.Amount,
-                                    Point = product.Point,
-                                    PartnerID = product.Partner.ID,
-                                    CategoryID = product.Category?.ID,
-                                    ProductGroupID = product.ProductGroupID,
-                                    IsActive = product.IsActive,
+                                Name = product.Name,
+                                Description = product.Description,
+                                Price = product.Price.Amount,
+                                Point = product.Point,
+                                PartnerID = product.Partner.ID,
+                                CategoryID = product.Category?.ID,
+                                ProductGroupID = product.ProductGroupID,
+                                IsActive = product.IsActive,
                             }, transaction);
-                        if (product.Images != null && product.Images.Count () > 0) {
-                            affectedRows = await connection.ExecuteAsync (sqlProductImages,
-                                product.Images.Select (i => new {
+                        if (product.Images != null && product.Images.Count() > 0)
+                        {
+                            affectedRows = await connection.ExecuteAsync(sqlProductImages,
+                                product.Images.Select(i => new
+                                {
                                     ID = product.ID,
-                                        Url = product.Name,
-                                        ProductID = product.ID,
+                                    Url = product.Name,
+                                    ProductID = product.ID,
                                 }), transaction);
                         }
 
-                        transaction.Commit ();
-                    } catch (Exception ex) {
-                        transaction.Rollback ();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
                         throw ex;
                     }
                 }
             }
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
-        public async Task<Result> Update (Guid id, Product product) {
+        public async Task<Result> Update(Guid id, Product product)
+        {
 
             // string sql = "UPDATE Categories SET Name = @Name where ID = @ID;";
 
@@ -293,10 +358,11 @@ namespace SI.Infrastructure.DAL.Repository {
             //         });
             // }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
-        public async Task<Result> SetIsActive (Guid id, bool isActive) {
+        public async Task<Result> SetIsActive(Guid id, bool isActive)
+        {
 
             // string sql = "UPDATE Categories SET IsActive = @IsActive where ID = @ID;";
 
@@ -308,7 +374,7 @@ namespace SI.Infrastructure.DAL.Repository {
             //         });
             // }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
     }
 }
