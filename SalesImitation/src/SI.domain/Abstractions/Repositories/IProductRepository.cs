@@ -14,5 +14,6 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<Result> SetIsActive (Guid id, bool isActive);
 
         Task<IEnumerable<ProductCategory>> GetProductCategories(decimal fromPrice, decimal toPrice);
+        Task<IEnumerable<Product>> GetByCategoryAndPriceRange(Guid categoryID, decimal from, decimal to);
     }
 }

@@ -3,7 +3,7 @@ if not exists (select * from sysobjects where name='Users' and xtype='U')
 		ID uniqueidentifier PRIMARY KEY,
 		UserName nvarchar(100) NOT NULL,
 		PasswordHash nvarchar(max) NOT NULL,
-		LastUpdateDate Date NOT NULL,
+		LastUpdateDate DATETIME NOT NULL,
 		Ordering INT IDENTITY(1,1) NOT NULL
     )
 	IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'Users_Ordering' AND object_id = OBJECT_ID('Users'))
@@ -25,7 +25,7 @@ if not exists (select * from sysobjects where name='Players' and xtype='U')
 		Email nvarchar(100) NOT NULL,
 		Level int NOT NULL,
 		PasswordHash nvarchar(max) NOT NULL,
-		LastUpdateDate Date NOT NULL,
+		LastUpdateDate DATETIME NOT NULL,
 		Ordering INT IDENTITY(1,1) NOT NULL
     )
 	IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'Players_Ordering' AND object_id = OBJECT_ID('Players'))
@@ -156,6 +156,48 @@ if not exists (select * from sysobjects where name='Missions' and xtype='U')
 		IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'Missions_Ordering' AND object_id = OBJECT_ID('Missions'))
     BEGIN
 		CREATE UNIQUE INDEX Missions_Ordering
-		ON ProductImages (Ordering);
+		ON Missions (Ordering);
+    END
+go
+
+if not exists (select * from sysobjects where name='CurrentMissions' and xtype='U')
+    create table CurrentMissions (
+		ID uniqueidentifier PRIMARY KEY,
+		Name nvarchar(250) NOT NULL,
+		Description nvarchar(MAX) NOT NULL,
+		Level INT NOT NULL UNIQUE,
+		Point decimal(9,2) NOT NULL,
+		PlayerID uniqueidentifier,
+		Prod1ID uniqueidentifier,
+		Prod1Name nvarchar(250) NOT NULL,
+		Prod1Desc nvarchar(250) NOT NULL,
+		Prod1PartnerName nvarchar(250) NOT NULL,
+		Prod1PartnerAddress nvarchar(250) NOT NULL,
+		Prod1Benefits nvarchar(250) NOT NULL,
+		Prod2ID uniqueidentifier,
+		Prod2Name nvarchar(250) NOT NULL,
+		Prod2Desc nvarchar(250) NOT NULL,
+		Prod2PartnerName nvarchar(250) NOT NULL,
+		Prod2PartnerAddress nvarchar(250) NOT NULL,
+		Prod2Benefits nvarchar(250) NOT NULL,
+		CategoryID uniqueidentifier NOT NULL,
+		CategoryName nvarchar(250) NOT NULL,
+		PromoCode nvarchar(12) NOT NULL,
+		Status int NOT NULL,
+		Duration int NOT NULL,
+		StartedDate DATETIME,
+		FinishedDate DATETIME,
+		LastUpdateDate DATETIME NOT NULL,
+		AddedHours int NOT NULL,
+		EarnedCoints decimal(9,2) NOT NULL,
+		CategoryUpdated int NOT NULL,
+		Ordering INT IDENTITY(1,1) NOT NULL,
+		FOREIGN KEY (PlayerID) REFERENCES Players(ID),
+    )
+
+		IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'CurrentMissions_Ordering' AND object_id = OBJECT_ID('CurrentMissions'))
+    BEGIN
+		CREATE UNIQUE INDEX CurrentMissions_Ordering
+		ON CurrentMissions (Ordering);
     END
 go

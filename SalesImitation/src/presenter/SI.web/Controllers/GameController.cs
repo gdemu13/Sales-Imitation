@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SI.Application.Administrators;
 using SI.Application.Categories;
+using SI.Application.CurrentMissions;
 using SI.Application.Players;
 using SI.Application.Products;
 using SI.Common.Models;
+using SI.Domain.Entities;
 using SI.Domin.Abstractions.Authentication;
 
 namespace SI.Web.Controllers
@@ -31,6 +33,18 @@ namespace SI.Web.Controllers
             var productCategories = await Mediator.Send(new GetProductCategoriesByPriceRangeRequest(mission.PriceRange.From, mission.PriceRange.To));
             var avaliableCategoryIDs = productCategories.Select(pc => pc.ID);
             return await Mediator.Send(new GetCategoriesListbyIDsRequest(avaliableCategoryIDs));
+        }
+
+        [HttpPost("startMission")]
+        public async Task<Result> StartMission([FromBody] StartNewMissionRequest request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [HttpGet("getMission")]
+        public async Task<CurrentMission> GetMission()
+        {
+            return await Mediator.Send(new GetCurrentMissionRequest());
         }
     }
 }

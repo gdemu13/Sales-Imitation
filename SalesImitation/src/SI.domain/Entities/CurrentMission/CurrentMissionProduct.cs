@@ -1,9 +1,12 @@
+using System;
+
 namespace SI.Domain.Entities
 {
-    public class CurrentMissionProduct
+    public class CurrentMissionProduct : BaseEntity
     {
-        public CurrentMissionProduct(string name, string description, string partnerName,
-                                    string partnetaAddress, string benefits, int expectedCoin) {
+        public CurrentMissionProduct(Guid id, string name, string description, string partnerName,
+                                    string partnetaAddress, string benefits, decimal expectedCoin) {
+            ID = id;
             Name = name;
             Description = description;
             PartnerName = partnerName;
@@ -17,6 +20,6 @@ namespace SI.Domain.Entities
         public string PartnerName { get; }
         public string PartnetaAddress { get; }
         public string Benefits { get; }
-        public int ExpectedCoin { get; }
+        public decimal ExpectedCoin { get; }
     }
 }

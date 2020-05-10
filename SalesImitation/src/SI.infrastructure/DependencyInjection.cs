@@ -21,6 +21,7 @@ namespace SI.Infrastructure
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<IMissionRepository, MissionRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<ICurrentMissionRepository, CurrentMissionRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
 
             Serilog.Debugging.SelfLog.Enable(msg => System.Console.WriteLine(msg));
