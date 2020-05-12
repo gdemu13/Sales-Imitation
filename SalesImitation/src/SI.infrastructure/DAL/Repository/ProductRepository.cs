@@ -258,7 +258,7 @@ namespace SI.Infrastructure.DAL.Repository
                 var connections = products.Where(p => p.ProductGroupID == prod.ProductGroupID && p.ID != prod.ID)
                     .Select(p =>
                     {
-                        var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Point, p.ProductGroupID) { Category = p.Category };
+                        var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Coin, p.ProductGroupID) { Category = p.Category };
                         foreach (var i in p.Images)
                         {
                             cp.AddImage(i);
@@ -316,7 +316,7 @@ namespace SI.Infrastructure.DAL.Repository
                                 Name = product.Name,
                                 Description = product.Description,
                                 Price = product.Price.Amount,
-                                Point = product.Point,
+                                Point = product.Coin,
                                 PartnerID = product.Partner.ID,
                                 CategoryID = product.Category?.ID,
                                 ProductGroupID = product.ProductGroupID,
@@ -379,7 +379,7 @@ namespace SI.Infrastructure.DAL.Repository
                                 Name = product.Name,
                                 Description = product.Description,
                                 Price = product.Price.Amount,
-                                Point = product.Point,
+                                Point = product.Coin,
                                 PartnerID = product.Partner.ID,
                                 CategoryID = product.Category?.ID,
                                 ProductGroupID = product.ProductGroupID,
@@ -480,7 +480,7 @@ namespace SI.Infrastructure.DAL.Repository
                     var connections = products.Where(p => p.ProductGroupID == prod.ProductGroupID && p.ID != prod.ID)
                         .Select(p =>
                         {
-                            var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Point, p.ProductGroupID) { Category = p.Category };
+                            var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Coin, p.ProductGroupID) { Category = p.Category };
                             foreach (var i in p.Images)
                             {
                                 cp.AddImage(i);

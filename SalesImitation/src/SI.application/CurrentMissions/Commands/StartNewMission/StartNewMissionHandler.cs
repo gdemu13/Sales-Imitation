@@ -40,31 +40,46 @@ namespace SI.Application.CurrentMissions
 
         public async Task<Result> Handle(StartNewMissionRequest request, CancellationToken token)
         {
-            var curMission = await currentMissionRepository.GetByUser(currentUser.ID.Value);
+            var (curMission, _) = await currentMissionRepository.GetActiveByUser(currentUser.ID.Value);
             if (curMission != null)
-                throw new LocalizableException("user_already_has_mission", "user_already_has_mission");
+                throw new LocalizableException("user_already_has_current_mission", "user_already_has_current_mission");
 
             var (player, _) = await playerRepository.GetByID(currentUser.ID.Value);
+
+            //get category that is chosen by player
             var category = await categoryRepository.Get(request.SelectedCategoryID);
+            if (category == null)
+                throw new LocalizableException("invalid_category_is_selected", "invalid category is selected");
+
+            //mission that player should start
             var mission = await missionRepository.GetByLevel(player.CurrentLevel);
 
+            //get products by mission price range and choose two connected from them.
             var products = await productRepository.GetByCategoryAndPriceRange(category.ID, mission.PriceRange.From, mission.PriceRange.To);
-            System.Console.WriteLine("products " + products.Count());
             var randomProduct = ChooseRandomProduct(products);
             var randomProduct2 = ChooseRandomProduct(randomProduct.ConnectedProduct);
 
-            var currentMissionPlayer = new CurrentMissionPlayer(player.ID, $"{player.Firstname} {player.Lastname}",player.CurrentLevel);
-System.Console.WriteLine(currentUser.ID.Value);
-System.Console.WriteLine(currentMissionPlayer.ID);
+            //create new current mission, generate promo code and start
+            var currentMissionPlayer = new CurrentMissionPlayer(player.ID, $"{player.Firstname} {player.Lastname}", player.CurrentLevel);
             var partner = await partnerRepository.Get(randomProduct.Partner.ID);
-            var currentMissionProduct1 = new CurrentMissionProduct(randomProduct.ID, randomProduct.Name, randomProduct.Description, partner.Name, partner.Address.Street, "TODO", randomProduct.Point);
-            var currentMissionProduct2 = new CurrentMissionProduct(randomProduct2.ID, randomProduct2.Name, randomProduct2.Description, partner.Name, partner.Address.Street, "TODO", randomProduct2.Point);
+            var currentMissionProduct1 = new CurrentMissionProduct(randomProduct.ID, randomProduct.Name, randomProduct.Description, partner.Name, partner.Address.Street, "TODO", randomProduct.Coin);
+            var currentMissionProduct2 = new CurrentMissionProduct(randomProduct2.ID, randomProduct2.Name, randomProduct2.Description, partner.Name, partner.Address.Street, "TODO", randomProduct2.Coin);
 
             var currentMissionCategory = new CurrentMissionCategory(category.ID, category.Name);
-            System.Console.WriteLine("currentMissionCategory " + currentMissionCategory.ID + " " + currentMissionCategory.Name);
-            curMission = new CurrentMission(Guid.NewGuid(), currentMissionPlayer, mission.Name, mission.Description, player.CurrentLevel, currentMissionProduct1, currentMissionProduct2, currentMissionCategory, -1);
+
+            curMission = new CurrentMission(Guid.NewGuid(),
+                                            currentMissionPlayer,
+                                            mission.Name,
+                                            mission.Description,
+                                            player.CurrentLevel,
+                                            currentMissionProduct1,
+                                            currentMissionProduct2,
+                                            currentMissionCategory,
+                                            -1);
+
             curMission.GenerateNewpromoCode();
             curMission.Start(DateTime.Now);
+
             return await currentMissionRepository.Insert(curMission);
         }
 

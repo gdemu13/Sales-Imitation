@@ -25,7 +25,8 @@ namespace SI.Application.CurrentMissions
 
         public async Task<CurrentMission> Handle(GetCurrentMissionRequest request, CancellationToken token)
         {
-            return await currentMissionRepository.GetActiveByUser(currentUser.ID.Value);
+            var (currentMission, _) = await currentMissionRepository.GetActiveByUser(currentUser.ID.Value);
+            return currentMission;
         }
 
         private T ChooseRandomProduct<T>(IEnumerable<T> products)

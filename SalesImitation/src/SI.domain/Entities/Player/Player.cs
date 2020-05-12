@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography;
+using SI.Domain.Exceptions;
 
 namespace SI.Domain.Entities
 {
@@ -33,6 +34,20 @@ namespace SI.Domain.Entities
         public string Firstname { get; }
         public string Lastname { get; }
         public int CurrentLevel { get; set; }
+
+        //TODO
+        public decimal Coins { get; private set; }
+
+        public void SpendCoins(decimal coinsToSpend, string reason) {
+            if (Coins - coinsToSpend < 0)
+                throw new LocalizableException("not_enought_coins", "not_enought_coins");
+
+            Coins -= coinsToSpend;
+        }
+
+        public void AddCoins(decimal newCoins, string source){
+            Coins += newCoins;
+        }
 
         #region Constants
         public const int SaltByteSize = 24;

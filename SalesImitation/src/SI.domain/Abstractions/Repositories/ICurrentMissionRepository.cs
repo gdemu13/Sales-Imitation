@@ -11,7 +11,7 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<IEnumerable<CurrentMission>> GetRange (int skip, int take);
         Task<Result> Insert (CurrentMission mission);
         Task<Result> UpdateIfNotChanged (Guid id, CurrentMission mission, DateTime checkDate);
-        Task<CurrentMission> GetActiveByUser(Guid id);
+        Task<(CurrentMission, DateTime?)> GetActiveByUser(Guid ID);
         Task<CurrentMission> GetByUser(Guid id);
     }
 }

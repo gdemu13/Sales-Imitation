@@ -24,6 +24,7 @@ if not exists (select * from sysobjects where name='Players' and xtype='U')
 		LastName nvarchar(100) NOT NULL,
 		Email nvarchar(100) NOT NULL,
 		Level int NOT NULL,
+		Coins decimal(9,2) NOT NULL,
 		PasswordHash nvarchar(max) NOT NULL,
 		LastUpdateDate DATETIME NOT NULL,
 		Ordering INT IDENTITY(1,1) NOT NULL

@@ -5,6 +5,7 @@ using Serilog;
 using Serilog.Settings.Configuration;
 using SI.Common.Abstractions;
 using SI.Domain.Abstractions.Repositories;
+using SI.Domain.Services;
 using SI.Infrastructure.DAL.Repository;
 using SI.Infrastructure.Logging;
 
@@ -23,6 +24,10 @@ namespace SI.Infrastructure
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ICurrentMissionRepository, CurrentMissionRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
+
+
+            services.AddSingleton<IPlayerService, PlayerService>();
+
 
             Serilog.Debugging.SelfLog.Enable(msg => System.Console.WriteLine(msg));
 

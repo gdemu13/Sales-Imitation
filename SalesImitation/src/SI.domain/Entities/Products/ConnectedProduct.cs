@@ -12,7 +12,7 @@ namespace SI.Domain.Entities {
             Description = description;
             Partner = partner;
             Price = price;
-            Point = point;
+            Coin = point;
             ProductGroupID = groupID;
 
             _images = new List<ProductImage> ();
@@ -47,7 +47,7 @@ namespace SI.Domain.Entities {
 
         public ProductCategory Category { get; set; }
 
-        public int Point { get; set; }
+        public int Coin { get; set; }
 
         public bool IsActive { get; set; }
 

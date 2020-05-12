@@ -53,9 +53,9 @@ namespace SI.Infrastructure.DAL.Repository
            )";
             using (var connection = Connection)
             {
-                  var status = mission.GetType()
-                     .GetField("_status", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .GetValue(mission);
+                var status = mission.GetType()
+                   .GetField("_status", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+                  .GetValue(mission);
 
                 var res = await connection.ExecuteAsync(sql, new
                 {
@@ -95,7 +95,61 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<Result> UpdateIfNotChanged(Guid id, CurrentMission mission, DateTime checkDate)
         {
-            throw new NotImplementedException();
+            //TODO active unda gamovtvalo da shevamowmo chaweramde
+            // var sql = @"IF (SELECT count(ID) Level FROM Missions) = @Level - 1
+            var sql = @" UPDATE CurrentMissions SET
+                    [ID] = @ID, [Name] = @ame, [Description] = @escription, [Level] = @evel,
+                    [PlayerID] = @layerID, [Point] = @oint, [Prod1ID] = @rod1ID, [Prod1Name] = @rod1Name,
+                    [Prod1Desc] = @rod1Desc, [Prod1PartnerName] = @rod1PartnerName,
+                    [Prod1PartnerAddress] = @rod1PartnerAddress, [Prod1Benefits] = @rod1Benefits,
+                    [Prod2ID] = @rod2ID, [Prod2Name] = @rod2Name, [Prod2Desc] = @rod2Desc,
+                    [Prod2PartnerName] = @rod2PartnerName, [Prod2PartnerAddress] = @rod2PartnerAddress,
+                    [Prod2Benefits] = @rod2Benefits, [CategoryID] = @ategoryID, [CategoryName] = @ategoryName,
+                    [PromoCode] = @romoCode, [Status] = @tatus, [Duration] = @uration,
+                    [StartedDate] = @tartedDate, [FinishedDate] = @inishedDate,
+                    [LastUpdateDate] = @astUpdateDate, [AddedHours] = @ddedHours,
+                    [EarnedCoints] = @arnedCoints, [CategoryUpdated] = @ategoryUpdated";
+
+            using (var connection = Connection)
+            {
+                var status = mission.GetType()
+                   .GetField("_status", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+                  .GetValue(mission);
+
+                var res = await connection.ExecuteAsync(sql, new
+                {
+                    ID = mission.ID,
+                    ame = mission.Name,
+                    escription = mission.Description,
+                    evel = mission.Level,
+                    layerID = mission.Player.ID,
+                    oint = mission.EarnedCoints, //TODO titoeuli produqtisac unda iyos
+                    rod1ID = mission.Product1.ID,
+                    rod1Name = mission.Product1.Name,
+                    rod1Desc = mission.Product1.Description,
+                    rod1PartnerName = mission.Product1.PartnerName,
+                    rod1PartnerAddress = mission.Product1.PartnetaAddress,
+                    rod1Benefits = mission.Product1.Benefits,
+                    rod2ID = mission.Product2.ID,
+                    rod2Name = mission.Product2.Name,
+                    rod2Desc = mission.Product2.Description,
+                    rod2PartnerName = mission.Product2.PartnerName,
+                    rod2PartnerAddress = mission.Product2.PartnerName,
+                    rod2Benefits = mission.Product2.Benefits,
+                    ategoryID = mission.Category.ID,
+                    ategoryName = mission.Category.Name,
+                    romoCode = mission.PromoCode,
+                    tatus = status,
+                    uration = mission.DurationHours,
+                    tartedDate = mission.StartedDate,
+                    inishedDate = mission.FinishedDate,
+                    astUpdateDate = DateTime.Now,
+                    ddedHours = mission.AddedHours,
+                    arnedCoints = mission.EarnedCoints,
+                    ategoryUpdated = mission.CategoryUpdated
+                });
+            }
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
         public async Task<CurrentMission> Get(Guid ID)
@@ -137,17 +191,23 @@ namespace SI.Infrastructure.DAL.Repository
             return currentMission;
         }
 
-        public async Task<CurrentMission> GetActiveByUser(Guid ID)
+        public async Task<(CurrentMission, DateTime?)> GetActiveByUser(Guid ID)
         {
-            string sql = "SELECT * From CurrentMissions Where PlayerID = @ID;"; //TODO active unda gamovtvalo
+            string sql = @"select c.*, p.FirstName + ' ' + p.LastName as PlayerFullName,
+                        p.Level as PlayerLevel from CurrentMissions c
+                        left join Players p
+                        on c.PlayerID = p.ID
+                        Where PlayerID = @ID;"; //TODO active unda gamovtvalo
             CurrentMission currentMission = null;
+            DateTime? lastUpdateDate = null;
             using (var connection = Connection)
             {
                 var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = ID });
                 if (res != null)
                 {
-                    System.Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6}", res.Prod1ID, res.Prod1Name, res.Prod1Desc,
-                                    res.Prod1PartnerName, res.Prod1PartnerAddress, res.Prod1Benefits, res.Point);
+                    // System.Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6}", res.Prod1ID, res.Prod1Name, res.Prod1Desc,
+                    //                 res.Prod1PartnerName, res.Prod1PartnerAddress, res.Prod1Benefits, res.Point);
+                    var player = new CurrentMissionPlayer(res.PlayerID, res.PlayerFullName, res.PlayerLevel);
 
                     var currentMissionProduct1 = new CurrentMissionProduct(res.Prod1ID, res.Prod1Name, res.Prod1Desc,
                                     res.Prod1PartnerName, res.Prod1PartnerAddress, res.Prod1Benefits, res.Point);  //TODO: point unda qondes titoeul produqts tavisi
@@ -158,7 +218,12 @@ namespace SI.Infrastructure.DAL.Repository
                     var currentMissionCategory = new CurrentMissionCategory(res.CategoryID, res.CategoryName);
 
 
+
                     currentMission = (CurrentMission)Activator.CreateInstance(typeof(CurrentMission), true);
+
+                    currentMission.GetType()
+                    .GetProperty("ID", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+                   .SetValue(currentMission, res.ID, null);
 
                     currentMission.GetType()
                      .GetProperty("Name", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
@@ -189,6 +254,10 @@ namespace SI.Infrastructure.DAL.Repository
                     .SetValue(currentMission, currentMissionCategory, null);
 
                     currentMission.GetType()
+                     .GetProperty("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+                    .SetValue(currentMission, player, null);
+
+                    currentMission.GetType()
                      .GetProperty("StartedDate", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                     .SetValue(currentMission, res.StartedDate, null);
 
@@ -199,34 +268,26 @@ namespace SI.Infrastructure.DAL.Repository
                     currentMission.GetType()
                      .GetProperty("PromoCode", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                     .SetValue(currentMission, res.PromoCode, null);
-//TODO in db
+
                     currentMission.GetType()
                     .GetProperty("AddedHours", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                    .SetValue(currentMission, res.AddedHours, null);
-//TODO in db
+
                     currentMission.GetType()
                     .GetProperty("EarnedCoints", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                    .SetValue(currentMission, res.EarnedCoints, null);
 
-//TODO in db
+
                     currentMission.GetType()
                     .GetProperty("CategoryUpdated", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                    .SetValue(currentMission, res.CategoryUpdated, null);
-                    // var curMission = new CurrentMission(res.ID, res.Name, res.Description, res.Level, currentMissionProduct1, currentMissionProduct2, currentMissionCategory, res.duration);
 
-                    // if (string.IsNullOrEmpty(!res.PromoCode))
-                    //     curMission.SetPromoCode(res.PromoCode);
-
-                    // if(res.Status >= (int)CurrentMissionStatuses.Active)
-                    //     curMission.Start(res.StartedDate);
-
-                    // if(res.Status == (int)CurrentMissionStatuses.Finished)
-                    //     curMission.SellProduct(res.PromoCode,  res.StartedDate);
 
                     currentMission.Status = (CurrentMissionStatuses)res.Status;
+                    lastUpdateDate = res.LastUpdateDate;
                 }
             }
-            return currentMission;
+            return (currentMission, lastUpdateDate);
         }
 
 

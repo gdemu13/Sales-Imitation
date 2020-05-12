@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using System.Reflection;
 
 namespace SI.Infrastructure.DAL.Repository
 {
@@ -40,7 +41,12 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var pass = new PlayerHashedPassword(res.PasswordHash);
-                    player = new Player(res.ID, res.Username, pass, res.PlayerName, res.FirstName, res.LastName, res.Level);
+                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level);
+
+                    player.GetType()
+               .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+              .SetValue(player, res.Coins, null);
+
                     lastUpdateDate = res.LastUpdateDate;
                 }
             }
@@ -67,8 +73,8 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<Result> InsertPlayerIfUnique(Player player)
         {
-            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level)
-            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level);";
+            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level, Coins)
+            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level, @Coins);";
 
             using (var connection = Connection)
             {
@@ -83,6 +89,7 @@ namespace SI.Infrastructure.DAL.Repository
                         Email = player.Mail,
                         LastUpdateDate = DateTime.Now,
                         Level = player.CurrentLevel,
+                        Coins = player.Coins,
                     });
             }
 
@@ -95,6 +102,7 @@ namespace SI.Infrastructure.DAL.Repository
                                                 LastName = @LastName,
                                                 Email = @Email,
                                                 Level = @Level,
+                                                Coins = @Coins
                                where ID = @ID AND LastUpdateDate = @CheckDate;";
 
             using (var connection = Connection)
@@ -108,6 +116,7 @@ namespace SI.Infrastructure.DAL.Repository
                         Email = player.Mail,
                         CheckDate = checkDate,
                         Level = player.CurrentLevel,
+                        Coins = player.Coins,
                     });
             }
 

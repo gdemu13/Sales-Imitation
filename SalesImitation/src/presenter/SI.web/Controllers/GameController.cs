@@ -41,10 +41,15 @@ namespace SI.Web.Controllers
             return await Mediator.Send(request);
         }
 
-        [HttpGet("getMission")]
-        public async Task<CurrentMission> GetMission()
+        [HttpGet("CurrentMission")]
+        public async Task<CurrentMission> GetCurrentMission()
         {
             return await Mediator.Send(new GetCurrentMissionRequest());
+        }
+
+        [HttpPost("buyExtraTime")]
+        public async Task<Result> BuyExtraTime([FromBody] BuyExtraTimeRequest request) {
+            return await Mediator.Send(request);
         }
     }
 }

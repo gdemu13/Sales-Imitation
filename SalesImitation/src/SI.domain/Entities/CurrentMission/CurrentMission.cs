@@ -25,7 +25,7 @@ namespace SI.Domain.Entities
             CategoryUpdated = 0;
         }
 
-        public CurrentMissionPlayer Player { get; }
+        public CurrentMissionPlayer Player { get; private set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Level { get; set; }
@@ -99,7 +99,10 @@ namespace SI.Domain.Entities
 
         public void AddExtraHours(int hours)
         {
-            AddedHours += hours;
+            if (Status == CurrentMissionStatuses.Active || (Status == CurrentMissionStatuses.Finished && DeadlineDate > DateTime.Now))
+                AddedHours += hours;
+            else
+                throw new LocalizableException("cant_add_extratime", "cant_add_extratime");
         }
 
         public void GenerateNewpromoCode()
