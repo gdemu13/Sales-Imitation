@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -15,7 +16,9 @@ namespace SI.Application.Partners {
         }
 
         public async Task<Result> Handle (SaveNewPartnerRequest req, CancellationToken token) {
-            var partner = new Partner (req.ID, req.Name);
+            var newID = Guid.NewGuid();
+
+            var partner = new Partner (newID, req.Name);
 
             if (!string.IsNullOrEmpty (req.LogoUrl))
                 partner.Logo = new PartnerLogo (req.LogoUrl);

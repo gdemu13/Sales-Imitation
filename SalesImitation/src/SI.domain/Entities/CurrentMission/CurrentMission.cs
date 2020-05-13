@@ -34,7 +34,9 @@ namespace SI.Domain.Entities
         {
             get
             {
-                return StartedDate?.AddHours(DurationHours);
+                return StartedDate?
+                .AddHours(DurationHours)
+                .AddHours(AddedHours);
             }
         }
 

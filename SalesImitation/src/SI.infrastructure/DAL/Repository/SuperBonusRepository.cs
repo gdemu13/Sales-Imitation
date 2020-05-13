@@ -33,7 +33,7 @@ namespace SI.Infrastructure.DAL.Repository {
                     new {
                         ID = id,
                             Amount = amount,
-                            Status = 1
+                            Status = SuperBonusStatuses.Pending
                     });
                 Console.WriteLine (affectedRows);
             }
@@ -56,7 +56,7 @@ namespace SI.Infrastructure.DAL.Repository {
             string sql = "SELECT * FROM SuperBonuses WHERE Status = @Status;";
             SuperBonus bonus = null;
             using (var connection = Connection) {
-                var res = await connection.QueryFirstOrDefaultAsync<SuperBonusTable> (sql, new { Status = 0 });
+                var res = await connection.QueryFirstOrDefaultAsync<SuperBonusTable> (sql, new { Status = SuperBonusStatuses.Pending });
                 if (res != null)
                     bonus = new SuperBonus (res.ID, res.BaseAmount, res.Status);
             }

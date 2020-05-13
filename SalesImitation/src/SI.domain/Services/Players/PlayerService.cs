@@ -15,15 +15,16 @@ namespace SI.Domain.Services
             this.playerRepository = playerRepository;
             this.currentMissionRepository = currentMissionRepository;
         }
+
         public async Task<Result> BuyExtraTime(Guid playerID, int hours)
         {
             var (player, playerUpdateDate) = await playerRepository.GetByID(playerID);
             var (mission, missionUpdateDate) = await currentMissionRepository.GetActiveByUser(playerID);
-
+            //TODO" every repository should check and update date
             player.SpendCoins(hours, "BuyExtraTime");
             mission.AddExtraHours(hours);
 
-            //DIDI TODO:
+            //DIDI TODO: trakzaciebi
             await playerRepository.UpdatePlayer(player, playerUpdateDate.Value);
             return await currentMissionRepository.UpdateIfNotChanged(mission.ID, mission, missionUpdateDate.Value);
         }

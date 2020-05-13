@@ -5,7 +5,7 @@ using SI.Common.Models;
 using System.Collections.Generic;
 
 namespace SI.Domain.Abstractions.Repositories {
-    public interface IPlayerRepository {
+    public interface IPlayerRepository : IRepository<IPlayerRepository> {
         Task<(Player, DateTime?)> GetByID(Guid id);
         Task<(Player, DateTime?)> GetByUsername(string username);
         Task<Result> InsertPlayerIfUnique(Player id);

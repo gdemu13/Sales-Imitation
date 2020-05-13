@@ -5,9 +5,7 @@ using System.Collections.Generic;
 
 namespace SI.Application.Products {
     public class SaveNewProductRequest : IRequest<Result> {
-        public Guid ID { get; set; }
-
-        public Guid GroupID { get; set; }
+        public Guid? GroupID { get; set; }
 
         public string Name { get; set; }
 
@@ -33,7 +31,6 @@ namespace SI.Application.Products {
         }
 
         public class SaveProductImage {
-            public Guid ID { get; set; }
             public string Url { get; set; }
         }
     }

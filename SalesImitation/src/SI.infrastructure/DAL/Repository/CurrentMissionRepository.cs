@@ -13,11 +13,11 @@ using SI.Domain.Entities;
 
 namespace SI.Infrastructure.DAL.Repository
 {
-    public class CurrentMissionRepository : ICurrentMissionRepository
+    public class CurrentMissionRepository : RepositoryBase<ICurrentMissionRepository>, ICurrentMissionRepository
     {
         private readonly IConfiguration _config;
 
-        public CurrentMissionRepository(IConfiguration config)
+        public CurrentMissionRepository(IConfiguration config) : base(config)
         {
             _config = config;
         }
@@ -97,7 +97,7 @@ namespace SI.Infrastructure.DAL.Repository
         {
             //TODO active unda gamovtvalo da shevamowmo chaweramde
             // var sql = @"IF (SELECT count(ID) Level FROM Missions) = @Level - 1
-            var sql = @" UPDATE CurrentMissions SET
+            var sql = @"UPDATE CurrentMissions SET
                     [ID] = @ID, [Name] = @ame, [Description] = @escription, [Level] = @evel,
                     [PlayerID] = @layerID, [Point] = @oint, [Prod1ID] = @rod1ID, [Prod1Name] = @rod1Name,
                     [Prod1Desc] = @rod1Desc, [Prod1PartnerName] = @rod1PartnerName,

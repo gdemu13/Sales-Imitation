@@ -13,11 +13,11 @@ using System.Reflection;
 
 namespace SI.Infrastructure.DAL.Repository
 {
-    public class PlayerRepository : IPlayerRepository
+    public class PlayerRepository : RepositoryBase<IPlayerRepository>, IPlayerRepository
     {
         private readonly IConfiguration _config;
 
-        public PlayerRepository(IConfiguration config)
+        public PlayerRepository(IConfiguration config) : base(config)
         {
             _config = config;
         }
@@ -147,5 +147,6 @@ namespace SI.Infrastructure.DAL.Repository
         {
             return null;
         }
+
     }
 }

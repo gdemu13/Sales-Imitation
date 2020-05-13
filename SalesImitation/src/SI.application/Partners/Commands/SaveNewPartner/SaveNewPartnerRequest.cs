@@ -4,7 +4,6 @@ using SI.Common.Models;
 
 namespace SI.Application.Partners {
     public class SaveNewPartnerRequest : IRequest<Result> {
-        public Guid ID { get; set; }
 
         public string Name { get; set; }
 

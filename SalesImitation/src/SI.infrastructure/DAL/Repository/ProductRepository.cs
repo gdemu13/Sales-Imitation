@@ -327,8 +327,8 @@ namespace SI.Infrastructure.DAL.Repository
                             affectedRows = await connection.ExecuteAsync(sqlProductImages,
                                 product.Images.Select(i => new
                                 {
-                                    ID = product.ID,
-                                    Url = product.Name,
+                                    ID = i.ID,
+                                    Url = i.Url,
                                     ProductID = product.ID,
                                 }), transaction);
                         }

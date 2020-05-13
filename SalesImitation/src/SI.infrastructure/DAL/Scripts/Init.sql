@@ -151,6 +151,7 @@ if not exists (select * from sysobjects where name='Missions' and xtype='U')
 		Level INT NOT NULL UNIQUE,
 		PriceFrom decimal(9,2) NOT NULL,
 		PriceTo decimal(9,2) NOT NULL,
+		LastUpdateDate DATETIME NOT NULL,
 		Ordering INT IDENTITY(1,1) NOT NULL
     )
 

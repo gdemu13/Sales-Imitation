@@ -44,7 +44,7 @@ namespace SI.web
             services.AddApplication();
             services.AddInfrastructure(Configuration);
             services.AddScoped<ErrorHandlerFilter>();
-            services.AddSingleton<ICurrentUser, CurrentUser>();
+            services.AddScoped<ICurrentUser, CurrentUser>();
 
             services.AddSwaggerGen(c =>
             {
