@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace SI.Application.Categories
 {
-    public class GetPlayerByIDHandler : IRequestHandler<GetPlayerByIDRequest, Player>
+    public class GetPlayerByIDHandler : IRequestHandler<GetPlayerByIDRequest, GetPlayerByIDResponse>
     {
         IPlayerRepository _playerRepository;
 
@@ -17,10 +17,17 @@ namespace SI.Application.Categories
             _playerRepository = playerRepository;
         }
 
-        public async Task<Player> Handle(GetPlayerByIDRequest request, CancellationToken token)
+        public async Task<GetPlayerByIDResponse> Handle(GetPlayerByIDRequest request, CancellationToken token)
         {
             var (player, _) = await _playerRepository.GetByID(request.ID);
-            return player;
+            return new GetPlayerByIDResponse{
+                Coins = player.Coins,
+                CurrentLevel = player.CurrentLevel,
+                Firstname = player.Firstname,
+                Lastname = player.Lastname,
+                Mail = player.Mail,
+                Username = player.Username
+            };
         }
     }
 }

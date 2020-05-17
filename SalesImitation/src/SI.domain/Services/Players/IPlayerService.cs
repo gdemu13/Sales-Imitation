@@ -8,5 +8,7 @@ namespace SI.Domain.Services
     public interface IPlayerService
     {
         Task<Result> BuyExtraTime(Guid playerID, int hours);
+
+        Task<Result> SkipMission(Guid playerID);
     }
 }

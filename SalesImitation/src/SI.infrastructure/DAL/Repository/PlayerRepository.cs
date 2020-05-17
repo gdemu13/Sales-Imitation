@@ -15,19 +15,8 @@ namespace SI.Infrastructure.DAL.Repository
 {
     public class PlayerRepository : RepositoryBase<IPlayerRepository>, IPlayerRepository
     {
-        private readonly IConfiguration _config;
-
         public PlayerRepository(IConfiguration config) : base(config)
         {
-            _config = config;
-        }
-
-        private IDbConnection Connection
-        {
-            get
-            {
-                return new SqlConnection(_config.GetConnectionString("siconnectionstring"));
-            }
         }
 
         public async Task<(Player, DateTime?)> GetByID(Guid id)
@@ -117,7 +106,7 @@ namespace SI.Infrastructure.DAL.Repository
                         CheckDate = checkDate,
                         Level = player.CurrentLevel,
                         Coins = player.Coins,
-                    });
+                    }, _transaction);
             }
 
             return await Task.FromResult(Result.CreateSuccessReqest());

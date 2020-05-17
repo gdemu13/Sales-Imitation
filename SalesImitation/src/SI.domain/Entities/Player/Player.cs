@@ -31,22 +31,43 @@ namespace SI.Domain.Entities
         public string Username { get; }
         public PlayerHashedPassword PasswordHash { get; }
         public string Mail { get; }
-        public string Firstname { get; }
-        public string Lastname { get; }
-        public int CurrentLevel { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+
+        private int _currentLevel;
+        public int CurrentLevel
+        {
+            get
+            {
+                return _currentLevel;
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new LocalizableException("level_cant_be_less_than_1", "level_cant_be_less_than_1");
+                _currentLevel = value;
+            }
+        }
 
         //TODO
         public decimal Coins { get; private set; }
 
-        public void SpendCoins(decimal coinsToSpend, string reason) {
+        public void SpendCoins(decimal coinsToSpend, string reason)
+        {
             if (Coins - coinsToSpend < 0)
                 throw new LocalizableException("not_enought_coins", "not_enought_coins");
 
             Coins -= coinsToSpend;
         }
 
-        public void AddCoins(decimal newCoins, string source){
+        public void AddCoins(decimal newCoins, string source)
+        {
             Coins += newCoins;
+        }
+
+        public void LevelUp()
+        {
+            CurrentLevel++;
         }
 
         #region Constants
@@ -56,9 +77,6 @@ namespace SI.Domain.Entities
         private const int IterationIndex = 0;
         private const int SaltIndex = 1;
         private const int Pbkdf2Index = 2;
-        #endregion
-
-        #region Public Methods
         private string HashPassword(string password)
         {
             var cryptoProvider = new RNGCryptoServiceProvider();

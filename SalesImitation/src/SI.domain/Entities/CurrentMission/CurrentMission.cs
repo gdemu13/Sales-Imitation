@@ -123,6 +123,13 @@ namespace SI.Domain.Entities
             PromoCode = code;
         }
 
+        public void SkipMission()
+        {
+            if (Status != CurrentMissionStatuses.Active)
+                throw new LocalizableException("mission_is_finished", "mission_is_finished");
+            Status = CurrentMissionStatuses.Skipped;
+        }
+
         public void UpdateCategoryAndProducts(CurrentMissionProduct product1, CurrentMissionProduct product2,
                                             CurrentMissionCategory category)
         {

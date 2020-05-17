@@ -21,5 +21,15 @@ namespace SI.Infrastructure.Logging
             else
                 Log.Error(ex, message);
         }
+
+        public void Info(string message)
+        {
+           Log.Information(message);
+        }
+
+        public void Info(object message)
+        {
+             Log.Information("{}", message);
+        }
     }
 }

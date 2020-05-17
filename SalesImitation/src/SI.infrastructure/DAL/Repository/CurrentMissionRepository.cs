@@ -15,20 +15,11 @@ namespace SI.Infrastructure.DAL.Repository
 {
     public class CurrentMissionRepository : RepositoryBase<ICurrentMissionRepository>, ICurrentMissionRepository
     {
-        private readonly IConfiguration _config;
 
         public CurrentMissionRepository(IConfiguration config) : base(config)
         {
-            _config = config;
         }
 
-        private IDbConnection Connection
-        {
-            get
-            {
-                return new SqlConnection(_config.GetConnectionString("siconnectionstring"));
-            }
-        }
 
         public async Task<IEnumerable<CurrentMission>> GetRange(int skip, int take)
         {
@@ -98,7 +89,7 @@ namespace SI.Infrastructure.DAL.Repository
             //TODO active unda gamovtvalo da shevamowmo chaweramde
             // var sql = @"IF (SELECT count(ID) Level FROM Missions) = @Level - 1
             var sql = @"UPDATE CurrentMissions SET
-                    [ID] = @ID, [Name] = @ame, [Description] = @escription, [Level] = @evel,
+                    [Name] = @ame, [Description] = @escription, [Level] = @evel,
                     [PlayerID] = @layerID, [Point] = @oint, [Prod1ID] = @rod1ID, [Prod1Name] = @rod1Name,
                     [Prod1Desc] = @rod1Desc, [Prod1PartnerName] = @rod1PartnerName,
                     [Prod1PartnerAddress] = @rod1PartnerAddress, [Prod1Benefits] = @rod1Benefits,
@@ -108,7 +99,7 @@ namespace SI.Infrastructure.DAL.Repository
                     [PromoCode] = @romoCode, [Status] = @tatus, [Duration] = @uration,
                     [StartedDate] = @tartedDate, [FinishedDate] = @inishedDate,
                     [LastUpdateDate] = @astUpdateDate, [AddedHours] = @ddedHours,
-                    [EarnedCoints] = @arnedCoints, [CategoryUpdated] = @ategoryUpdated";
+                    [EarnedCoints] = @arnedCoints, [CategoryUpdated] = @ategoryUpdated where [ID] = @ID";
 
             using (var connection = Connection)
             {
@@ -147,7 +138,7 @@ namespace SI.Infrastructure.DAL.Repository
                     ddedHours = mission.AddedHours,
                     arnedCoints = mission.EarnedCoints,
                     ategoryUpdated = mission.CategoryUpdated
-                });
+                }, _transaction);
             }
             return await Task.FromResult(Result.CreateSuccessReqest());
         }
@@ -197,12 +188,19 @@ namespace SI.Infrastructure.DAL.Repository
                         p.Level as PlayerLevel from CurrentMissions c
                         left join Players p
                         on c.PlayerID = p.ID
-                        Where PlayerID = @ID;"; //TODO active unda gamovtvalo
+                        Where PlayerID = @ID
+                        and c.Status = @status
+                        and dateadd(HOUR, c.Duration + c.AddedHours, c.StartedDate) > @NowDate;"; //TODO active unda gamovtvalo
             CurrentMission currentMission = null;
             DateTime? lastUpdateDate = null;
             using (var connection = Connection)
             {
-                var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = ID });
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new
+                {
+                    ID = ID,
+                    Status = CurrentMissionStatuses.Active,
+                    NowDate = DateTime.Now
+                });
                 if (res != null)
                 {
                     // System.Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6}", res.Prod1ID, res.Prod1Name, res.Prod1Desc,
@@ -282,8 +280,6 @@ namespace SI.Infrastructure.DAL.Repository
                     .GetProperty("CategoryUpdated", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                    .SetValue(currentMission, res.CategoryUpdated, null);
 
-
-                    currentMission.Status = (CurrentMissionStatuses)res.Status;
                     lastUpdateDate = res.LastUpdateDate;
                 }
             }

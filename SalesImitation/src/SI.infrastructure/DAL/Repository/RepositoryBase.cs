@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using SI.Domain.Abstractions.Repositories;
 
@@ -16,7 +17,7 @@ namespace SI.Infrastructure.DAL.Repository
             _config = config;
         }
 
-        private IDbConnection Connection
+        protected IDbConnection Connection
         {
             get
             {
@@ -24,11 +25,14 @@ namespace SI.Infrastructure.DAL.Repository
             }
         }
 
-        private IDbConnection _connection;
-        private IDbTransaction _transaction;
+        protected IDbConnection _connection;
+        protected IDbTransaction _transaction;
+
+        protected bool _transactionStarted;
 
         public T StartTransaction(Action<T> act)
         {
+            _transactionStarted = true;
             _connection = new SqlConnection(_config.GetConnectionString("siconnectionstring"));
             _connection.Open();
             _transaction = _connection.BeginTransaction();
@@ -46,6 +50,7 @@ namespace SI.Infrastructure.DAL.Repository
         public R ContinueTransactionWith<R>(R repo, Action<R> act) where R : IRepository<R>
         {
             System.Console.WriteLine(repo == null  ? "aaaaaaaaa" : "oooooooo");
+            System.Console.WriteLine(repo.GetType().Name);
             repo.GetType().GetField("_connection", (
                          BindingFlags.NonPublic |
                          BindingFlags.Instance)).SetValue(repo, _connection);

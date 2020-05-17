@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Settings.Configuration;
+using SI.Application.Translations;
 using SI.Common.Abstractions;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Services;
@@ -23,6 +24,7 @@ namespace SI.Infrastructure
             services.AddSingleton<IMissionRepository, MissionRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ICurrentMissionRepository, CurrentMissionRepository>();
+            services.AddSingleton<ITranslationsRepository, TranslationsRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
 
 

@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SI.domain\SI.domain.csproj" />
     <ProjectReference Include="..\SI.common\SI.common.csproj" />
+    <ProjectReference Include="..\SI.application\SI.application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

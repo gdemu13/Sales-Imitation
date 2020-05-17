@@ -203,3 +203,39 @@ if not exists (select * from sysobjects where name='CurrentMissions' and xtype='
 		ON CurrentMissions (Ordering);
     END
 go
+
+if not exists (select * from sysobjects where name='Languages' and xtype='U')
+    create table Languages (
+		ID uniqueidentifier PRIMARY KEY,
+		Name nvarchar(250) UNIQUE NOT NULL,
+		Code nvarchar(10) NOT NULL,
+		LastUpdateDate DATETIME NOT NULL,
+		Ordering INT IDENTITY(1,1) NOT NULL
+    )
+
+		IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'Languages_Ordering' AND object_id = OBJECT_ID('Languages'))
+    BEGIN
+		CREATE UNIQUE INDEX Languages_Ordering
+		ON Languages (Ordering);
+    END
+go
+
+if not exists (select * from sysobjects where name='Translations' and xtype='U')
+    create table Translations (
+		ID uniqueidentifier PRIMARY KEY,
+		[Key] nvarchar(250) UNIQUE NOT NULL,
+		Value nvarchar(250) NOT NULL,
+		LanguageID uniqueidentifier NOT NULL,
+		LastUpdateDate DATETIME NOT NULL,
+		Ordering INT IDENTITY(1,1) NOT NULL
+		FOREIGN KEY (LanguageID) REFERENCES Languages(ID),
+    )
+
+		IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name = 'Translations_Ordering' AND object_id = OBJECT_ID('Translations'))
+    BEGIN
+		CREATE UNIQUE INDEX Translations_Ordering
+		ON Translations (Ordering);
+    END
+go
+
+

@@ -5,5 +5,6 @@ namespace SI.Domain.Entities
         Pending,
         Active,
         Finished,
+        Skipped,
     }
 }
