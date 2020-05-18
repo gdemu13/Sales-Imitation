@@ -9,5 +9,9 @@ namespace SI.Application.Translations
         Task<Result> Save(TranslationModel model);
 
         Task<TranslationModel> GetAllLanguages();
+
+        Task<Dictionary<string, string>> GetNeutral();
+
+        Task<Dictionary<string, string>> GetByCountryCode(string code);
     }
 }

@@ -223,7 +223,7 @@ go
 if not exists (select * from sysobjects where name='Translations' and xtype='U')
     create table Translations (
 		ID uniqueidentifier PRIMARY KEY,
-		[Key] nvarchar(250) UNIQUE NOT NULL,
+		[Key] nvarchar(250) NOT NULL,
 		Value nvarchar(250) NOT NULL,
 		LanguageID uniqueidentifier NOT NULL,
 		LastUpdateDate DATETIME NOT NULL,

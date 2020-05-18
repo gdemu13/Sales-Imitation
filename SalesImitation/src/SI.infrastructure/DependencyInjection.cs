@@ -1,4 +1,5 @@
 using System.Reflection;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
@@ -26,6 +27,7 @@ namespace SI.Infrastructure
             services.AddSingleton<ICurrentMissionRepository, CurrentMissionRepository>();
             services.AddSingleton<ITranslationsRepository, TranslationsRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
+           services.AddMemoryCache();
 
 
             services.AddSingleton<IPlayerService, PlayerService>();

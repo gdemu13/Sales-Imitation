@@ -11,12 +11,10 @@ using MediatR;
 using SI.Domin.Abstractions.Authentication;
 using SI.Application.Administrators;
 using SI.Application.Translations;
-using SI.Common.Models;
 using SI.Common.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 
-
-
-namespace SI.Administration.Web.Controllers
+namespace SI.Web.Controllers
 {
     [Route("/api/Languages")]
     public class LanguagesController : ApiController
@@ -31,17 +29,19 @@ namespace SI.Administration.Web.Controllers
         }
 
         [HttpGet("allLanguages")]
+        [AllowAnonymous]
         public async Task<TranslationModel> GetAllLanguages()
         {
             return await translationsService.GetAllLanguages();
         }
 
-        [HttpPost("allLanguages")]
-        public async Task<Result> SaveAllLanguages([FromBody] SaveAllLanguagesRequest request)
-        {
-              return await Mediator.Send (request);
-        }
 
+        [HttpGet("byLanguageCode/{code}")]
+        [AllowAnonymous]
+        public async Task<IDictionary<string, string>> GetByLanguageCode(string code)
+        {
+            return await translationsService.GetLanguage(code);
+        }
 
     }
 }

@@ -1,194 +1,80 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using SI.Domain.Exceptions;
 
 namespace SI.Application.Translations
 {
 
-    public class TranslationModel : IDictionary<string, TranslationLanguageModel>
+    public class TranslationModel
     {
-        public TranslationModel()
+        public TranslationModel(Dictionary<string, string> neutralKeys)
         {
-            Languages = new Dictionary<string, TranslationLanguageModel>();
+            Languages = new List<LanguageModel> { new LanguageModel { Code = "neutral", Name = "neutral" } };
+            _translations = new Dictionary<string, List<TextModel>>();
+            foreach (var nk in neutralKeys)
+            {
+                _translations.Add(nk.Key, new List<TextModel>{new TextModel{
+                    LanguageCode = "neutral",
+                    Value = nk.Value
+                }});
+            }
         }
 
-        private Dictionary<string, TranslationLanguageModel> Languages { get; set; }
+        private List<LanguageModel> _language { get; set; }
+        public List<LanguageModel> Languages { get {return _language;} set {
+            // value.RemoveAt(value.FindIndex(r => r.Code == "neutral"));
+            _language = value;
+        }}
+        public void AddText(string key, TextModel text)
+        {
+            if (text.LanguageCode == "neutral")
+                return;
+            var exists = _translations.TryGetValue(key, out var model);
+            if (!exists)
+            {
+                throw new LocalizableException("key_doesnt_exists", "");
+            }
 
-        public ICollection<string> Keys => Languages.Keys;
+            var t = model.Find(m => m.LanguageCode == text.LanguageCode);
+            if (t != null)
+                t.Value = text.Value;
+            else
+                model.Add(text);
+        }
 
-        public ICollection<TranslationLanguageModel> Values => Languages.Values;
+        public void AddTexts(string key, IEnumerable<TextModel> texts)
+        {
+            foreach (var t in texts)
+            {
+                AddText(key, t);
+            }
+        }
 
-        public int Count => Languages.Count;
-
-        public bool IsReadOnly => false;
-
-        public TranslationLanguageModel this[string key]
+        private Dictionary<string, List<TextModel>> _translations { get; }
+        public Dictionary<string, List<TextModel>> Translations
         {
             get
             {
-                Languages.TryGetValue(key, out var value);
-                return value;
-            }
-            set
-            {
-                System.Console.WriteLine(key);
-                if (Languages.ContainsKey(key))
-                    Languages[key] = value;
-                else
-                    Languages.Add(key, value);
+                return _translations;
             }
         }
 
-        public void Add(string key, TranslationLanguageModel value)
-        {
-            this[key] = value;
-        }
 
-        public bool ContainsKey(string key)
-        {
-            return Languages.ContainsKey(key);
-        }
-
-        public bool Remove(string key)
-        {
-            return Languages.Remove(key);
-        }
-
-        public bool TryGetValue(string key, [MaybeNullWhen(false)] out TranslationLanguageModel value)
-        {
-            return Languages.TryGetValue(key, out value);
-        }
-
-        public void Add(KeyValuePair<string, TranslationLanguageModel> item)
-        {
-            this[item.Key] = item.Value;
-        }
-
-        public void Clear()
-        {
-            Languages.Clear();
-        }
-
-        public bool Contains(KeyValuePair<string, TranslationLanguageModel> item)
-        {
-            return Languages.ContainsKey(item.Key) && Languages.ContainsValue(item.Value);
-        }
-
-        public void CopyTo(KeyValuePair<string, TranslationLanguageModel>[] array, int arrayIndex)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Remove(KeyValuePair<string, TranslationLanguageModel> item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerator<KeyValuePair<string, TranslationLanguageModel>> GetEnumerator()
-        {
-            return Languages.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return Languages.GetEnumerator();
-        }
-
-        IEnumerator<KeyValuePair<string, TranslationLanguageModel>> IEnumerable<KeyValuePair<string, TranslationLanguageModel>>.GetEnumerator()
-        {
-            return Languages.GetEnumerator();
-        }
     }
 
-    public class TranslationLanguageModel : IDictionary<string, string>
+    public class LanguageModel
     {
-        public Guid ID { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class TextModel
+    {
         public string LanguageCode { get; set; }
-        public string LanguageName { get; set; }
-        public TranslationLanguageModel()
-        {
-            texts = new Dictionary<string, string>();
-        }
-        private Dictionary<string, string> texts { get; set; }
-
-        public ICollection<string> Keys => texts.Keys;
-
-        public ICollection<string> Values => texts.Values;
-
-        public int Count => texts.Count;
-
-        public bool IsReadOnly => false;
-
-        public string this[string key]
-        {
-            get
-            {
-                texts.TryGetValue(key, out var value);
-                return value;
-            }
-            set
-            {
-                if (texts.ContainsKey(key))
-                    texts[key] = value;
-                else
-                    texts.Add(key, value);
-            }
-        }
-
-        public void Add(string key, string value)
-        {
-            this[key] = value;
-        }
-
-        public bool ContainsKey(string key)
-        {
-            return texts.ContainsKey(key);
-        }
-
-        public bool Remove(string key)
-        {
-            return texts.Remove(key);
-        }
-
-        public bool TryGetValue(string key, [MaybeNullWhen(false)] out string value)
-        {
-            return texts.TryGetValue(key, out value);
-        }
-
-        public void Add(KeyValuePair<string, string> item)
-        {
-            texts.Add(item.Key, item.Value);
-        }
-
-        public void Clear()
-        {
-            texts.Clear();
-        }
-
-        public bool Contains(KeyValuePair<string, string> item)
-        {
-            return ContainsKey(item.Key);
-        }
-
-        public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Remove(KeyValuePair<string, string> item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
-        {
-            return texts.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return texts.GetEnumerator();
-        }
+        public string Value { get; set; }
     }
 }
