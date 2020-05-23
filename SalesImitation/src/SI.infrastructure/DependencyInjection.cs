@@ -4,12 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Settings.Configuration;
+using SI.Application.Abstractions;
 using SI.Application.Translations;
 using SI.Common.Abstractions;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Services;
 using SI.Infrastructure.DAL.Repository;
 using SI.Infrastructure.Logging;
+using SI.Infrastructure.ServiceClients.Facebook;
 
 namespace SI.Infrastructure
 {
@@ -27,11 +29,10 @@ namespace SI.Infrastructure
             services.AddSingleton<ICurrentMissionRepository, CurrentMissionRepository>();
             services.AddSingleton<ITranslationsRepository, TranslationsRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
-           services.AddMemoryCache();
-
+            services.AddSingleton<IFacebookService, FacebookService>();
+            services.AddMemoryCache();
 
             services.AddSingleton<IPlayerService, PlayerService>();
-
 
             Serilog.Debugging.SelfLog.Enable(msg => System.Console.WriteLine(msg));
 

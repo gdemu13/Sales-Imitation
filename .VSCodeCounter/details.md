@@ -1,10 +1,10 @@
 # Details
 
-Date : 2020-05-13 18:10:33
+Date : 2020-05-19 15:51:08
 
 Directory c:\projects\salesImitation
 
-Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
+Total : 191 files,  5671 codes, 124 comments, 947 blanks, all 6742 lines
 
 [summary](results.md)
 
@@ -32,11 +32,13 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/SI.application/Categories/Queries/GetCategory/GetCategoryRequest.cs](/SalesImitation/src/SI.application/Categories/Queries/GetCategory/GetCategoryRequest.cs) | C# | 13 | 0 | 2 | 15 |
 | [SalesImitation/src/SI.application/CurrentMissions/Commands/BuyExtraTime/BuyExtraTimeHandler.cs](/SalesImitation/src/SI.application/CurrentMissions/Commands/BuyExtraTime/BuyExtraTimeHandler.cs) | C# | 30 | 0 | 2 | 32 |
 | [SalesImitation/src/SI.application/CurrentMissions/Commands/BuyExtraTime/BuyExtraTimeRequest.cs](/SalesImitation/src/SI.application/CurrentMissions/Commands/BuyExtraTime/BuyExtraTimeRequest.cs) | C# | 9 | 0 | 1 | 10 |
+| [SalesImitation/src/SI.application/CurrentMissions/Commands/SkipCurrentMission/SkipCurrentMissionHandler.cs](/SalesImitation/src/SI.application/CurrentMissions/Commands/SkipCurrentMission/SkipCurrentMissionHandler.cs) | C# | 30 | 0 | 2 | 32 |
+| [SalesImitation/src/SI.application/CurrentMissions/Commands/SkipCurrentMission/SkipCurrentMissionRequst.cs](/SalesImitation/src/SI.application/CurrentMissions/Commands/SkipCurrentMission/SkipCurrentMissionRequst.cs) | C# | 8 | 0 | 1 | 9 |
 | [SalesImitation/src/SI.application/CurrentMissions/Commands/StartNewMission/SartNewMissionRequest.cs](/SalesImitation/src/SI.application/CurrentMissions/Commands/StartNewMission/SartNewMissionRequest.cs) | C# | 9 | 0 | 1 | 10 |
 | [SalesImitation/src/SI.application/CurrentMissions/Commands/StartNewMission/StartNewMissionHandler.cs](/SalesImitation/src/SI.application/CurrentMissions/Commands/StartNewMission/StartNewMissionHandler.cs) | C# | 75 | 4 | 13 | 92 |
 | [SalesImitation/src/SI.application/CurrentMissions/Queries/GetCurrentMission/GetCurrentMissionHandler.cs](/SalesImitation/src/SI.application/CurrentMissions/Queries/GetCurrentMission/GetCurrentMissionHandler.cs) | C# | 34 | 0 | 4 | 38 |
 | [SalesImitation/src/SI.application/CurrentMissions/Queries/GetCurrentMission/GetCurrentMissionRequest.cs](/SalesImitation/src/SI.application/CurrentMissions/Queries/GetCurrentMission/GetCurrentMissionRequest.cs) | C# | 9 | 0 | 1 | 10 |
-| [SalesImitation/src/SI.application/DependencyInjection.cs](/SalesImitation/src/SI.application/DependencyInjection.cs) | C# | 11 | 0 | 1 | 12 |
+| [SalesImitation/src/SI.application/DependencyInjection.cs](/SalesImitation/src/SI.application/DependencyInjection.cs) | C# | 13 | 0 | 1 | 14 |
 | [SalesImitation/src/SI.application/Missions/Commands/SaveNewMission/SaveNewMissionHandler.cs](/SalesImitation/src/SI.application/Missions/Commands/SaveNewMission/SaveNewMissionHandler.cs) | C# | 27 | 0 | 7 | 34 |
 | [SalesImitation/src/SI.application/Missions/Commands/SaveNewMission/SaveNewMissionRequest.cs](/SalesImitation/src/SI.application/Missions/Commands/SaveNewMission/SaveNewMissionRequest.cs) | C# | 11 | 0 | 1 | 12 |
 | [SalesImitation/src/SI.application/Missions/Commands/UpdateMission/UpdateMissionHandler.cs](/SalesImitation/src/SI.application/Missions/Commands/UpdateMission/UpdateMissionHandler.cs) | C# | 24 | 0 | 6 | 30 |
@@ -64,7 +66,8 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/SI.application/Players/Commands/RegisterPlayer/RegistrationPlayerHandler.cs](/SalesImitation/src/SI.application/Players/Commands/RegisterPlayer/RegistrationPlayerHandler.cs) | C# | 19 | 0 | 3 | 22 |
 | [SalesImitation/src/SI.application/Players/Queries/GetLeaderboard/GetLeaderboardHandler.cs](/SalesImitation/src/SI.application/Players/Queries/GetLeaderboard/GetLeaderboardHandler.cs) | C# | 17 | 0 | 3 | 20 |
 | [SalesImitation/src/SI.application/Players/Queries/GetLeaderboard/GetLeaderboardRequest.cs](/SalesImitation/src/SI.application/Players/Queries/GetLeaderboard/GetLeaderboardRequest.cs) | C# | 9 | 0 | 1 | 10 |
-| [SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDHandler.cs](/SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDHandler.cs) | C# | 23 | 0 | 3 | 26 |
+| [SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDHandler.cs](/SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDHandler.cs) | C# | 30 | 0 | 3 | 33 |
+| [SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDRequest copy.cs](/SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDRequest copy.cs) | C# | 15 | 0 | 1 | 16 |
 | [SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDRequest.cs](/SalesImitation/src/SI.application/Players/Queries/GetPlayerByID/GetPlayerByIDRequest.cs) | C# | 13 | 0 | 3 | 16 |
 | [SalesImitation/src/SI.application/Products/Commands/SaveNewProduct/SaveNewProductHandler.cs](/SalesImitation/src/SI.application/Products/Commands/SaveNewProduct/SaveNewProductHandler.cs) | C# | 47 | 5 | 10 | 62 |
 | [SalesImitation/src/SI.application/Products/Commands/SaveNewProduct/SaveNewProductRequest.cs](/SalesImitation/src/SI.application/Products/Commands/SaveNewProduct/SaveNewProductRequest.cs) | C# | 26 | 0 | 11 | 37 |
@@ -78,7 +81,7 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/SI.application/Products/Queries/GetProduct/GetProductRequest.cs](/SalesImitation/src/SI.application/Products/Queries/GetProduct/GetProductRequest.cs) | C# | 13 | 0 | 1 | 14 |
 | [SalesImitation/src/SI.application/Products/Queries/GetRangeOfPoduct/GetRangeOfProductHandler.cs](/SalesImitation/src/SI.application/Products/Queries/GetRangeOfPoduct/GetRangeOfProductHandler.cs) | C# | 18 | 0 | 4 | 22 |
 | [SalesImitation/src/SI.application/Products/Queries/GetRangeOfPoduct/GetRangeOfProductRequest.cs](/SalesImitation/src/SI.application/Products/Queries/GetRangeOfPoduct/GetRangeOfProductRequest.cs) | C# | 11 | 0 | 1 | 12 |
-| [SalesImitation/src/SI.application/SI.application.csproj](/SalesImitation/src/SI.application/SI.application.csproj) | XML | 15 | 0 | 5 | 20 |
+| [SalesImitation/src/SI.application/SI.application.csproj](/SalesImitation/src/SI.application/SI.application.csproj) | XML | 16 | 0 | 5 | 21 |
 | [SalesImitation/src/SI.application/SuperBonus/Commands/ActivateBaseBonus/ActivateBaseBonusHandler.cs](/SalesImitation/src/SI.application/SuperBonus/Commands/ActivateBaseBonus/ActivateBaseBonusHandler.cs) | C# | 21 | 0 | 4 | 25 |
 | [SalesImitation/src/SI.application/SuperBonus/Commands/ActivateBaseBonus/ActivateBaseBonusRequest.cs](/SalesImitation/src/SI.application/SuperBonus/Commands/ActivateBaseBonus/ActivateBaseBonusRequest.cs) | C# | 6 | 0 | 1 | 7 |
 | [SalesImitation/src/SI.application/SuperBonus/Commands/IncreaseBonus/IncreaseBonusHandler.cs](/SalesImitation/src/SI.application/SuperBonus/Commands/IncreaseBonus/IncreaseBonusHandler.cs) | C# | 11 | 0 | 1 | 12 |
@@ -89,7 +92,15 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/SI.application/SuperBonus/Queries/GetActiveBonus/GetActiveBonusRequest.cs](/SalesImitation/src/SI.application/SuperBonus/Queries/GetActiveBonus/GetActiveBonusRequest.cs) | C# | 6 | 0 | 1 | 7 |
 | [SalesImitation/src/SI.application/SuperBonus/Queries/GetPendingBonus/GetPendingBonusHandler.cs](/SalesImitation/src/SI.application/SuperBonus/Queries/GetPendingBonus/GetPendingBonusHandler.cs) | C# | 16 | 0 | 4 | 20 |
 | [SalesImitation/src/SI.application/SuperBonus/Queries/GetPendingBonus/GetPendingBonusRequest.cs](/SalesImitation/src/SI.application/SuperBonus/Queries/GetPendingBonus/GetPendingBonusRequest.cs) | C# | 6 | 0 | 1 | 7 |
-| [SalesImitation/src/SI.common/Abstractions/Logging/ILogger.cs](/SalesImitation/src/SI.common/Abstractions/Logging/ILogger.cs) | C# | 6 | 0 | 1 | 7 |
+| [SalesImitation/src/SI.application/Translations/Commands/SaveAllLanguages/SaveAllLanguagesHandler.cs](/SalesImitation/src/SI.application/Translations/Commands/SaveAllLanguages/SaveAllLanguagesHandler.cs) | C# | 35 | 0 | 6 | 41 |
+| [SalesImitation/src/SI.application/Translations/Commands/SaveAllLanguages/SaveAllLanguagesRequest.cs](/SalesImitation/src/SI.application/Translations/Commands/SaveAllLanguages/SaveAllLanguagesRequest.cs) | C# | 17 | 0 | 3 | 20 |
+| [SalesImitation/src/SI.application/Translations/ITranslationsRepository.cs](/SalesImitation/src/SI.application/Translations/ITranslationsRepository.cs) | C# | 13 | 0 | 4 | 17 |
+| [SalesImitation/src/SI.application/Translations/ITranslationsService.cs](/SalesImitation/src/SI.application/Translations/ITranslationsService.cs) | C# | 13 | 0 | 4 | 17 |
+| [SalesImitation/src/SI.application/Translations/Queries/GetAllLanuages/GetAllLanuagesHandler.cs](/SalesImitation/src/SI.application/Translations/Queries/GetAllLanuages/GetAllLanuagesHandler.cs) | C# | 21 | 0 | 4 | 25 |
+| [SalesImitation/src/SI.application/Translations/Queries/GetAllLanuages/GetAllLanuagesRequest.cs](/SalesImitation/src/SI.application/Translations/Queries/GetAllLanuages/GetAllLanuagesRequest.cs) | C# | 7 | 0 | 1 | 8 |
+| [SalesImitation/src/SI.application/Translations/TranslationModel.cs](/SalesImitation/src/SI.application/Translations/TranslationModel.cs) | C# | 69 | 1 | 10 | 80 |
+| [SalesImitation/src/SI.application/Translations/TranslationsService.cs](/SalesImitation/src/SI.application/Translations/TranslationsService.cs) | C# | 42 | 2 | 9 | 53 |
+| [SalesImitation/src/SI.common/Abstractions/Logging/ILogger.cs](/SalesImitation/src/SI.common/Abstractions/Logging/ILogger.cs) | C# | 8 | 0 | 1 | 9 |
 | [SalesImitation/src/SI.common/Models/Result.cs](/SalesImitation/src/SI.common/Models/Result.cs) | C# | 22 | 0 | 7 | 29 |
 | [SalesImitation/src/SI.common/SI.common.csproj](/SalesImitation/src/SI.common/SI.common.csproj) | XML | 5 | 0 | 3 | 8 |
 | [SalesImitation/src/SI.domain/Abstractions/Authentication/ICurrentUser.cs](/SalesImitation/src/SI.domain/Abstractions/Authentication/ICurrentUser.cs) | C# | 13 | 0 | 1 | 14 |
@@ -106,11 +117,11 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/SI.domain/Abstractions/Repositories/IUserRepository.cs](/SalesImitation/src/SI.domain/Abstractions/Repositories/IUserRepository.cs) | C# | 14 | 0 | 5 | 19 |
 | [SalesImitation/src/SI.domain/Entities/BaseEntity.cs](/SalesImitation/src/SI.domain/Entities/BaseEntity.cs) | C# | 6 | 0 | 2 | 8 |
 | [SalesImitation/src/SI.domain/Entities/Category/Category.cs](/SalesImitation/src/SI.domain/Entities/Category/Category.cs) | C# | 11 | 0 | 2 | 13 |
-| [SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMission.cs](/SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMission.cs) | C# | 119 | 1 | 18 | 138 |
+| [SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMission.cs](/SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMission.cs) | C# | 125 | 1 | 19 | 145 |
 | [SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionCategory.cs](/SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionCategory.cs) | C# | 13 | 0 | 1 | 14 |
 | [SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionPlayer.cs](/SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionPlayer.cs) | C# | 15 | 0 | 2 | 17 |
 | [SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionProduct.cs](/SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionProduct.cs) | C# | 23 | 0 | 2 | 25 |
-| [SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionStatuses.cs](/SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionStatuses.cs) | C# | 9 | 0 | 0 | 9 |
+| [SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionStatuses.cs](/SalesImitation/src/SI.domain/Entities/CurrentMission/CurrentMissionStatuses.cs) | C# | 10 | 0 | 0 | 10 |
 | [SalesImitation/src/SI.domain/Entities/MIssion/MissioinRange.cs](/SalesImitation/src/SI.domain/Entities/MIssion/MissioinRange.cs) | C# | 10 | 0 | 0 | 10 |
 | [SalesImitation/src/SI.domain/Entities/MIssion/Mission.cs](/SalesImitation/src/SI.domain/Entities/MIssion/Mission.cs) | C# | 23 | 0 | 3 | 26 |
 | [SalesImitation/src/SI.domain/Entities/MIssion/MissionStatuses.cs](/SalesImitation/src/SI.domain/Entities/MIssion/MissionStatuses.cs) | C# | 7 | 0 | 0 | 7 |
@@ -120,7 +131,7 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/SI.domain/Entities/Partner/PartnerContactPerson.cs](/SalesImitation/src/SI.domain/Entities/Partner/PartnerContactPerson.cs) | C# | 14 | 0 | 2 | 16 |
 | [SalesImitation/src/SI.domain/Entities/Partner/PartnerLogo.cs](/SalesImitation/src/SI.domain/Entities/Partner/PartnerLogo.cs) | C# | 9 | 0 | 3 | 12 |
 | [SalesImitation/src/SI.domain/Entities/Player/HashedPassword.cs](/SalesImitation/src/SI.domain/Entities/Player/HashedPassword.cs) | C# | 13 | 0 | 3 | 16 |
-| [SalesImitation/src/SI.domain/Entities/Player/Player.cs](/SalesImitation/src/SI.domain/Entities/Player/Player.cs) | C# | 91 | 1 | 14 | 106 |
+| [SalesImitation/src/SI.domain/Entities/Player/Player.cs](/SalesImitation/src/SI.domain/Entities/Player/Player.cs) | C# | 108 | 1 | 15 | 124 |
 | [SalesImitation/src/SI.domain/Entities/Products/ConnectedProduct.cs](/SalesImitation/src/SI.domain/Entities/Products/ConnectedProduct.cs) | C# | 40 | 0 | 16 | 56 |
 | [SalesImitation/src/SI.domain/Entities/Products/Money.cs](/SalesImitation/src/SI.domain/Entities/Products/Money.cs) | C# | 9 | 0 | 4 | 13 |
 | [SalesImitation/src/SI.domain/Entities/Products/Product.cs](/SalesImitation/src/SI.domain/Entities/Products/Product.cs) | C# | 50 | 0 | 20 | 70 |
@@ -135,28 +146,31 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/SI.domain/Entities/User/UserTypes.cs](/SalesImitation/src/SI.domain/Entities/User/UserTypes.cs) | C# | 7 | 0 | 0 | 7 |
 | [SalesImitation/src/SI.domain/Exceptions/LocalizableException.cs](/SalesImitation/src/SI.domain/Exceptions/LocalizableException.cs) | C# | 11 | 0 | 1 | 12 |
 | [SalesImitation/src/SI.domain/SI.domain.csproj](/SalesImitation/src/SI.domain/SI.domain.csproj) | XML | 11 | 0 | 5 | 16 |
-| [SalesImitation/src/SI.domain/Services/Players/IPlayerService.cs](/SalesImitation/src/SI.domain/Services/Players/IPlayerService.cs) | C# | 11 | 0 | 1 | 12 |
-| [SalesImitation/src/SI.domain/Services/Players/PlayerService.cs](/SalesImitation/src/SI.domain/Services/Players/PlayerService.cs) | C# | 26 | 2 | 4 | 32 |
+| [SalesImitation/src/SI.domain/Services/Players/IPlayerService.cs](/SalesImitation/src/SI.domain/Services/Players/IPlayerService.cs) | C# | 12 | 0 | 2 | 14 |
+| [SalesImitation/src/SI.domain/Services/Players/PlayerService.cs](/SalesImitation/src/SI.domain/Services/Players/PlayerService.cs) | C# | 41 | 6 | 8 | 55 |
 | [SalesImitation/src/SI.infrastructure/Authentication/Administrator/CurrentUser.cs](/SalesImitation/src/SI.infrastructure/Authentication/Administrator/CurrentUser.cs) | C# | 48 | 0 | 7 | 55 |
 | [SalesImitation/src/SI.infrastructure/DAL/Repository/CategoryRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/CategoryRepository.cs) | C# | 105 | 0 | 18 | 123 |
-| [SalesImitation/src/SI.infrastructure/DAL/Repository/CurrentMissionRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/CurrentMissionRepository.cs) | C# | 241 | 14 | 46 | 301 |
+| [SalesImitation/src/SI.infrastructure/DAL/Repository/CurrentMissionRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/CurrentMissionRepository.cs) | C# | 238 | 14 | 45 | 297 |
 | [SalesImitation/src/SI.infrastructure/DAL/Repository/MissionRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/MissionRepository.cs) | C# | 177 | 0 | 14 | 191 |
 | [SalesImitation/src/SI.infrastructure/DAL/Repository/PartnerRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/PartnerRepository.cs) | C# | 158 | 0 | 20 | 178 |
-| [SalesImitation/src/SI.infrastructure/DAL/Repository/PlayerRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/PlayerRepository.cs) | C# | 134 | 0 | 18 | 152 |
+| [SalesImitation/src/SI.infrastructure/DAL/Repository/PlayerRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/PlayerRepository.cs) | C# | 125 | 0 | 16 | 141 |
 | [SalesImitation/src/SI.infrastructure/DAL/Repository/ProductRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/ProductRepository.cs) | C# | 407 | 48 | 44 | 499 |
-| [SalesImitation/src/SI.infrastructure/DAL/Repository/RepositoryBase.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/RepositoryBase.cs) | C# | 51 | 13 | 12 | 76 |
+| [SalesImitation/src/SI.infrastructure/DAL/Repository/RepositoryBase.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/RepositoryBase.cs) | C# | 55 | 13 | 13 | 81 |
 | [SalesImitation/src/SI.infrastructure/DAL/Repository/SuperBonusRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/SuperBonusRepository.cs) | C# | 83 | 3 | 17 | 103 |
+| [SalesImitation/src/SI.infrastructure/DAL/Repository/TranslationsRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/TranslationsRepository.cs) | C# | 157 | 0 | 32 | 189 |
 | [SalesImitation/src/SI.infrastructure/DAL/Repository/UserRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/Repository/UserRepository.cs) | C# | 95 | 0 | 13 | 108 |
-| [SalesImitation/src/SI.infrastructure/DAL/Scripts/Init.sql](/SalesImitation/src/SI.infrastructure/DAL/Scripts/Init.sql) | SQL | 192 | 0 | 14 | 206 |
+| [SalesImitation/src/SI.infrastructure/DAL/Scripts/Init.sql](/SalesImitation/src/SI.infrastructure/DAL/Scripts/Init.sql) | SQL | 222 | 0 | 20 | 242 |
+| [SalesImitation/src/SI.infrastructure/DAL/Scripts/initNeutralLanguage.sql](/SalesImitation/src/SI.infrastructure/DAL/Scripts/initNeutralLanguage.sql) | SQL | 75 | 1 | 14 | 90 |
 | [SalesImitation/src/SI.infrastructure/DAL/TransactionalRepository.cs](/SalesImitation/src/SI.infrastructure/DAL/TransactionalRepository.cs) | C# | 42 | 0 | 6 | 48 |
-| [SalesImitation/src/SI.infrastructure/DependencyInjection.cs](/SalesImitation/src/SI.infrastructure/DependencyInjection.cs) | C# | 34 | 0 | 7 | 41 |
-| [SalesImitation/src/SI.infrastructure/Logging/SerilogClient.cs](/SalesImitation/src/SI.infrastructure/Logging/SerilogClient.cs) | C# | 22 | 0 | 3 | 25 |
-| [SalesImitation/src/SI.infrastructure/SI.infrastructure.csproj](/SalesImitation/src/SI.infrastructure/SI.infrastructure.csproj) | XML | 22 | 0 | 5 | 27 |
+| [SalesImitation/src/SI.infrastructure/DependencyInjection.cs](/SalesImitation/src/SI.infrastructure/DependencyInjection.cs) | C# | 38 | 0 | 7 | 45 |
+| [SalesImitation/src/SI.infrastructure/Logging/SerilogClient.cs](/SalesImitation/src/SI.infrastructure/Logging/SerilogClient.cs) | C# | 30 | 0 | 5 | 35 |
+| [SalesImitation/src/SI.infrastructure/SI.infrastructure.csproj](/SalesImitation/src/SI.infrastructure/SI.infrastructure.csproj) | XML | 24 | 1 | 5 | 30 |
 | [SalesImitation/src/presenter/SI.administration.web/ActionFilters/ErrorHandlerFilter.cs](/SalesImitation/src/presenter/SI.administration.web/ActionFilters/ErrorHandlerFilter.cs) | C# | 41 | 2 | 4 | 47 |
 | [SalesImitation/src/presenter/SI.administration.web/Controllers/AccountController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/AccountController.cs) | C# | 41 | 0 | 7 | 48 |
 | [SalesImitation/src/presenter/SI.administration.web/Controllers/ApiController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/ApiController.cs) | C# | 15 | 0 | 3 | 18 |
 | [SalesImitation/src/presenter/SI.administration.web/Controllers/BonusController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/BonusController.cs) | C# | 22 | 0 | 3 | 25 |
 | [SalesImitation/src/presenter/SI.administration.web/Controllers/CategoriesController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/CategoriesController.cs) | C# | 36 | 1 | 8 | 45 |
+| [SalesImitation/src/presenter/SI.administration.web/Controllers/LanguagesController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/LanguagesController.cs) | C# | 39 | 0 | 8 | 47 |
 | [SalesImitation/src/presenter/SI.administration.web/Controllers/MissionsController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/MissionsController.cs) | C# | 31 | 0 | 7 | 38 |
 | [SalesImitation/src/presenter/SI.administration.web/Controllers/PartnersController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/PartnersController.cs) | C# | 34 | 0 | 7 | 41 |
 | [SalesImitation/src/presenter/SI.administration.web/Controllers/ProuctsController.cs](/SalesImitation/src/presenter/SI.administration.web/Controllers/ProuctsController.cs) | C# | 34 | 0 | 7 | 41 |
@@ -168,10 +182,11 @@ Total : 176 files,  4993 codes, 115 comments, 828 blanks, all 5936 lines
 | [SalesImitation/src/presenter/SI.administration.web/appsettings.Development.json](/SalesImitation/src/presenter/SI.administration.web/appsettings.Development.json) | JSON | 9 | 0 | 1 | 10 |
 | [SalesImitation/src/presenter/SI.administration.web/appsettings.json](/SalesImitation/src/presenter/SI.administration.web/appsettings.json) | JSON | 30 | 0 | 0 | 30 |
 | [SalesImitation/src/presenter/SI.web/ActionFilters/ErrorHandlerFilter.cs](/SalesImitation/src/presenter/SI.web/ActionFilters/ErrorHandlerFilter.cs) | C# | 36 | 2 | 4 | 42 |
-| [SalesImitation/src/presenter/SI.web/Controllers/AccountController.cs](/SalesImitation/src/presenter/SI.web/Controllers/AccountController.cs) | C# | 37 | 0 | 5 | 42 |
+| [SalesImitation/src/presenter/SI.web/Controllers/AccountController.cs](/SalesImitation/src/presenter/SI.web/Controllers/AccountController.cs) | C# | 39 | 0 | 5 | 44 |
 | [SalesImitation/src/presenter/SI.web/Controllers/ApiController.cs](/SalesImitation/src/presenter/SI.web/Controllers/ApiController.cs) | C# | 17 | 0 | 2 | 19 |
-| [SalesImitation/src/presenter/SI.web/Controllers/GameController.cs](/SalesImitation/src/presenter/SI.web/Controllers/GameController.cs) | C# | 49 | 0 | 7 | 56 |
+| [SalesImitation/src/presenter/SI.web/Controllers/GameController.cs](/SalesImitation/src/presenter/SI.web/Controllers/GameController.cs) | C# | 55 | 0 | 8 | 63 |
 | [SalesImitation/src/presenter/SI.web/Controllers/HomeController.cs](/SalesImitation/src/presenter/SI.web/Controllers/HomeController.cs) | C# | 32 | 0 | 6 | 38 |
+| [SalesImitation/src/presenter/SI.web/Controllers/LanguagesController.cs](/SalesImitation/src/presenter/SI.web/Controllers/LanguagesController.cs) | C# | 41 | 0 | 6 | 47 |
 | [SalesImitation/src/presenter/SI.web/Controllers/PlayersController.cs](/SalesImitation/src/presenter/SI.web/Controllers/PlayersController.cs) | C# | 17 | 0 | 2 | 19 |
 | [SalesImitation/src/presenter/SI.web/Models/ErrorViewModel.cs](/SalesImitation/src/presenter/SI.web/Models/ErrorViewModel.cs) | C# | 9 | 0 | 3 | 12 |
 | [SalesImitation/src/presenter/SI.web/Program.cs](/SalesImitation/src/presenter/SI.web/Program.cs) | C# | 24 | 0 | 3 | 27 |

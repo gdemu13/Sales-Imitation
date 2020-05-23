@@ -11,5 +11,6 @@ namespace SI.Application.Players
         public string Mail { get; set;}
         public string Firstname { get;set; }
         public string Lastname { get; set;}
+        public string FacebookID { get; set;}
     }
 }

@@ -11,17 +11,17 @@ using SI.Domin.Abstractions.Authentication;
 
 namespace SI.Web.Controllers
 {
-    [Route("api/account/")]
-    public class AccountController : ApiController
+    [Route("login/")]
+    public class ExternalLoginsController : ApiController
     {
 
         ICurrentUser _currentUser;
-        public AccountController(ICurrentUser currentUser)
+        public ExternalLoginsController(ICurrentUser currentUser)
         {
             _currentUser = currentUser;
         }
 
-        [HttpGet("UserInfo")]
+        [HttpGet("facebook")]
         public async Task<GetPlayerByIDResponse> UserInfo()
         {
             return await Mediator.Send(new GetPlayerByIDRequest(_currentUser.ID.Value));
@@ -29,14 +29,7 @@ namespace SI.Web.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<Result> Login([FromBody] LoginPlayerRequest request)
-        {
-            return await Mediator.Send(request);
-        }
-
-        [HttpPost("Facebook")]
-        [AllowAnonymous]
-        public async Task<LoginWithFacebookResponse> Login([FromBody] LoginWithFacebookRequest request)
+        public async Task<Result> Login([FromBody]LoginPlayerRequest request)
         {
             return await Mediator.Send(request);
         }

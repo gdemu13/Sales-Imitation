@@ -202,7 +202,32 @@ namespace SI.Infrastructure.DAL.Repository
             }
             return productCategories;
         }
+        public async Task<IEnumerable<ProductCategory>> GetProductCategoriesWithConnectedProducts(decimal fromPrice, decimal toPrice, int minConnections)
+        {
+            string sql = @"select
+                        cat.ID, cat.Name
+                        from Products prod
+                        left join Categories cat
+                        on prod.CategoryID = cat.ID
+                        where prod.Price >= @From and prod.Price <= @To and prod.IsActive = 1 and cat.IsActive = 1
+                        group by cat.ID, cat.Name
+                        having count(prod.ProductGroupID) > @MinConnections;";
 
+            IEnumerable<ProductCategory> productCategories = null;
+            using (var connection = Connection)
+            {
+                var productsResult = await connection.QueryAsync(sql, new
+                {
+                    From = fromPrice,
+                    To = toPrice,
+                    MinConnections = minConnections,
+                });
+
+                if (productsResult != null)
+                    productCategories = productsResult.Select(pc => new ProductCategory(pc.ID, pc.name));
+            }
+            return productCategories;
+        }
         public async Task<IEnumerable<Product>> GetRange(int skip, int take)
         {
             string sql = @"SELECT

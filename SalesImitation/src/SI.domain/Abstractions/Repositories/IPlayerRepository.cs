@@ -11,5 +11,6 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<Result> InsertPlayerIfUnique(Player id);
         Task<Result> UpdatePlayer(Player player, DateTime lastUpdateDate);
          Task<IEnumerable<Player>> GetTopPlayersByScoreAsync(int n);
+        Task<Player> GetByFacebookID(string userID);
     }
 }

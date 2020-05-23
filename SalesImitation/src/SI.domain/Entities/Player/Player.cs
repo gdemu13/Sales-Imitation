@@ -33,6 +33,7 @@ namespace SI.Domain.Entities
         public string Mail { get; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+        public string FacebookID { get; set; }
 
         private int _currentLevel;
         public int CurrentLevel

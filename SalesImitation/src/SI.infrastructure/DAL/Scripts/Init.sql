@@ -37,6 +37,8 @@ if not exists (select * from sysobjects where name='Players' and xtype='U')
 	ON Players (Username);
     END
 go
+
+
 if not exists (select * from sysobjects where name='SuperBonuses' and xtype='U')
     create table SuperBonuses (
 		ID uniqueidentifier PRIMARY KEY,
@@ -146,7 +148,7 @@ go
 if not exists (select * from sysobjects where name='Missions' and xtype='U')
     create table Missions (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(250) UNIQUE NOT NULL,
+		Name nvarchar(250) NOT NULL,
 		Description nvarchar(MAX) NOT NULL,
 		Level INT NOT NULL UNIQUE,
 		PriceFrom decimal(9,2) NOT NULL,
@@ -239,3 +241,15 @@ if not exists (select * from sysobjects where name='Translations' and xtype='U')
 go
 
 
+-- ADD FACEBOOK ID FOR PLAYERS
+
+IF NOT EXISTS (
+  SELECT *
+  FROM   sys.columns
+  WHERE  object_id = OBJECT_ID(N'[dbo].[Players]')
+         AND name = 'FacebookID'
+)
+BEGIN
+ALTER TABLE Players
+ADD FacebookID varchar(255);
+END

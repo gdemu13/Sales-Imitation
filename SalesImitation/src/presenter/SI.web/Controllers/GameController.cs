@@ -26,11 +26,11 @@ namespace SI.Web.Controllers
         }
 
         [HttpGet("getAvaliableCategories")]
-        public async Task<IEnumerable<GetCategoriesListbyIDsResponse>> GetAvaliableCategories()
+        public async Task<IEnumerable<GetCategoriesListbyIDsResponse>> GetAvaliableCategories([FromQuery] bool? skip1to7)
         {
             var player = await Mediator.Send(new GetPlayerByIDRequest(_currentUser.ID.Value));
-            var mission = await Mediator.Send(new GetMissionByLevellRequest(player.CurrentLevel));
-            var productCategories = await Mediator.Send(new GetProductCategoriesByPriceRangeRequest(mission.PriceRange.From, mission.PriceRange.To));
+            var mission = await Mediator.Send(new GetMissionByLevellRequest(skip1to7 == true ? 7 : player.CurrentLevel));
+            var productCategories = await Mediator.Send(new GetProductCategoriesByPriceRangeAndConnectionsRequest(mission.PriceRange.From, mission.PriceRange.To));
             var avaliableCategoryIDs = productCategories.Select(pc => pc.ID);
             return await Mediator.Send(new GetCategoriesListbyIDsRequest(avaliableCategoryIDs));
         }

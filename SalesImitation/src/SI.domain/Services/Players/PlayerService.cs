@@ -34,12 +34,12 @@ namespace SI.Domain.Services
             return await currentMissionRepository.UpdateIfNotChanged(mission.ID, mission, missionUpdateDate.Value);
         }
 
-          public async Task<Result> SkipMission(Guid playerID)
+        public async Task<Result> SkipMission(Guid playerID)
         {
             var (player, playerUpdateDate) = await playerRepository.GetByID(playerID);
             var (mission, missionUpdateDate) = await currentMissionRepository.GetActiveByUser(playerID);
             //TODO: add transaction
-            player.SpendCoins(mission.Product1.ExpectedCoin, "SKIP_MISSION");
+            player.SpendCoins(Math.Min(mission.Product1.ExpectedCoin, mission.Product2.ExpectedCoin), "SKIP_MISSION");
             player.LevelUp();
             mission.SkipMission();
 

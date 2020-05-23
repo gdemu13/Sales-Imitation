@@ -62,8 +62,8 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<Result> InsertPlayerIfUnique(Player player)
         {
-            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level, Coins)
-            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level, @Coins);";
+            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level, Coins, FacebookID)
+            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level, @Coins, @FacebookID);";
 
             using (var connection = Connection)
             {
@@ -79,6 +79,7 @@ namespace SI.Infrastructure.DAL.Repository
                         LastUpdateDate = DateTime.Now,
                         Level = player.CurrentLevel,
                         Coins = player.Coins,
+                        FacebookID = player.FacebookID,
                     });
             }
 
@@ -137,5 +138,24 @@ namespace SI.Infrastructure.DAL.Repository
             return null;
         }
 
+        public async Task<Player> GetByFacebookID(string fbID)
+        {
+            string sql = "SELECT * From Players Where FacebookID = @ID;";
+            Player player = null;
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = fbID });
+                if (res != null)
+                {
+                    var pass = new PlayerHashedPassword(res.PasswordHash);
+                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level);
+
+                    player.GetType()
+               .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+              .SetValue(player, res.Coins, null);
+                }
+            }
+            return player;
+        }
     }
 }

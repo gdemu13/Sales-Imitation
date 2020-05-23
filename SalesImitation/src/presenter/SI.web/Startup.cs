@@ -37,7 +37,12 @@ namespace SI.web
                                   options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                               }
                       )
-                          .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+                          .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+                          .AddFacebook(facebookOptions =>
+                            {
+                                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                            });
 
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
@@ -45,6 +50,7 @@ namespace SI.web
             services.AddInfrastructure(Configuration);
             services.AddScoped<ErrorHandlerFilter>();
             services.AddScoped<ICurrentUser, CurrentUser>();
+            services.AddHttpClient();
 
             services.AddSwaggerGen(c =>
             {
@@ -65,6 +71,7 @@ namespace SI.web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                // app.AddUserSecrets();
             }
             else
             {
@@ -91,6 +98,9 @@ namespace SI.web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseDefaultFiles();
+            app.UseFileServer();
 
             app.UseEndpoints(endpoints =>
             {
