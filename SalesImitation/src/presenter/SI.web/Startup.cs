@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -37,12 +38,12 @@ namespace SI.web
                                   options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                               }
                       )
-                          .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-                          .AddFacebook(facebookOptions =>
-                            {
-                                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-                            });
+                          .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+            //   .AddFacebook(facebookOptions =>
+            //     {
+            //         facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+            //         facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            //     });
 
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
@@ -58,19 +59,25 @@ namespace SI.web
             });
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-        {
-            builder.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-        }));
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 // app.AddUserSecrets();
             }
             else
@@ -79,6 +86,22 @@ namespace SI.web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use(async (context, next) =>
+            {
+                await next();
+
+
+                if (context.Response.StatusCode == 404 &&
+              !Path.HasExtension(context.Request.Path.Value) &&
+              !context.Request.Path.Value.StartsWith("/api/"))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+
+
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -96,11 +119,15 @@ namespace SI.web
 
             app.UseRouting();
 
+
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseDefaultFiles();
-            app.UseFileServer();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
+            app.UseRouting();
+
 
             app.UseEndpoints(endpoints =>
             {
@@ -108,6 +135,12 @@ namespace SI.web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // app.UseSpa(spa =>
+            // {
+            //     spa.Options.SourcePath = "ClientApp";
+            // });
+
         }
     }
 }

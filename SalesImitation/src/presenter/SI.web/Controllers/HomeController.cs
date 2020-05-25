@@ -18,10 +18,11 @@ namespace SI.web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        // public IActionResult Index()
+        // {
+        //      return File("/index.html", "text/html");
+        //    // return View();
+        // }
 
         public IActionResult Privacy()
         {
