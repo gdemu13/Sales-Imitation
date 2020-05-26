@@ -15,7 +15,7 @@ namespace SI.Application.Players {
         }
 
         public async Task<Result> Handle (RegisterPlayerRequest request, CancellationToken token) {
-            var player = new Player(Guid.NewGuid(), request.Username, request.Password, request.Mail, request.Firstname, request.Lastname, 1);
+            var player = new Player(Guid.NewGuid(), request.Username, request.Password, request.Mail, request.Firstname, request.Lastname, 1, (PlayerAvatars)request.AvatarID);
             player.FacebookID = request.FacebookID;
             return await _playerRepository.InsertPlayerIfUnique(player);
         }

@@ -42,8 +42,6 @@ namespace SI.Infrastructure.Authentication.Administrator
                  CookieAuthenticationDefaults.AuthenticationScheme,
                  principal,
                  new AuthenticationProperties { IsPersistent = true });
-
-                 System.Console.WriteLine("vaaaaaa");
         }
 
         public async Task SignOut()

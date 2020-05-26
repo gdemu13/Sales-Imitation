@@ -26,7 +26,8 @@ namespace SI.Application.Categories
                 Firstname = player.Firstname,
                 Lastname = player.Lastname,
                 Mail = player.Mail,
-                Username = player.Username
+                Username = player.Username,
+                Avatar = (int)player.Avatar
             };
         }
     }

@@ -30,7 +30,7 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var pass = new PlayerHashedPassword(res.PasswordHash);
-                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level);
+                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
 
                     player.GetType()
                .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
@@ -53,7 +53,7 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var pass = new PlayerHashedPassword(res.PasswordHash);
-                    player = new Player(res.ID, res.Username, pass, res.PlayerName, res.FirstName, res.LastName, res.Level);
+                    player = new Player(res.ID, res.Username, pass, res.PlayerName, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
                     lastUpdateDate = res.LastUpdateDate;
                 }
             }
@@ -62,8 +62,8 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<Result> InsertPlayerIfUnique(Player player)
         {
-            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level, Coins, FacebookID)
-            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level, @Coins, @FacebookID);";
+            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level, Coins, FacebookID, Avatar)
+            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level, @Coins, @FacebookID, @Avatar);";
 
             using (var connection = Connection)
             {
@@ -80,6 +80,7 @@ namespace SI.Infrastructure.DAL.Repository
                         Level = player.CurrentLevel,
                         Coins = player.Coins,
                         FacebookID = player.FacebookID,
+                        Avatar = (int)player.Avatar,
                     });
             }
 
@@ -92,7 +93,8 @@ namespace SI.Infrastructure.DAL.Repository
                                                 LastName = @LastName,
                                                 Email = @Email,
                                                 Level = @Level,
-                                                Coins = @Coins
+                                                Coins = @Coins,
+                                                Avatar = @Avatar,
                                where ID = @ID AND LastUpdateDate = @CheckDate;";
 
             using (var connection = Connection)
@@ -107,6 +109,7 @@ namespace SI.Infrastructure.DAL.Repository
                         CheckDate = checkDate,
                         Level = player.CurrentLevel,
                         Coins = player.Coins,
+                        Avatar = player.Avatar,
                     }, _transaction);
             }
 
@@ -133,9 +136,29 @@ namespace SI.Infrastructure.DAL.Repository
             return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
-        public Task<IEnumerable<Player>> GetTopPlayersByScoreAsync(int n)
+        public async Task<IEnumerable<Player>> GetTopPlayersByScoreAsync(int n)
         {
-            return null;
+            var result = new List<Player>();
+            string sql = $"SELECT top {n} * From Players order by Coins desc;";
+            using (var connection = Connection)
+            {
+                var lst = await connection.QueryAsync(sql, new { quantity = n });
+                if (lst != null)
+                {
+                    Player player = null;
+                    foreach (var res in lst)
+                    {
+                        var pass = new PlayerHashedPassword(res.PasswordHash);
+                        player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
+
+                        player.GetType()
+                                .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+                                .SetValue(player, res.Coins, null);
+                        result.Add(player);
+                    }
+                }
+            }
+            return result;
         }
 
         public async Task<Player> GetByFacebookID(string fbID)
@@ -148,7 +171,7 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var pass = new PlayerHashedPassword(res.PasswordHash);
-                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level);
+                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
 
                     player.GetType()
                .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
@@ -156,6 +179,26 @@ namespace SI.Infrastructure.DAL.Repository
                 }
             }
             return player;
+        }
+
+
+        //reports
+        public async Task<(int, decimal)> GetPlayerPlaceInLeaderboard(Guid id)
+        {
+            string sql = @"WITH MyCte AS
+                            (
+                                select   ID, Coins,
+                                        Place = row_number() OVER ( order by Coins desc)
+                                from     Players
+                            )
+                            SELECT  Place, Coins
+                            FROM    MyCte
+                            where ID = @ID;";
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = id });
+                return ((int)res.Place, res.Coins);
+            }
         }
     }
 }

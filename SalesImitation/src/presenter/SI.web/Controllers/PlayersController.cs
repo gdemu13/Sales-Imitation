@@ -11,8 +11,8 @@ namespace SI.Web.Controllers {
     public class PlayersController : ApiController {
 
         [HttpGet("Leaderboard")]
-        public async Task<IEnumerable<Player>> GetLeaderBoard(){
-            var request = new GetLeaderboardRequest();
+        public async Task<GetLeaderboardResponse> GetLeaderBoard(int quantity = 10){
+            var request = new GetLeaderboardRequest(){ShowTop = quantity};
             return await Mediator.Send (request);
         }
     }

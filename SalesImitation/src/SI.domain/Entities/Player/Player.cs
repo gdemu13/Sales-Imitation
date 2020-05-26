@@ -6,7 +6,7 @@ namespace SI.Domain.Entities
 {
     public class Player : BaseEntity
     {
-        public Player(Guid id, string username, PlayerHashedPassword passwordHash, string mail, string firstname, string lastname, int level)
+        public Player(Guid id, string username, PlayerHashedPassword passwordHash, string mail, string firstname, string lastname, int level, PlayerAvatars avatar)
         {
             ID = id;
             Username = username;
@@ -15,9 +15,10 @@ namespace SI.Domain.Entities
             Firstname = firstname;
             Lastname = lastname;
             CurrentLevel = level;
+            Avatar = avatar;
         }
 
-        public Player(Guid id, string username, string password, string mail, string firstname, string lastname, int level)
+        public Player(Guid id, string username, string password, string mail, string firstname, string lastname, int level, PlayerAvatars avatar)
         {
             ID = id;
             Username = username;
@@ -26,13 +27,36 @@ namespace SI.Domain.Entities
             Lastname = lastname;
             PasswordHash = new PlayerHashedPassword(HashPassword(password));
             CurrentLevel = level;
+            Avatar = avatar;
         }
+        public PlayerAvatars Avatar { get; set; }
 
         public string Username { get; }
         public PlayerHashedPassword PasswordHash { get; }
         public string Mail { get; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        private string _firstName;
+        public string Firstname
+        {
+            get { return _firstName; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new LocalizableException("username_couldnt_be_empty", "username_couldnt_be_empty");
+                _firstName = value;
+            }
+        }
+
+        private string _lastname;
+        public string Lastname
+        {
+            get { return _lastname; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new LocalizableException("username_couldnt_be_empty", "username_couldnt_be_empty");
+                _lastname = value;
+            }
+        }
         public string FacebookID { get; set; }
 
         private int _currentLevel;

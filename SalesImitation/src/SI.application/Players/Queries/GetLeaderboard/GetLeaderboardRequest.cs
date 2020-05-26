@@ -4,7 +4,7 @@ using SI.Domain.Entities;
 using SI.Domain.Abstractions.Repositories;
 
 namespace SI.Application.Players {
-    public class GetLeaderboardRequest : IRequest<IEnumerable<SI.Domain.Entities.Player>> {
-        public int ShowTop {get; set;} = 10;
+    public class GetLeaderboardRequest : IRequest<GetLeaderboardResponse> {
+        public int ShowTop {get; set;}
     }
 }

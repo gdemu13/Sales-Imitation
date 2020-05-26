@@ -119,14 +119,12 @@ namespace SI.web
 
             app.UseRouting();
 
-
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseRouting();
 
 
             app.UseEndpoints(endpoints =>
