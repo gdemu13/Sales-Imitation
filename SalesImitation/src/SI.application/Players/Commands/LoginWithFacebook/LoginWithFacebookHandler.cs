@@ -49,7 +49,7 @@ namespace SI.Application.Players
             }
             else
             {
-                await currentUser.SignIn(player.ID, player.Username);
+                await currentUser.SignIn(player.ID, player.Username, true);
                 result = new LoginWithFacebookResponse
                 {
                     RegistrationNeeded = false,

@@ -48,6 +48,7 @@ namespace SI.administration.web
             services.AddInfrastructure(Configuration);
             services.AddScoped<ErrorHandlerFilter>();
             services.AddScoped<ICurrentUser, CurrentUser>();
+            services.AddHttpClient();
 
             services.AddSwaggerGen(c =>
             {

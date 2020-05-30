@@ -6,7 +6,7 @@ namespace SI.Domain.Entities
 {
     public class Player : BaseEntity
     {
-        public Player(Guid id, string username, PlayerHashedPassword passwordHash, string mail, string firstname, string lastname, int level, PlayerAvatars avatar)
+        public Player(Guid id, string username, PlayerHashedPassword passwordHash, string mail, string firstname, string lastname, int level, PlayerAvatars avatar, string phone)
         {
             ID = id;
             Username = username;
@@ -16,9 +16,10 @@ namespace SI.Domain.Entities
             Lastname = lastname;
             CurrentLevel = level;
             Avatar = avatar;
+            Phone = phone;
         }
 
-        public Player(Guid id, string username, string password, string mail, string firstname, string lastname, int level, PlayerAvatars avatar)
+        public Player(Guid id, string username, string password, string mail, string firstname, string lastname, int level, PlayerAvatars avatar, string phone)
         {
             ID = id;
             Username = username;
@@ -28,9 +29,10 @@ namespace SI.Domain.Entities
             PasswordHash = new PlayerHashedPassword(HashPassword(password));
             CurrentLevel = level;
             Avatar = avatar;
+            Phone = phone;
         }
         public PlayerAvatars Avatar { get; set; }
-
+        public string Phone { get; }
         public string Username { get; }
         public PlayerHashedPassword PasswordHash { get; }
         public string Mail { get; }

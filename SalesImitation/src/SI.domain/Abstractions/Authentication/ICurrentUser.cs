@@ -8,7 +8,7 @@ namespace SI.Domin.Abstractions.Authentication
         bool IsAuthenticated { get; }
         Guid? ID { get; }
         string DisplayName { get; }
-        Task SignIn(Guid id, string displayName);
+        Task SignIn(Guid id, string displayName,  bool stayLogedIn);
         Task SignOut();
     }
 }

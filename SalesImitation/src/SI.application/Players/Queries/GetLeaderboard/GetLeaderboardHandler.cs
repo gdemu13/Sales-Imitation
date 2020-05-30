@@ -22,6 +22,8 @@ namespace SI.Application.Players
 
         public async Task<GetLeaderboardResponse> Handle(GetLeaderboardRequest request, CancellationToken token)
         {
+            if (request.ShowTop > 20)
+                request.ShowTop = 20;
             var res = await _playerRepository.GetTopPlayersByScoreAsync(request.ShowTop);
             var result = new GetLeaderboardResponse();
             result.Others = new List<GetLeaderboardItem>();

@@ -26,7 +26,7 @@ namespace SI.Infrastructure.Authentication.Administrator
         public bool IsAuthenticated { get; private set; }
         public Guid? ID { get; private set; }
         public string DisplayName { get; private set; }
-        public async Task SignIn(Guid id, string displayName)
+        public async Task SignIn(Guid id, string displayName, bool stayLogedIn)
         {
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.NameIdentifier, id.ToString()),
@@ -41,7 +41,7 @@ namespace SI.Infrastructure.Authentication.Administrator
             await _httpContextAccessor.HttpContext.SignInAsync(
                  CookieAuthenticationDefaults.AuthenticationScheme,
                  principal,
-                 new AuthenticationProperties { IsPersistent = true });
+                 new AuthenticationProperties { IsPersistent = stayLogedIn });
         }
 
         public async Task SignOut()

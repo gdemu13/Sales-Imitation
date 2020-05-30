@@ -396,3 +396,57 @@ ADD
 	Avatar INT;
 
 END
+
+go
+	-- ADD PHONENUMBER FOR PLAYERS
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[Players]')
+			AND name = 'Phone'
+	) BEGIN
+ALTER TABLE
+	Players
+ADD
+	Phone varchar(20);
+
+END
+
+go
+	-- ADD COLOR FOR Categories
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[Categories]')
+			AND name = 'Color'
+	) BEGIN
+ALTER TABLE
+	Categories
+ADD
+	Color nvarchar(200);
+
+END
+
+go
+	-- ADD Icon FOR Categories
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[Categories]')
+			AND name = 'Icon'
+	) BEGIN
+ALTER TABLE
+	Categories
+ADD
+	Icon nvarchar(200);
+
+END

@@ -30,7 +30,7 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var pass = new PlayerHashedPassword(res.PasswordHash);
-                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
+                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar, res.Phone);
 
                     player.GetType()
                .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
@@ -53,7 +53,7 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var pass = new PlayerHashedPassword(res.PasswordHash);
-                    player = new Player(res.ID, res.Username, pass, res.PlayerName, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
+                    player = new Player(res.ID, res.Username, pass, res.PlayerName, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar, res.Phone);
                     lastUpdateDate = res.LastUpdateDate;
                 }
             }
@@ -62,8 +62,8 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<Result> InsertPlayerIfUnique(Player player)
         {
-            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level, Coins, FacebookID, Avatar)
-            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level, @Coins, @FacebookID, @Avatar);";
+            string sql = @"INSERT INTO Players (ID, Username, PasswordHash, FirstName, LastName, Email, LastUpdateDate, level, Coins, FacebookID, Avatar, phone)
+            Values (@ID, @Username, @PasswordHash, @FirstName, @LastName, @Email, @LastUpdateDate, @Level, @Coins, @FacebookID, @Avatar, @Phone);";
 
             using (var connection = Connection)
             {
@@ -81,6 +81,7 @@ namespace SI.Infrastructure.DAL.Repository
                         Coins = player.Coins,
                         FacebookID = player.FacebookID,
                         Avatar = (int)player.Avatar,
+                        Phone = player.Phone,
                     });
             }
 
@@ -95,6 +96,7 @@ namespace SI.Infrastructure.DAL.Repository
                                                 Level = @Level,
                                                 Coins = @Coins,
                                                 Avatar = @Avatar,
+                                                Phone = @Phone,
                                where ID = @ID AND LastUpdateDate = @CheckDate;";
 
             using (var connection = Connection)
@@ -110,6 +112,7 @@ namespace SI.Infrastructure.DAL.Repository
                         Level = player.CurrentLevel,
                         Coins = player.Coins,
                         Avatar = player.Avatar,
+                        Phone = player.Phone,
                     }, _transaction);
             }
 
@@ -149,7 +152,7 @@ namespace SI.Infrastructure.DAL.Repository
                     foreach (var res in lst)
                     {
                         var pass = new PlayerHashedPassword(res.PasswordHash);
-                        player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
+                        player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar, res.Phone);
 
                         player.GetType()
                                 .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
@@ -171,7 +174,7 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var pass = new PlayerHashedPassword(res.PasswordHash);
-                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar);
+                    player = new Player(res.ID, res.Username, pass, res.Email, res.FirstName, res.LastName, res.Level, (PlayerAvatars)res.Avatar, res.Phone);
 
                     player.GetType()
                .GetProperty("Coins", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)

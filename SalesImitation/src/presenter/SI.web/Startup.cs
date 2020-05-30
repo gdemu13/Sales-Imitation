@@ -28,7 +28,6 @@ namespace SI.web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(
@@ -39,11 +38,6 @@ namespace SI.web
                               }
                       )
                           .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
-            //   .AddFacebook(facebookOptions =>
-            //     {
-            //         facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-            //         facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            //     });
 
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
@@ -65,32 +59,30 @@ namespace SI.web
                     .AllowAnyHeader();
             }));
 
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
-            if (env.IsDevelopment())
-            {
-                // app.AddUserSecrets();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            // if (env.IsDevelopment())
+            // {
+            //     // app.AddUserSecrets();
+            // }
+            // else
+            // {
+            //     app.UseExceptionHandler("/Home/Error");
+            //     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+            // }
 
             app.Use(async (context, next) =>
             {
                 await next();
-
+                if(context.Response.StatusCode == 302) {
+                    context.Response.StatusCode = 401;
+                    return;
+                }
 
                 if (context.Response.StatusCode == 404 &&
               !Path.HasExtension(context.Request.Path.Value) &&
@@ -123,8 +115,6 @@ namespace SI.web
             app.UseAuthorization();
 
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
-
 
 
             app.UseEndpoints(endpoints =>

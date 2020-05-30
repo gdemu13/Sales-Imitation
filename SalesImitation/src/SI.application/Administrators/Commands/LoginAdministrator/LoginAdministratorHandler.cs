@@ -25,7 +25,7 @@ namespace SI.Application.Administrators
             var user = await _userRepository.GetByUserName(request.UserName);
             if (user != null && user.IsPasswordValid(request.Password))
             {
-                await _currentUser.SignIn(user.ID, user.UserName);
+                await _currentUser.SignIn(user.ID, user.UserName, true);
                 return Result<LoginAdministratorResponse>.CreateSuccessReqest(new LoginAdministratorResponse { UserName = user.UserName });
             }
             return new Result<LoginAdministratorResponse>(false, "incorect_credentials", null);

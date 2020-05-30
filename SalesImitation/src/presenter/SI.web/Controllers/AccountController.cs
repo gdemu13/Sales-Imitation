@@ -34,6 +34,13 @@ namespace SI.Web.Controllers
             return await Mediator.Send(request);
         }
 
+        [HttpPost("logout")]
+        [AllowAnonymous]
+        public async Task<Result> Logout()
+        {
+            return await Mediator.Send(new LogOutPlayerRequest());
+        }
+
         [HttpPost("Facebook")]
         [AllowAnonymous]
         public async Task<LoginWithFacebookResponse> Login([FromBody] LoginWithFacebookRequest request)

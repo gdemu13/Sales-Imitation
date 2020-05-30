@@ -25,10 +25,10 @@ namespace SI.Application.Players
             var (player, _) = await _playerRepository.GetByUsername(request.UserName);
             if (player != null && player.IsPasswordValid(request.Password))
             {
-                await _currentUser.SignIn(player.ID, player.Username);
+                await _currentUser.SignIn(player.ID, player.Username, request.StayLogedIn);
                 return Result<LoginPlayerResponse>.CreateSuccessReqest(new LoginPlayerResponse { UserName = player.Username });
             }
-            return new Result<LoginPlayerResponse>(false, "incorect_credentials", null);
+            return new Result<LoginPlayerResponse>(false, "მომხმარებლის სახელი ან პაროლი არასწორია", null);
         }
     }
 }

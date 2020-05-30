@@ -8,5 +8,6 @@ namespace SI.Application.Players  {
     public class LoginPlayerRequest : IRequest<Result<LoginPlayerResponse>> {
         public string UserName {get; set;}
         public string Password {get; set;}
+        public bool StayLogedIn { get; set; }
     }
 }
