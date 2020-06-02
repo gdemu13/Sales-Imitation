@@ -11,7 +11,7 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<IEnumerable<Category>> GetAll();
         Task<IEnumerable<Category>> GetByIDs(IEnumerable<Guid> ids);
         Task<Result> Insert (Category category);
-        Task<Result> UpdateName (Guid id, string name);
+        Task<Result> Update (Guid id, Category category);
         Task<Result> SetIsActive (Guid id, bool isActive);
     }
 }

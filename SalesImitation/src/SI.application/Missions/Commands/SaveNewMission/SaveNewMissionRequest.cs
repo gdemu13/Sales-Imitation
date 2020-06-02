@@ -6,6 +6,7 @@ namespace SI.Application.Missions {
     public class SaveNewMissionRequest : IRequest<Result> {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int DurationInHours { get; set; }
         public decimal PriceFrom { get; set; }
         public decimal PriceTo { get; set; }
     }

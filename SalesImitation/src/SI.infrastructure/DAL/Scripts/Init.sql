@@ -121,7 +121,7 @@ go
 			and xtype = 'U'
 	) create table Categories (
 		ID uniqueidentifier PRIMARY KEY,
-		Name nvarchar(250) UNIQUE NOT NULL,
+		Name nvarchar(250) NOT NULL,
 		Ordering INT IDENTITY(1, 1) NOT NULL,
 		IsActive bit NOT NULL,
 	) IF NOT EXISTS(
@@ -270,7 +270,7 @@ go
 		ID uniqueidentifier PRIMARY KEY,
 		Name nvarchar(250) NOT NULL,
 		Description nvarchar(MAX) NOT NULL,
-		Level INT NOT NULL UNIQUE,
+		Level INT NOT NULL,
 		Point decimal(9, 2) NOT NULL,
 		PlayerID uniqueidentifier,
 		Prod1ID uniqueidentifier,
@@ -278,13 +278,13 @@ go
 		Prod1Desc nvarchar(250) NOT NULL,
 		Prod1PartnerName nvarchar(250) NOT NULL,
 		Prod1PartnerAddress nvarchar(250) NOT NULL,
-		Prod1Benefits nvarchar(250) NOT NULL,
+		Prod1Benefits nvarchar(250),
 		Prod2ID uniqueidentifier,
 		Prod2Name nvarchar(250) NOT NULL,
 		Prod2Desc nvarchar(250) NOT NULL,
 		Prod2PartnerName nvarchar(250) NOT NULL,
 		Prod2PartnerAddress nvarchar(250) NOT NULL,
-		Prod2Benefits nvarchar(250) NOT NULL,
+		Prod2Benefits nvarchar(250),
 		CategoryID uniqueidentifier NOT NULL,
 		CategoryName nvarchar(250) NOT NULL,
 		PromoCode nvarchar(12) NOT NULL,
@@ -396,7 +396,6 @@ ADD
 	Avatar INT;
 
 END
-
 go
 	-- ADD PHONENUMBER FOR PLAYERS
 	IF NOT EXISTS (
@@ -414,7 +413,6 @@ ADD
 	Phone varchar(20);
 
 END
-
 go
 	-- ADD COLOR FOR Categories
 	IF NOT EXISTS (
@@ -432,7 +430,6 @@ ADD
 	Color nvarchar(200);
 
 END
-
 go
 	-- ADD Icon FOR Categories
 	IF NOT EXISTS (
@@ -448,5 +445,112 @@ ALTER TABLE
 	Categories
 ADD
 	Icon nvarchar(200);
+
+END
+go
+	-- ADD Gift field FOR Products
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[Products]')
+			AND name = 'Gift'
+	) BEGIN
+ALTER TABLE
+	Products
+ADD
+	Gift nvarchar(MAX);
+
+END
+go
+	-- ADD DurationInHours field FOR Missions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[Missions]')
+			AND name = 'DurationInHours'
+	) BEGIN
+ALTER TABLE
+	Missions
+ADD
+	DurationInHours int;
+
+END
+
+go
+	-- ADD ImagesUrl fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod1ImageUrl'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod1ImageUrl nvarchar(max);
+
+END
+
+go
+	-- ADD ImagesUrl fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod2ImageUrl'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod2ImageUrl nvarchar(max);
+
+END
+
+
+go
+	-- ADD Point1 fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod1Point'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod1Point decimal(9, 2);
+
+END
+
+go
+	-- ADD Point2 fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod2Point'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod2Point decimal(9, 2);
 
 END

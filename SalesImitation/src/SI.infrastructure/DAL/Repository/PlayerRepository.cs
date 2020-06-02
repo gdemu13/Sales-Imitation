@@ -96,7 +96,7 @@ namespace SI.Infrastructure.DAL.Repository
                                                 Level = @Level,
                                                 Coins = @Coins,
                                                 Avatar = @Avatar,
-                                                Phone = @Phone,
+                                                Phone = @Phone
                                where ID = @ID AND LastUpdateDate = @CheckDate;";
 
             using (var connection = Connection)
@@ -186,21 +186,21 @@ namespace SI.Infrastructure.DAL.Repository
 
 
         //reports
-        public async Task<(int, decimal)> GetPlayerPlaceInLeaderboard(Guid id)
+        public async Task<(int, decimal, int)> GetPlayerPlaceInLeaderboard(Guid id)
         {
             string sql = @"WITH MyCte AS
                             (
-                                select   ID, Coins,
+                                select   ID, Coins, Avatar,
                                         Place = row_number() OVER ( order by Coins desc)
                                 from     Players
                             )
-                            SELECT  Place, Coins
+                            SELECT  Place, Coins, Avatar
                             FROM    MyCte
                             where ID = @ID;";
             using (var connection = Connection)
             {
                 var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = id });
-                return ((int)res.Place, res.Coins);
+                return ((int)res.Place, res.Coins, res.Avatar);
             }
         }
     }

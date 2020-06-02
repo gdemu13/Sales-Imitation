@@ -7,7 +7,7 @@ namespace SI.Domain.Entities {
     public class Product : BaseEntity {
 
         public Product (Guid id, string name, string description,
-            ProductPartner partner, Money price, int point, Guid groupID, bool isActive) {
+            ProductPartner partner, Money price, int point, Guid groupID, string gift, bool isActive) {
             ID = id;
             Name = name;
             Description = description;
@@ -66,5 +66,7 @@ namespace SI.Domain.Entities {
         public bool IsActive { get; set; }
 
         public Guid ProductGroupID { get; set; }
+
+        public string Gift { get; set; }
     }
 }

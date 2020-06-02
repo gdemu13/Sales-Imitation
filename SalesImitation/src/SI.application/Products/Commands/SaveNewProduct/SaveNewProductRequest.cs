@@ -18,6 +18,8 @@ namespace SI.Application.Products {
         public int Point { get; set; }
         public bool IsActive { get; set; }
 
+        public string Gift { get; set; }
+
         public SaveCategory Category { get; set; }
 
         public IEnumerable<SaveProductImage> Images { get; set; }

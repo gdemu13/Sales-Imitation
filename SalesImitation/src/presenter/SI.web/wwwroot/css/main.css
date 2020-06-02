@@ -245,24 +245,30 @@ body {
     cursor: pointer;
 }
 
-.si__style-pop .nav-tabs {
+.si__style-pop nav {
     border-bottom: 2px solid #596479;
 }
+.si__style-pop nav a.default-module_item--active_2dOoK {
+  color: #ffffff !important;
+  border-color: #3285ff !important;
+}
 
-.si__style-pop .nav-tabs a {
+.si__style-pop nav a {
     background: none !important;
     border: none !important;
     padding: 0 0 12px;
     color: #596479;
     font-family: 'helv-65';
     position: relative;
+    text-decoration: none;
+    margin-right: 20px;
 }
 
-.si__style-pop .nav-tabs a.active {
+.si__style-pop nav a.default-module_item--active_2dOoK {
     color: #fff;
 }
 
-.si__style-pop .nav-tabs a::after {
+.si__style-pop nav a::after {
     position: absolute;
     bottom: -1px;
     left: 0;
@@ -271,13 +277,11 @@ body {
     background: #3285FF;
 }
 
-.si__style-pop .nav-tabs a.active:after {
+.si__style-pop nav a.default-module_item--active_2dOoK:after {
     content: '';
 }
 
-.si__style-pop .nav-tabs li {
-    margin-right: 20px;
-}
+ 
 
 .si__style-pop form {
     margin-top: 20px;
@@ -381,7 +385,7 @@ body {
 
 .si__style-pop .input-item.error .error-txt {
     color: #FF0000;
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'helv-65';
 }
 
@@ -1425,6 +1429,7 @@ body {
     border-radius: 15px;
     margin-right: 15px;
     border: 2px solid #1f2242;
+    background-color: #fff;
   }
   .rating-box .rating-list .others .user-item .lf .avatar .txt {
     color: #6a6d8b;
@@ -1508,9 +1513,13 @@ body {
     position: relative;
     cursor: pointer;
   }
+  .progress-banner .step-buttons-wrapper .step-button  svg {
+    margin-left: 2px;
+  }
   .progress-banner .step-buttons-wrapper .step-button.yell-bg {
     background: #ffb400;
     color: #fff;
+    border: 2px solid #ffb400;
   }
   .progress-banner .step-buttons-wrapper .step-button.blue-bg {
     background: #3083fd;
@@ -1655,6 +1664,16 @@ body {
   }
   .progress-banner .progress-row .moving-boy {
     background-image: url("/img/boy.svg");
+    width: 135px;
+    height: 135px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    bottom: 35px;
+  }
+  .progress-banner .progress-row .moving-girl {
+    background-image: url("/img/girl.svg");
     width: 135px;
     height: 135px;
     background-repeat: no-repeat;
@@ -1875,9 +1894,8 @@ body {
     margin-right: 15px;
     margin-bottom: 15px;
   }
-  .mission-content .mission-item:nth-child(3n) {
-    margin-right: 0;
-  }
+ 
+  
   .mission-content .mission-item input {
     position: absolute;
     opacity: 0;
@@ -2007,4 +2025,30 @@ body {
   }
 .mission-box.start-mission .ps {
     height: 495px;
+  }
+
+  .si__style-pop.RegLogModal .vm--modal{
+    top: 30px !important;
+    margin-bottom: 20px;
+    width: 500px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+  .si__style-pop.RegLogModal.vm--container {
+    overflow-y: auto;
+  }
+  .si__style-pop.videoModal .close-btn {
+    right: -22px;
+    top: -45px;
+  }
+  .si__style-pop.videoModal .vm--modal {
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+    width: 55% !important;
+    left: 50% !important;
+    background: #000
   }

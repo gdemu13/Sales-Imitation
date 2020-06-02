@@ -26,6 +26,8 @@ namespace SI.Application.Categories
             {
                 ID = c.ID,
                 Name = c.Name,
+                Color = c.Color,
+                IconUrl = c.IconUrl
             });
         }
     }

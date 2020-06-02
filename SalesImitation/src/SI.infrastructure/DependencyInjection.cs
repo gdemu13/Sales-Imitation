@@ -12,6 +12,7 @@ using SI.Domain.Services;
 using SI.Infrastructure.DAL.Repository;
 using SI.Infrastructure.Logging;
 using SI.Infrastructure.ServiceClients.Facebook;
+using SI.Infrastructure.Storage;
 
 namespace SI.Infrastructure
 {
@@ -30,6 +31,7 @@ namespace SI.Infrastructure
             services.AddSingleton<ITranslationsRepository, TranslationsRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
             services.AddSingleton<IFacebookService, FacebookService>();
+            services.AddSingleton<IFIleService, FileService>();
             services.AddMemoryCache();
 
             services.AddSingleton<IPlayerService, PlayerService>();

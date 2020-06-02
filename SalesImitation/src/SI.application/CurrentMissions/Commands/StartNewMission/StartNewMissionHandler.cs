@@ -51,7 +51,7 @@ namespace SI.Application.CurrentMissions
             if (category == null)
                 throw new LocalizableException("invalid_category_is_selected", "invalid category is selected");
 
-            //mission that player should start
+            //get mission that player should start
             var mission = await missionRepository.GetByLevel(player.CurrentLevel);
 
             //get products by mission price range and choose two connected from them.
@@ -62,8 +62,13 @@ namespace SI.Application.CurrentMissions
             //create new current mission, generate promo code and start
             var currentMissionPlayer = new CurrentMissionPlayer(player.ID, $"{player.Firstname} {player.Lastname}", player.CurrentLevel);
             var partner = await partnerRepository.Get(randomProduct.Partner.ID);
-            var currentMissionProduct1 = new CurrentMissionProduct(randomProduct.ID, randomProduct.Name, randomProduct.Description, partner.Name, partner.Address.Street, "TODO", randomProduct.Coin);
-            var currentMissionProduct2 = new CurrentMissionProduct(randomProduct2.ID, randomProduct2.Name, randomProduct2.Description, partner.Name, partner.Address.Street, "TODO", randomProduct2.Coin);
+            var currentMissionProduct1 = new CurrentMissionProduct(randomProduct.ID, randomProduct.Name, randomProduct.Description,
+                                                                    partner.Name, randomProduct.Images.FirstOrDefault()?.Url, partner.Address.Street,
+                                                                    randomProduct.Gift, randomProduct.Coin);
+
+            var currentMissionProduct2 = new CurrentMissionProduct(randomProduct2.ID, randomProduct2.Name, randomProduct2.Description,
+                                                                     partner.Name, randomProduct2.Images.FirstOrDefault()?.Url, partner.Address.Street,
+                                                                     randomProduct2.Gift, randomProduct2.Coin);
 
             var currentMissionCategory = new CurrentMissionCategory(category.ID, category.Name);
 
@@ -75,7 +80,7 @@ namespace SI.Application.CurrentMissions
                                             currentMissionProduct1,
                                             currentMissionProduct2,
                                             currentMissionCategory,
-                                            -1);
+                                            mission.DurationInHours);
 
             curMission.GenerateNewpromoCode();
             curMission.Start(DateTime.Now);

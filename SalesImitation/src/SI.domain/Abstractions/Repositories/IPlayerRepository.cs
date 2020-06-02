@@ -14,6 +14,6 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<Player> GetByFacebookID(string userID);
 
         //reports
-        Task<(int, decimal)> GetPlayerPlaceInLeaderboard(Guid id);
+        Task<(int, decimal, int)> GetPlayerPlaceInLeaderboard(Guid id);
     }
 }

@@ -32,13 +32,13 @@ namespace SI.Infrastructure.DAL.Repository
             // var sql = @"IF (SELECT count(ID) Level FROM Missions) = @Level - 1
             var sql = @" insert into CurrentMissions
            ([ID],[Name],[Description],[Level],[PlayerID],[Point],[Prod1ID],[Prod1Name],[Prod1Desc],
-           [Prod1PartnerName],[Prod1PartnerAddress],[Prod1Benefits],[Prod2ID],[Prod2Name],
-           [Prod2Desc],[Prod2PartnerName],[Prod2PartnerAddress],[Prod2Benefits],[CategoryID],
+           [Prod1PartnerName],[Prod1ImageUrl],[Prod1Point],[Prod1PartnerAddress],[Prod1Benefits],[Prod2ID],[Prod2Name],
+           [Prod2Desc],[Prod2PartnerName],[Prod2ImageUrl],[Prod2Point],[Prod2PartnerAddress],[Prod2Benefits],[CategoryID],
            [CategoryName],[PromoCode],[Status],[Duration],[StartedDate],[FinishedDate],[LastUpdateDate], [AddedHours], [EarnedCoints], [CategoryUpdated])
      VALUES
            (
-                @ID, @Name,@Description,@Level,@PlayerID,@Point,@Prod1ID,@Prod1Name,@Prod1Desc,@Prod1PartnerName,
-                @Prod1PartnerAddress,@Prod1Benefits,@Prod2ID,@Prod2Name,@Prod2Desc,@Prod2PartnerName,
+                @ID, @Name,@Description,@Level,@PlayerID,@Point,@Prod1ID,@Prod1Name,@Prod1Desc,@Prod1PartnerName,@Prod1ImageUrl,@Prod1Point,
+                @Prod1PartnerAddress,@Prod1Benefits,@Prod2ID,@Prod2Name,@Prod2Desc,@Prod2PartnerName,@Prod2ImageUrl,@Prod2Point,
                 @Prod2PartnerAddress,@Prod2Benefits,@CategoryID,@CategoryName,@PromoCode,@Status,
                 @Duration,@StartedDate,@FinishedDate,@LastUpdateDate, @AddedHours, @EarnedCoints, @CategoryUpdated
            )";
@@ -60,14 +60,18 @@ namespace SI.Infrastructure.DAL.Repository
                     Prod1Name = mission.Product1.Name,
                     Prod1Desc = mission.Product1.Description,
                     Prod1PartnerName = mission.Product1.PartnerName,
+                    Prod1ImageUrl = mission.Product1.ImageUrl,
+                    Prod1Point = mission.Product1.ExpectedCoin,
                     Prod1PartnerAddress = mission.Product1.PartnetaAddress,
-                    Prod1Benefits = mission.Product1.Benefits,
+                    Prod1Benefits = mission.Product1.Gift,
                     Prod2ID = mission.Product2.ID,
                     Prod2Name = mission.Product2.Name,
                     Prod2Desc = mission.Product2.Description,
                     Prod2PartnerName = mission.Product2.PartnerName,
+                    Prod2ImageUrl = mission.Product2.ImageUrl,
+                    Prod2Point = mission.Product2.ExpectedCoin,
                     Prod2PartnerAddress = mission.Product2.PartnerName,
-                    Prod2Benefits = mission.Product2.Benefits,
+                    Prod2Benefits = mission.Product2.Gift,
                     CategoryID = mission.Category.ID,
                     CategoryName = mission.Category.Name,
                     PromoCode = mission.PromoCode,
@@ -89,17 +93,39 @@ namespace SI.Infrastructure.DAL.Repository
             //TODO active unda gamovtvalo da shevamowmo chaweramde
             // var sql = @"IF (SELECT count(ID) Level FROM Missions) = @Level - 1
             var sql = @"UPDATE CurrentMissions SET
-                    [Name] = @ame, [Description] = @escription, [Level] = @evel,
-                    [PlayerID] = @layerID, [Point] = @oint, [Prod1ID] = @rod1ID, [Prod1Name] = @rod1Name,
-                    [Prod1Desc] = @rod1Desc, [Prod1PartnerName] = @rod1PartnerName,
-                    [Prod1PartnerAddress] = @rod1PartnerAddress, [Prod1Benefits] = @rod1Benefits,
-                    [Prod2ID] = @rod2ID, [Prod2Name] = @rod2Name, [Prod2Desc] = @rod2Desc,
-                    [Prod2PartnerName] = @rod2PartnerName, [Prod2PartnerAddress] = @rod2PartnerAddress,
-                    [Prod2Benefits] = @rod2Benefits, [CategoryID] = @ategoryID, [CategoryName] = @ategoryName,
-                    [PromoCode] = @romoCode, [Status] = @tatus, [Duration] = @uration,
-                    [StartedDate] = @tartedDate, [FinishedDate] = @inishedDate,
-                    [LastUpdateDate] = @astUpdateDate, [AddedHours] = @ddedHours,
-                    [EarnedCoints] = @arnedCoints, [CategoryUpdated] = @ategoryUpdated where [ID] = @ID";
+                    [Name] = @ame,
+                    [Description] = @escription,
+                    [Level] = @evel,
+                    [PlayerID] = @layerID,
+                    [Point] = @oint,
+                    [Prod1ID] = @rod1ID,
+                    [Prod1Name] = @rod1Name,
+                    [Prod1Desc] = @rod1Desc,
+                    [Prod1PartnerName] = @rod1PartnerName,
+                    [Prod1PartnerAddress] = @rod1PartnerAddress,
+                    [Prod1ImageUrl] = @rod1ImageUrl,
+                    [Prod1Point] = @rod1Point,
+                    [Prod1Benefits] = @rod1Benefits,
+                    [Prod2ID] = @rod2ID,
+                    [Prod2Name] = @rod2Name,
+                    [Prod2Desc] = @rod2Desc,
+                    [Prod2PartnerName] = @rod2PartnerName,
+                    [Prod2PartnerAddress] = @rod2PartnerAddress,
+                    [Prod2ImageUrl] = @rod2ImageUrl,
+                    [Prod2Point] = @rod2Point,
+                    [Prod2Benefits] = @rod2Benefits,
+                    [CategoryID] = @ategoryID,
+                    [CategoryName] = @ategoryName,
+                    [PromoCode] = @romoCode,
+                    [Status] = @tatus,
+                    [Duration] = @uration,
+                    [StartedDate] = @tartedDate,
+                    [FinishedDate] = @inishedDate,
+                    [LastUpdateDate] = @astUpdateDate,
+                    [AddedHours] = @ddedHours,
+                    [EarnedCoints] = @arnedCoints,
+                    [CategoryUpdated] = @ategoryUpdated
+                    where [ID] = @ID";
 
             using (var connection = Connection)
             {
@@ -119,14 +145,18 @@ namespace SI.Infrastructure.DAL.Repository
                     rod1Name = mission.Product1.Name,
                     rod1Desc = mission.Product1.Description,
                     rod1PartnerName = mission.Product1.PartnerName,
+                    rod1ImageUrl = mission.Product1.ImageUrl,
+                    rod1Point = mission.Product1.ExpectedCoin,
                     rod1PartnerAddress = mission.Product1.PartnetaAddress,
-                    rod1Benefits = mission.Product1.Benefits,
+                    rod1Benefits = mission.Product1.Gift,
                     rod2ID = mission.Product2.ID,
                     rod2Name = mission.Product2.Name,
                     rod2Desc = mission.Product2.Description,
                     rod2PartnerName = mission.Product2.PartnerName,
+                    rod12mageUrl = mission.Product2.ImageUrl,
+                    rod2Point = mission.Product2.ExpectedCoin,
                     rod2PartnerAddress = mission.Product2.PartnerName,
-                    rod2Benefits = mission.Product2.Benefits,
+                    rod2Benefits = mission.Product2.Gift,
                     ategoryID = mission.Category.ID,
                     ategoryName = mission.Category.Name,
                     romoCode = mission.PromoCode,
@@ -153,10 +183,10 @@ namespace SI.Infrastructure.DAL.Repository
                 if (res != null)
                 {
                     var currentMissionProduct1 = new CurrentMissionProduct(res.Prod1ID, res.Prod1Name, res.Prod1Desc,
-                                    res.Prod1PartnerName, res.Prod1PartnerAddress, res.Prod1Benefits, res.Prod1Coins);
+                                    res.Prod1PartnerName, res.Prod1ImageUrl, res.Prod1PartnerAddress, res.Prod1Benefits, res.Prod1Coins);
 
                     var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
-                                    res.Prod2PartnerName, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Coins);
+                                    res.Prod2PartnerName, res.Prod2ImageUrl, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Coins);
 
                     var currentMissionCategory = new CurrentMissionCategory(res.categoryID, res.categoryName);
 
@@ -208,10 +238,13 @@ namespace SI.Infrastructure.DAL.Repository
                     var player = new CurrentMissionPlayer(res.PlayerID, res.PlayerFullName, res.PlayerLevel);
 
                     var currentMissionProduct1 = new CurrentMissionProduct(res.Prod1ID, res.Prod1Name, res.Prod1Desc,
-                                    res.Prod1PartnerName, res.Prod1PartnerAddress, res.Prod1Benefits, res.Point);  //TODO: point unda qondes titoeul produqts tavisi
+                                    res.Prod1PartnerName, res.Prod1ImageUrl, res.Prod1PartnerAddress, res.Prod1Benefits, res.Prod1Point);
 
-                    var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
-                                    res.Prod2PartnerName, res.Prod2PartnerAddress, res.Prod2Benefits, res.Point); //TODO: point unda qondes titoeul produqts tavisi
+                                    var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
+                                    res.Prod2PartnerName, res.Prod2ImageUrl, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Point);
+
+                    // var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
+                    //                 res.Prod2PartnerName, res.Prod2ImageUrl, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Point);
 
                     var currentMissionCategory = new CurrentMissionCategory(res.CategoryID, res.CategoryName);
 

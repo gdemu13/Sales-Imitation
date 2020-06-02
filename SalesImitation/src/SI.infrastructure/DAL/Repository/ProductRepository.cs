@@ -101,7 +101,7 @@ namespace SI.Infrastructure.DAL.Repository
                               let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
                               group prod
                               by new Product(prod.ID, prod.Name, prod.Description,
-                                  partner, price, prod.Point, prod.ProductGroupID, prod.IsActive)
+                                  partner, price, prod.Point, prod.ProductGroupID, prod.Gift, prod.IsActive)
                               { Category = category } into p
                               select p;
 
@@ -157,7 +157,7 @@ namespace SI.Infrastructure.DAL.Repository
                               let price = new Money(prod.Price)
                               let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
                               group prod
-                              by new ConnectedProduct(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID) { Category = category } into p
+                              by new ConnectedProduct(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID, prod.Gift) { Category = category } into p
                               select p;
 
                     products = new List<ConnectedProduct>();
@@ -260,7 +260,7 @@ namespace SI.Infrastructure.DAL.Repository
                               let price = new Money(prod.Price)
                               let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
                               group prod
-                              by new Product(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID, prod.IsActive) { Category = category } into p
+                              by new Product(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID, prod.Gift, prod.IsActive) { Category = category } into p
                               select p;
 
                     products = new List<Product>();
@@ -283,7 +283,7 @@ namespace SI.Infrastructure.DAL.Repository
                 var connections = products.Where(p => p.ProductGroupID == prod.ProductGroupID && p.ID != prod.ID)
                     .Select(p =>
                     {
-                        var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Coin, p.ProductGroupID) { Category = p.Category };
+                        var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Coin, p.ProductGroupID, p.Gift) { Category = p.Category };
                         foreach (var i in p.Images)
                         {
                             cp.AddImage(i);
@@ -318,9 +318,9 @@ namespace SI.Infrastructure.DAL.Repository
         {
 
             string sqlProduct = @"INSERT INTO Products
-            (ID, Name, Description, Price, Point, PartnerID, CategoryID, ProductGroupID, IsActive)
+            (ID, Name, Description, Price, Point, PartnerID, CategoryID, ProductGroupID, Gift, IsActive)
             Values
-            (@ID, @Name, @Description, @Price, @Point, @PartnerID, @CategoryID, @ProductGroupID , @IsActive);";
+            (@ID, @Name, @Description, @Price, @Point, @PartnerID, @CategoryID, @ProductGroupID , @Gift, @IsActive);";
 
             string sqlProductImages = @"INSERT INTO ProductImages
             (ID, Url, ProductID)
@@ -346,6 +346,7 @@ namespace SI.Infrastructure.DAL.Repository
                                 CategoryID = product.Category?.ID,
                                 ProductGroupID = product.ProductGroupID,
                                 IsActive = product.IsActive,
+                                Gift = product.Gift,
                             }, transaction);
                         if (product.Images != null && product.Images.Count() > 0)
                         {
@@ -372,7 +373,6 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<Result> Update(Guid id, Product product)
         {
-
             string sqlProduct = @"UPDATE Products SET
             Name = @Name,
             Description = @Description,
@@ -380,7 +380,8 @@ namespace SI.Infrastructure.DAL.Repository
             Point = @Point,
             PartnerID = @PartnerID,
             CategoryID = @CategoryID,
-            ProductGroupID = @ProductGroupID
+            ProductGroupID = @ProductGroupID,
+            @Gift = gift
             where ID = @ID
             ";
 
@@ -408,6 +409,7 @@ namespace SI.Infrastructure.DAL.Repository
                                 PartnerID = product.Partner.ID,
                                 CategoryID = product.Category?.ID,
                                 ProductGroupID = product.ProductGroupID,
+                                Gift = product.Gift,
                                 IsActive = product.IsActive,
                             }, transaction);
                         if (product.Images != null && product.Images.Count() > 0)
@@ -482,7 +484,7 @@ namespace SI.Infrastructure.DAL.Repository
                               let price = new Money(prod.Price)
                               let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
                               group prod
-                              by new Product(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID, prod.IsActive) { Category = category } into p
+                              by new Product(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID, prod.Gift, prod.IsActive) { Category = category } into p
                               select p;
 
                     products = new List<Product>();
@@ -505,7 +507,7 @@ namespace SI.Infrastructure.DAL.Repository
                     var connections = products.Where(p => p.ProductGroupID == prod.ProductGroupID && p.ID != prod.ID)
                         .Select(p =>
                         {
-                            var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Coin, p.ProductGroupID) { Category = p.Category };
+                            var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Coin, p.ProductGroupID, p.Gift) { Category = p.Category };
                             foreach (var i in p.Images)
                             {
                                 cp.AddImage(i);

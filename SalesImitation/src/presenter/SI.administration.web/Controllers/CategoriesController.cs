@@ -33,7 +33,7 @@ namespace SI.Administration.Web.Controllers {
         }
 
         [HttpPut ("ChangeName")]
-        public async Task<Result> ChangeName (ChangeCategoryNameRequest request) {
+        public async Task<Result> ChangeName (UpdateCategoryRequest request) {
             return await Mediator.Send (request);
         }
 

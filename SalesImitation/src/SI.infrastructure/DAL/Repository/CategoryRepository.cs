@@ -10,41 +10,53 @@ using SI.Common.Models;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Entities;
 
-namespace SI.Infrastructure.DAL.Repository {
-    public class CategoryRepository : ICategoryRepository {
+namespace SI.Infrastructure.DAL.Repository
+{
+    public class CategoryRepository : ICategoryRepository
+    {
         private readonly IConfiguration _config;
 
-        public CategoryRepository (IConfiguration config) {
+        public CategoryRepository(IConfiguration config)
+        {
             _config = config;
         }
 
-        private IDbConnection Connection {
-            get {
-                return new SqlConnection (_config.GetConnectionString ("siconnectionstring"));
+        private IDbConnection Connection
+        {
+            get
+            {
+                return new SqlConnection(_config.GetConnectionString("siconnectionstring"));
             }
         }
 
-        public async Task<Category> Get (Guid id) {
+        public async Task<Category> Get(Guid id)
+        {
             string sql = "SELECT * From Categories Where ID = @ID;";
             Category category = null;
-            using (var connection = Connection) {
-                var res = await connection.QueryFirstOrDefaultAsync<CategoryModel> (sql, new { ID = id });
-                if (res != null) {
-                    category = new Category (res.ID, res.Name);
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = id });
+                if (res != null)
+                {
+                    category = new Category(res.ID, res.Name, res.Color, res.Icon);
                     category.IsActive = res.IsActive;
                 }
             }
             return category;
         }
 
-        public async Task<IEnumerable<Category>> GetAll () {
-            string sql = "SELECT * From Categories;";
+        public async Task<IEnumerable<Category>> GetAll()
+        {
+            string sql = "SELECT * From Categories Order By Ordering;";
             IEnumerable<Category> categories = null;
-            using (var connection = Connection) {
-                var res = await connection.QueryAsync<CategoryModel> (sql);
-                if (res != null) {
-                    categories = res.Select (r => {
-                        var c = new Category (r.ID, r.Name);
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryAsync(sql);
+                if (res != null)
+                {
+                    categories = res.Select(r =>
+                    {
+                        var c = new Category(r.ID, r.Name, r.Color, r.Icon);
                         c.IsActive = r.IsActive;
                         return c;
                     });
@@ -52,14 +64,18 @@ namespace SI.Infrastructure.DAL.Repository {
             }
             return categories;
         }
-  public async Task<IEnumerable<Category>> GetByIDs(IEnumerable<Guid> ids) {
+        public async Task<IEnumerable<Category>> GetByIDs(IEnumerable<Guid> ids)
+        {
             string sql = "SELECT * From Categories where ID in @IDs;";
             IEnumerable<Category> categories = null;
-            using (var connection = Connection) {
-                var res = await connection.QueryAsync<CategoryModel> (sql, new {IDs = ids});
-                if (res != null) {
-                    categories = res.Select (r => {
-                        var c = new Category (r.ID, r.Name);
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryAsync(sql, new { IDs = ids });
+                if (res != null)
+                {
+                    categories = res.Select(r =>
+                    {
+                        var c = new Category(r.ID, r.Name, r.Color, r.Icon);
                         c.IsActive = r.IsActive;
                         return c;
                     });
@@ -68,56 +84,74 @@ namespace SI.Infrastructure.DAL.Repository {
             return categories;
         }
 
-        private class CategoryModel {
+        private class CategoryModel
+        {
             public Guid ID { get; set; }
             public string Name { get; set; }
             public bool IsActive { get; set; }
         }
 
-        public async Task<Result> Insert (Category category) {
+        public async Task<Result> Insert(Category category)
+        {
 
-            string sql = "INSERT INTO Categories (ID, Name, IsActive) Values (@ID, @Name, @IsActive);";
+            string sql = "INSERT INTO Categories (ID, Name, Color, Icon, IsActive) Values (@ID, @Name, @Color, @IconUrl, @IsActive);";
 
-            using (var connection = Connection) {
-                var affectedRows = await connection.ExecuteAsync (sql,
-                    new {
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
                         ID = category.ID,
-                            Name = category.Name,
-                            IsActive = category.IsActive
+                        Name = category.Name,
+                        Color = category.Color,
+                        IconUrl = category.IconUrl,
+                        IsActive = category.IsActive
                     });
             }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
-        public async Task<Result> UpdateName (Guid id, string name) {
+        public async Task<Result> Update(Guid id, Category category)
+        {
 
-            string sql = "UPDATE Categories SET Name = @Name where ID = @ID;";
+            string sql = @"UPDATE Categories SET
+            Name = @Name,
+            Color = @Color,
+            Icon = @IconUrl
+            where ID = @ID;";
 
-            using (var connection = Connection) {
-                var affectedRows = await connection.ExecuteAsync (sql,
-                    new {
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
                         ID = id,
-                            Name = name,
+                        Name = category.Name,
+                        Color = category.Color,
+                        IconUrl = category.IconUrl,
                     });
             }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
-        public async Task<Result> SetIsActive (Guid id, bool isActive) {
+        public async Task<Result> SetIsActive(Guid id, bool isActive)
+        {
 
             string sql = "UPDATE Categories SET IsActive = @IsActive where ID = @ID;";
 
-            using (var connection = Connection) {
-                var affectedRows = await connection.ExecuteAsync (sql,
-                    new {
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
                         ID = id,
-                            IsActive = isActive,
+                        IsActive = isActive,
                     });
             }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
     }
 }

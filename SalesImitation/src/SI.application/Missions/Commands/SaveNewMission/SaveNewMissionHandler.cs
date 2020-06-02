@@ -27,7 +27,7 @@ namespace SI.Application.Missions {
             if (missions != null && missions.Count () != 0)
                 return new Result (false, "price_overlap");
 
-            var mission = new Mission (Guid.NewGuid(), req.Name, req.Description, lastMissionLevel + 1, req.PriceFrom, req.PriceTo);
+            var mission = new Mission (Guid.NewGuid(), req.Name, req.Description, lastMissionLevel + 1, req.DurationInHours, req.PriceFrom, req.PriceTo);
             return await _missionRepository.InsertIfLast (mission, lastUpdate);
         }
     }

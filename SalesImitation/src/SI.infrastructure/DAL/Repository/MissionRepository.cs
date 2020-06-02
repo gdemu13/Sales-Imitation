@@ -62,6 +62,7 @@ namespace SI.Infrastructure.DAL.Repository
                         res.Name,
                         res.Description,
                         res.Level,
+                        res.DurationInHours,
                         res.PriceFrom,
                         res.PriceTo);
                 }
@@ -82,6 +83,7 @@ namespace SI.Infrastructure.DAL.Repository
                        r.Name,
                        r.Description,
                        r.Level,
+                       r.DurationInHours,
                        r.PriceFrom,
                        r.PriceTo));
                 }
@@ -92,8 +94,8 @@ namespace SI.Infrastructure.DAL.Repository
         public async Task<Result> InsertIfLast(Mission mission, DateTime checkDate)
         {
             var sql = @"IF (SELECT count(ID) Level FROM Missions) = @Level - 1
-                        INSERT INTO Missions (ID, Name, Description, Level, PriceFrom, PriceTo, LastUpdateDate)
-                        VALUES (@ID, @Name, @Description, @Level, @PriceFrom, @PriceTo, @LastUpdateDate);";
+                        INSERT INTO Missions (ID, Name, Description, Level, DurationInHours, PriceFrom, PriceTo, LastUpdateDate)
+                        VALUES (@ID, @Name, @Description, @Level, @DurationInHours, @PriceFrom, @PriceTo, @LastUpdateDate);";
             using (var connection = Connection)
             {
                 var res = await connection.ExecuteAsync(sql, new
@@ -105,6 +107,7 @@ namespace SI.Infrastructure.DAL.Repository
                     PriceFrom = mission.PriceRange.From,
                     PriceTo = mission.PriceRange.To,
                     LastUpdateDate = DateTime.Now,
+                    DurationInHours = mission.DurationInHours,
                 });
             }
             return await Task.FromResult(Result.CreateSuccessReqest());
@@ -117,6 +120,7 @@ namespace SI.Infrastructure.DAL.Repository
             Name = @Name,
             Description = @Description,
             Level = @Level,
+            DurationInHours = @DurationInHours,
             PriceFrom = @PriceFrom,
             PriceTo = @PriceTo,
             LastUpdateDate = @LastUpdateDate
@@ -130,6 +134,7 @@ namespace SI.Infrastructure.DAL.Repository
                     Name = mission.Name,
                     Description = mission.Description,
                     Level = mission.Level,
+                    DurationInHours = mission.DurationInHours,
                     PriceFrom = mission.PriceRange.From,
                     PriceTo = mission.PriceRange.To,
                     LastUpdateDate = DateTime.Now,
@@ -181,6 +186,7 @@ namespace SI.Infrastructure.DAL.Repository
                        r.Name,
                        r.Description,
                        r.Level,
+                       r.DurationInHours,
                        r.PriceFrom,
                        r.PriceTo));
                 }

@@ -52,7 +52,15 @@ namespace SI.Web.Controllers
         [AllowAnonymous]
         public async Task<Result> Register([FromBody] RegisterPlayerRequest request)
         {
-            return await Mediator.Send(request);
+            var res = await Mediator.Send(request);
+            if (res.IsSuccess)
+                res = await Mediator.Send(new LoginPlayerRequest()
+                {
+                    Password = request.Password,
+                    UserName = request.Username,
+                    StayLogedIn = true
+                });
+            return res;
         }
     }
 }

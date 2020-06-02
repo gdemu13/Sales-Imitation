@@ -12,5 +12,7 @@ namespace SI.Application.Categories
 
         public Guid ID { get; set; }
         public string Name { get; set; }
+        public string IconUrl { get; set; }
+        public string Color { get; set; }
     }
 }

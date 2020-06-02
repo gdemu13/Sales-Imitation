@@ -44,7 +44,8 @@ namespace SI.Application.Players
             {
                 Name = currentUser.DisplayName,
                 coins = curPlayer.Item2,
-                Place = curPlayer.Item1
+                Place = curPlayer.Item1,
+                Avatar = curPlayer.Item3
             };
             return result;
         }
