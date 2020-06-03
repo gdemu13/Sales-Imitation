@@ -240,11 +240,9 @@ namespace SI.Infrastructure.DAL.Repository
                     var currentMissionProduct1 = new CurrentMissionProduct(res.Prod1ID, res.Prod1Name, res.Prod1Desc,
                                     res.Prod1PartnerName, res.Prod1ImageUrl, res.Prod1PartnerAddress, res.Prod1Benefits, res.Prod1Point);
 
-                                    var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
+                    var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
                                     res.Prod2PartnerName, res.Prod2ImageUrl, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Point);
 
-                    // var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
-                    //                 res.Prod2PartnerName, res.Prod2ImageUrl, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Point);
 
                     var currentMissionCategory = new CurrentMissionCategory(res.CategoryID, res.CategoryName);
 

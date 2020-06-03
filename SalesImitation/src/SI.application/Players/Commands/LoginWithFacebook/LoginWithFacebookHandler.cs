@@ -53,11 +53,12 @@ namespace SI.Application.Players
                 result = new LoginWithFacebookResponse
                 {
                     RegistrationNeeded = false,
+                    Username = player.Username,
                     BirthDate = userData.BirthDate,
                     Email = userData.Email,
                     FirstName = userData.Name?.Split(' ').First(),
                     LastName = userData.Name?.Split(' ').Last(),
-                     AccessToken = request.AccessToken,
+                    AccessToken = request.AccessToken,
                     UserID = request.UserID,
                 };
             }

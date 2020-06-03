@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using SI.Application;
 using SI.Domin.Abstractions.Authentication;
@@ -39,6 +40,7 @@ namespace SI.web
                       )
                           .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
 
+            services.AddResponseCompression();
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddApplication();
@@ -79,7 +81,8 @@ namespace SI.web
             app.Use(async (context, next) =>
             {
                 await next();
-                if(context.Response.StatusCode == 302) {
+                if (context.Response.StatusCode == 302)
+                {
                     context.Response.StatusCode = 401;
                     return;
                 }
@@ -114,8 +117,17 @@ namespace SI.web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    const int durationInSeconds = 60 * 60 * 2;
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
+                }
+            });
 
+            app.UseResponseCompression();
 
             app.UseEndpoints(endpoints =>
             {
@@ -123,6 +135,7 @@ namespace SI.web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
 
             // app.UseSpa(spa =>
             // {
