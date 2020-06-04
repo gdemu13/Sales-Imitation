@@ -153,7 +153,7 @@ namespace SI.Infrastructure.DAL.Repository
                     rod2Name = mission.Product2.Name,
                     rod2Desc = mission.Product2.Description,
                     rod2PartnerName = mission.Product2.PartnerName,
-                    rod12mageUrl = mission.Product2.ImageUrl,
+                    rod2ImageUrl = mission.Product2.ImageUrl,
                     rod2Point = mission.Product2.ExpectedCoin,
                     rod2PartnerAddress = mission.Product2.PartnerName,
                     rod2Benefits = mission.Product2.Gift,

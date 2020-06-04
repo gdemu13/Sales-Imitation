@@ -7,5 +7,6 @@ namespace SI.Application.Categories  {
         public string Name {get; set;}
         public string Color { get; set; }
         public string IconUrl { get; set; }
+        public bool IsActive { get; set; }
     }
 }

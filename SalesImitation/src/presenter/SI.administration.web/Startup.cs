@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,6 +43,7 @@ namespace SI.administration.web
             )
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
 
+ services.AddResponseCompression();
             services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddApplication();
@@ -66,18 +68,31 @@ namespace SI.administration.web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+          app.UseDeveloperExceptionPage();
+            app.UseHsts();
+
+            app.Use(async (context, next) =>
             {
-                app.UseDeveloperExceptionPage();
-            }
+                await next();
+                if (context.Response.StatusCode == 302)
+                {
+                    context.Response.StatusCode = 401;
+                    return;
+                }
 
-            app.ConfigureExceptionLoggerMiddlware();
+                if (context.Response.StatusCode == 404 &&
+              !Path.HasExtension(context.Request.Path.Value) &&
+              !context.Request.Path.Value.StartsWith("/api/"))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
 
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
+
+
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
@@ -92,9 +107,15 @@ namespace SI.administration.web
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseStaticFiles();
+
+            app.UseResponseCompression();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

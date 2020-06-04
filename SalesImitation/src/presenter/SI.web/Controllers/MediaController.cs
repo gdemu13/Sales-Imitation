@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using SI.Common.Models;
 using Microsoft.AspNetCore.Http;
 using SI.Infrastructure.Storage;
+using System.Linq;
 
 namespace SI.Web.Controllers
 {
@@ -29,7 +30,7 @@ namespace SI.Web.Controllers
         public async Task<IActionResult> GetImage(string filename)
         {
             var res = await fIleService.GetFile(filename);
-            return File(res, "application/image");
+             return File(res, "image/" + filename.Split('.').Last());
         }
     }
 }

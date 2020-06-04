@@ -121,7 +121,7 @@ namespace SI.web
             {
                 OnPrepareResponse = ctx =>
                 {
-                    const int durationInSeconds = 60 * 60 * 2;
+                    const int durationInSeconds = 60 * 15;
                     ctx.Context.Response.Headers[HeaderNames.CacheControl] =
                         "public,max-age=" + durationInSeconds;
                 }

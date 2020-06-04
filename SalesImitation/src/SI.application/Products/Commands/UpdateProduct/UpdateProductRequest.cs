@@ -20,7 +20,7 @@ namespace SI.Application.Products {
         public bool IsActive { get; set; }
 
         public UpdateCategory Category { get; set; }
-        public string Gift { get; internal set; }
+        public string Gift { get;  set; }
 
         public class UpdatePartner {
             public Guid ID { get; set; }

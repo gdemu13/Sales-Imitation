@@ -47,7 +47,7 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<IEnumerable<Category>> GetAll()
         {
-            string sql = "SELECT * From Categories Order By Ordering;";
+            string sql = "SELECT * From Categories Order By Ordering desc;";
             IEnumerable<Category> categories = null;
             using (var connection = Connection)
             {
@@ -118,7 +118,8 @@ namespace SI.Infrastructure.DAL.Repository
             string sql = @"UPDATE Categories SET
             Name = @Name,
             Color = @Color,
-            Icon = @IconUrl
+            Icon = @IconUrl,
+            IsActive = @IsActive
             where ID = @ID;";
 
             using (var connection = Connection)
@@ -130,6 +131,7 @@ namespace SI.Infrastructure.DAL.Repository
                         Name = category.Name,
                         Color = category.Color,
                         IconUrl = category.IconUrl,
+                        IsActive = category.IsActive,
                     });
             }
 

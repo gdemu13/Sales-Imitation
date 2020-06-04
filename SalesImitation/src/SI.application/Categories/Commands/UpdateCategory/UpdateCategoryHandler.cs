@@ -16,6 +16,7 @@ namespace SI.Application.Categories {
 
         public async Task<Result> Handle(UpdateCategoryRequest request, CancellationToken token){
            var category = new Category(request.ID,request.Name, request.Color, request.IconUrl);
+           category.IsActive = request.IsActive;
            return await _categoryRepository.Update(request.ID, category);
         }
     }
