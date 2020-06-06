@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using SI.Common.Models;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Entities;
+using SI.Infrastructure.DomainEvents;
 
 namespace SI.Infrastructure.DAL.Repository
 {
@@ -85,6 +86,8 @@ namespace SI.Infrastructure.DAL.Repository
                     CategoryUpdated = mission.CategoryUpdated
                 });
             }
+            mission.DispatchDomainEvents();
+
             return await Task.FromResult(Result.CreateSuccessReqest());
         }
 

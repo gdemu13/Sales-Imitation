@@ -1,4 +1,5 @@
 using System;
+using SI.Domain.Abstractions;
 using SI.Domain.Exceptions;
 
 namespace SI.Domain.Entities
@@ -7,7 +8,6 @@ namespace SI.Domain.Entities
     {
         private CurrentMission()
         {
-
         }
 
         public CurrentMission(Guid id, CurrentMissionPlayer player, string name, string description, int level, CurrentMissionProduct product1, CurrentMissionProduct product2,
@@ -77,6 +77,9 @@ namespace SI.Domain.Entities
 
             StartedDate = startDate;
             Status = CurrentMissionStatuses.Active;
+
+            Events.Add(new CurrentMissionCreated(Player.ID, DeadlineDate.Value, Description,
+                               Product1.Name, Product2.Name, PromoCode));
         }
 
         public void SellProduct(string code, Guid productID, DateTime saleDate)

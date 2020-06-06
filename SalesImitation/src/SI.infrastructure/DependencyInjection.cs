@@ -1,4 +1,5 @@
 using System.Reflection;
+using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +34,7 @@ namespace SI.Infrastructure
             services.AddSingleton<IFacebookService, FacebookService>();
             services.AddSingleton<IFIleService, FileService>();
             services.AddMemoryCache();
+            services.AddMediatR (Assembly.GetExecutingAssembly ());
 
             services.AddSingleton<IPlayerService, PlayerService>();
 
@@ -41,6 +43,8 @@ namespace SI.Infrastructure
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
+
+            ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
 
             return services;
         }
