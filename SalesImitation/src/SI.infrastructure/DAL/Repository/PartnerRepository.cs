@@ -10,61 +10,90 @@ using SI.Common.Models;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Entities;
 
-namespace SI.Infrastructure.DAL.Repository {
-    public class PartnerRepository : IPartnerRepository {
+namespace SI.Infrastructure.DAL.Repository
+{
+    public class PartnerRepository : IPartnerRepository
+    {
         private readonly IConfiguration _config;
 
-        public PartnerRepository (IConfiguration config) {
+        public PartnerRepository(IConfiguration config)
+        {
             _config = config;
         }
 
-        private IDbConnection Connection {
-            get {
-                return new SqlConnection (_config.GetConnectionString ("siconnectionstring"));
+        private IDbConnection Connection
+        {
+            get
+            {
+                return new SqlConnection(_config.GetConnectionString("siconnectionstring"));
             }
         }
 
-        public async Task<Partner> Get(Guid id) {
+        public async Task<Partner> Get(Guid id)
+        {
             string sql = "SELECT * From Partners Where ID = @ID;";
             Partner partner = null;
-            using (var connection = Connection) {
-                var res = await connection.QueryFirstOrDefaultAsync<PartnerModel> (sql,new {ID =id } );
-                if(res != null) {
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync<PartnerModel>(sql, new { ID = id });
+                if (res != null)
+                {
                     partner = new Partner(res.ID, res.Name);
-                     partner.Logo = new PartnerLogo (res.LogoUrl);
-                        partner.Address = new PartnerAddress (res.Street);
-                        partner.ContactInfo = new PartnerContactInfo (res.Number, res.Email);
-                        partner.ContactPerson = new PartnerContactPerson (res.ContactPersonFirstName,
-                            res.ContactPersonLastName,
-                            res.ContactPersonNumber,
-                            res.ContactPersonEmail);
-                        partner.WebSite = res.WebSite;
-                        partner.IsActive = res.IsActive;
+                    partner.Logo = new PartnerLogo(res.LogoUrl);
+                    partner.Address = new PartnerAddress(res.Street);
+                    partner.ContactInfo = new PartnerContactInfo(res.Number, res.Email);
+                    partner.ContactPerson = new PartnerContactPerson(res.ContactPersonFirstName,
+                        res.ContactPersonLastName,
+                        res.ContactPersonNumber,
+                        res.ContactPersonEmail);
+                    partner.WebSite = res.WebSite;
+                    partner.IsActive = res.IsActive;
                 }
             }
             return partner;
         }
 
-        public async Task<IEnumerable<Partner>> GetRange (int skip, int take) {
-            string sql = @"SELECT * From Partners
+        public async Task<IEnumerable<Partner>> GetRange(int skip, int take, string searchWord)
+        {
+            string sql;
+
+            if (string.IsNullOrEmpty(searchWord))
+            {
+                sql = @"SELECT * From Partners
                             ORDER BY Ordering
                             OFFSET     @Skip ROWS
                             FETCH NEXT @Take ROWS ONLY; ";
+            }
+            else
+            {
+                sql = @"SELECT * From Partners
+                        where Name like @SearchWord
+                            or  ContactPersonNumber like @SearchWord
+                            or ContactPersonFirstName + ' ' + ContactPersonLastName like @SearchWord
+                            ORDER BY Ordering
+                            OFFSET     @Skip ROWS
+                            FETCH NEXT @Take ROWS ONLY; ";
+            }
 
             IEnumerable<Partner> partners = null;
-            using (var connection = Connection) {
-                var res = await connection.QueryAsync<PartnerModel> (sql, new {
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryAsync<PartnerModel>(sql, new
+                {
                     @Skip = skip,
                     @Take = take,
+                    @SearchWord = $"%{searchWord}%",
                 });
-                if (res != null) {
-                    partners = res.Select (r => {
-                        var partner = new Partner (r.ID, r.Name);
+                if (res != null)
+                {
+                    partners = res.Select(r =>
+                    {
+                        var partner = new Partner(r.ID, r.Name);
 
-                        partner.Logo = new PartnerLogo (r.LogoUrl);
-                        partner.Address = new PartnerAddress (r.Street);
-                        partner.ContactInfo = new PartnerContactInfo (r.Number, r.Email);
-                        partner.ContactPerson = new PartnerContactPerson (r.ContactPersonFirstName,
+                        partner.Logo = new PartnerLogo(r.LogoUrl);
+                        partner.Address = new PartnerAddress(r.Street);
+                        partner.ContactInfo = new PartnerContactInfo(r.Number, r.Email);
+                        partner.ContactPerson = new PartnerContactPerson(r.ContactPersonFirstName,
                             r.ContactPersonLastName,
                             r.ContactPersonNumber,
                             r.ContactPersonEmail);
@@ -77,7 +106,8 @@ namespace SI.Infrastructure.DAL.Repository {
             return partners;
         }
 
-        private class PartnerModel {
+        private class PartnerModel
+        {
             public Guid ID { get; set; }
             public string Name { get; set; }
             public string LogoUrl { get; set; }
@@ -92,7 +122,8 @@ namespace SI.Infrastructure.DAL.Repository {
             public bool IsActive { get; set; }
         }
 
-        public async Task<Result> Insert (Partner partner) {
+        public async Task<Result> Insert(Partner partner)
+        {
 
             string sql = @"INSERT INTO Partners
             (ID, Name, LogoUrl, Street, Number, Email, ContactPersonFirstName,
@@ -101,30 +132,33 @@ namespace SI.Infrastructure.DAL.Repository {
             (@ID, @Name, @LogoUrl, @Street, @Number, @Email, @ContactPersonFirstName,
             @ContactPersonLastName, @ContactPersonNumber, @ContactPersonEmail, @WebSite, @IsActive);";
 
-            using (var connection = Connection) {
-                var affectedRows = await connection.ExecuteAsync (sql,
-                    new {
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
                         ID = partner.ID,
-                            Name = partner.Name,
-                            LogoUrl = partner.Logo.Url,
-                            Street = partner.Address?.Street,
-                            Number = partner.ContactInfo?.Number,
-                            Email = partner.ContactInfo?.Email,
-                            ContactPersonFirstName = partner.ContactPerson?.FirstName,
-                            ContactPersonLastName = partner.ContactPerson?.LastName,
-                            ContactPersonNumber = partner.ContactPerson?.Number,
-                            ContactPersonEmail = partner.ContactPerson?.Email,
-                            WebSite = partner.WebSite,
-                            IsActive = partner.IsActive
+                        Name = partner.Name,
+                        LogoUrl = partner.Logo.Url,
+                        Street = partner.Address?.Street,
+                        Number = partner.ContactInfo?.Number,
+                        Email = partner.ContactInfo?.Email,
+                        ContactPersonFirstName = partner.ContactPerson?.FirstName,
+                        ContactPersonLastName = partner.ContactPerson?.LastName,
+                        ContactPersonNumber = partner.ContactPerson?.Number,
+                        ContactPersonEmail = partner.ContactPerson?.Email,
+                        WebSite = partner.WebSite,
+                        IsActive = partner.IsActive
                     });
             }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
-        public async Task<Result> Update (Guid id, Partner partner) {
+        public async Task<Result> Update(Guid id, Partner partner)
+        {
 
-           string sql = @"UPDATE Partners
+            string sql = @"UPDATE Partners
            SET
             Name = @Name,
             LogoUrl = @LogoUrl,
@@ -139,40 +173,72 @@ namespace SI.Infrastructure.DAL.Repository {
             where ID = @ID
            ;";
 
-            using (var connection = Connection) {
-                var affectedRows = await connection.ExecuteAsync (sql,
-                    new {
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
                         ID = partner.ID,
-                            Name = partner.Name,
-                            LogoUrl = partner.Logo.Url,
-                            Street = partner.Address?.Street,
-                            Number = partner.ContactInfo?.Number,
-                            Email = partner.ContactInfo?.Email,
-                            ContactPersonFirstName = partner.ContactPerson?.FirstName,
-                            ContactPersonLastName = partner.ContactPerson?.LastName,
-                            ContactPersonNumber = partner.ContactPerson?.Number,
-                            ContactPersonEmail = partner.ContactPerson?.Email,
-                            WebSite = partner.WebSite,
-                            IsActive = partner.IsActive
+                        Name = partner.Name,
+                        LogoUrl = partner.Logo.Url,
+                        Street = partner.Address?.Street,
+                        Number = partner.ContactInfo?.Number,
+                        Email = partner.ContactInfo?.Email,
+                        ContactPersonFirstName = partner.ContactPerson?.FirstName,
+                        ContactPersonLastName = partner.ContactPerson?.LastName,
+                        ContactPersonNumber = partner.ContactPerson?.Number,
+                        ContactPersonEmail = partner.ContactPerson?.Email,
+                        WebSite = partner.WebSite,
+                        IsActive = partner.IsActive
                     });
             }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
-        public async Task<Result> SetIsActive (Guid id, bool isActive) {
+        public async Task<Result> SetIsActive(Guid id, bool isActive)
+        {
 
             string sql = "UPDATE Partners SET IsActive = @IsActive where ID = @ID;";
 
-            using (var connection = Connection) {
-                var affectedRows = await connection.ExecuteAsync (sql,
-                    new {
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
                         ID = id,
-                            IsActive = isActive,
+                        IsActive = isActive,
                     });
             }
 
-            return await Task.FromResult (Result.CreateSuccessReqest());
+            return await Task.FromResult(Result.CreateSuccessReqest());
+        }
+
+        public async Task<int> Count(string searchWord)
+        {
+            string sql;
+
+            if (string.IsNullOrEmpty(searchWord))
+            {
+                sql = @"SELECT count(*) From Partners";
+            }
+            else
+            {
+                sql = @"SELECT count(*) From Partners
+                        where Name like @SearchWord
+                            or  ContactPersonNumber like @SearchWord
+                            or ContactPersonFirstName + ' ' + ContactPersonLastName like @SearchWord";
+            }
+
+            int res;
+            using (var connection = Connection)
+            {
+                res = await connection.QueryFirstAsync<int>(sql, new
+                {
+                   @SearchWord = $"%{searchWord}%",
+                });
+            }
+            return res;
         }
     }
 }

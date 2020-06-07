@@ -316,6 +316,36 @@ go
 		from
 			sysobjects
 		where
+			name = 'Notifications'
+			and xtype = 'U'
+	) create table Notifications (
+		ID uniqueidentifier PRIMARY KEY,
+		Title nvarchar(250) NOT NULL,
+		Description nvarchar(MAX) NOT NULL,
+		Deadline DATETIME,
+		PlayerID uniqueidentifier NOT NULL,
+		Type int NOT NULL,
+		LastUpdateDate DATETIME NOT NULL,
+		Seen int NULL,
+		Ordering INT IDENTITY(1, 1) NOT NULL
+	) IF NOT EXISTS(
+		SELECT
+			*
+		FROM
+			sys.indexes
+		WHERE
+			name = 'Notifications_Ordering'
+			AND object_id = OBJECT_ID('Notifications')
+	) BEGIN CREATE UNIQUE INDEX Notifications_Ordering ON Notifications (Ordering);
+
+END
+go
+	if not exists (
+		select
+			*
+		from
+			sysobjects
+		where
 			name = 'Languages'
 			and xtype = 'U'
 	) create table Languages (
@@ -481,7 +511,6 @@ ADD
 	DurationInHours int;
 
 END
-
 go
 	-- ADD ImagesUrl fields FOR CurrentMissions
 	IF NOT EXISTS (
@@ -499,7 +528,6 @@ ADD
 	Prod1ImageUrl nvarchar(max);
 
 END
-
 go
 	-- ADD ImagesUrl fields FOR CurrentMissions
 	IF NOT EXISTS (
@@ -517,8 +545,6 @@ ADD
 	Prod2ImageUrl nvarchar(max);
 
 END
-
-
 go
 	-- ADD Point1 fields FOR CurrentMissions
 	IF NOT EXISTS (
@@ -536,7 +562,6 @@ ADD
 	Prod1Point decimal(9, 2);
 
 END
-
 go
 	-- ADD Point2 fields FOR CurrentMissions
 	IF NOT EXISTS (

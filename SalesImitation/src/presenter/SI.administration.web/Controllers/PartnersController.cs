@@ -19,7 +19,7 @@ namespace SI.Administration.Web.Controllers {
         }
 
         [HttpGet ("Range")]
-        public async Task<IEnumerable<Partner>> GetRange ([FromQuery] GetRangeOfPartnersRequest request) {
+        public async Task<GetangeOfPartnerResponse> GetRange ([FromQuery] GetRangeOfPartnersRequest request) {
             return await Mediator.Send (request);
         }
 

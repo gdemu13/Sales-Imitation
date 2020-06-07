@@ -30,11 +30,12 @@ namespace SI.Infrastructure
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<ICurrentMissionRepository, CurrentMissionRepository>();
             services.AddSingleton<ITranslationsRepository, TranslationsRepository>();
+            services.AddSingleton<INotificationRepository, NotificationRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
             services.AddSingleton<IFacebookService, FacebookService>();
             services.AddSingleton<IFIleService, FileService>();
             services.AddMemoryCache();
-            services.AddMediatR (Assembly.GetExecutingAssembly ());
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddSingleton<IPlayerService, PlayerService>();
 
