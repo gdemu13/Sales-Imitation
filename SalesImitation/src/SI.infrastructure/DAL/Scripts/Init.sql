@@ -326,7 +326,7 @@ go
 		PlayerID uniqueidentifier NOT NULL,
 		Type int NOT NULL,
 		LastUpdateDate DATETIME NOT NULL,
-		Seen int NULL,
+		Seen bit NOT NULL,
 		Ordering INT IDENTITY(1, 1) NOT NULL
 	) IF NOT EXISTS(
 		SELECT
@@ -380,7 +380,8 @@ go
 		Value nvarchar(250) NOT NULL,
 		LanguageID uniqueidentifier NOT NULL,
 		LastUpdateDate DATETIME NOT NULL,
-		Ordering INT IDENTITY(1, 1) NOT NULL FOREIGN KEY (LanguageID) REFERENCES Languages(ID),
+		Ordering INT IDENTITY(1, 1) NOT NULL
+		FOREIGN KEY (LanguageID) REFERENCES Languages(ID),
 	) IF NOT EXISTS(
 		SELECT
 			*
@@ -391,6 +392,44 @@ go
 			AND object_id = OBJECT_ID('Translations')
 	) BEGIN CREATE UNIQUE INDEX Translations_Ordering ON Translations (Ordering);
 
+END
+go
+	if not exists (
+		select
+			*
+		from
+			sysobjects
+		where
+			name = 'Contents'
+			and xtype = 'U'
+	) create table Contents (
+		Name nvarchar(50) PRIMARY KEY,
+		Value nvarchar(250) NOT NULL,
+	)
+
+go
+	if not exists (
+		select
+			*
+		from
+			sysobjects
+		where
+			name = 'FAQs'
+			and xtype = 'U'
+	) create table FAQs (
+		ID uniqueidentifier PRIMARY KEY,
+		Name nvarchar(250) NOT NULL,
+		Value nvarchar(MAX) NOT NULL,
+		Ordering INT IDENTITY(1, 1) NOT NULL
+	) IF NOT EXISTS(
+		SELECT
+			*
+		FROM
+			sys.indexes
+		WHERE
+			name = 'FAQs_Ordering'
+			AND object_id = OBJECT_ID('FAQs')
+	) BEGIN CREATE UNIQUE INDEX FAQs_Ordering ON FAQs (Ordering);
 END
 go
 	-- ADD FACEBOOK ID FOR PLAYERS

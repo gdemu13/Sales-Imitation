@@ -31,16 +31,6 @@ namespace SI.Application.Events
                  e.Deadline,
                  false
              ));
-
-            // var not = new Notification(
-            //    Guid.NewGuid(),
-            //     e.PlayerID,
-            //    "შეტყობინება",
-            //    e.Desc,
-            //    NotificationTypes.SUCCESS,
-            //    e.Deadline,
-            //    false);
-            // await repository.Insert(not);
         }
     }
 }

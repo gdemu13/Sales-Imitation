@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Settings.Configuration;
 using SI.Application.Abstractions;
+using SI.Application.Contents;
+using SI.Application.FAQs;
 using SI.Application.Translations;
 using SI.Common.Abstractions;
 using SI.Domain.Abstractions.Repositories;
@@ -31,6 +33,8 @@ namespace SI.Infrastructure
             services.AddSingleton<ICurrentMissionRepository, CurrentMissionRepository>();
             services.AddSingleton<ITranslationsRepository, TranslationsRepository>();
             services.AddSingleton<INotificationRepository, NotificationRepository>();
+            services.AddSingleton<IContentRepository, ContentRepository>();
+            services.AddSingleton<IFAQsRepository, FAQsReposiotry>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
             services.AddSingleton<IFacebookService, FacebookService>();
             services.AddSingleton<IFIleService, FileService>();

@@ -1,193 +1,360 @@
-"filename", "language", "Markdown", "C#", "XML", "JSON", "aspnetcorerazor", "SQL", "comment", "blank", "total"
-"c:\projects\salesImitation\README.md", "Markdown", 1, 0, 0, 0, 0, 0, 0, 1, 2
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\LoginAdministrator\LoginAdministratorHandler.cs", "C#", 0, 31, 0, 0, 0, 0, 0, 3, 34
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\LoginAdministrator\LoginAdministratorReponse.cs", "C#", 0, 5, 0, 0, 0, 0, 0, 0, 5
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\LoginAdministrator\LoginAdministratorRequest.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 1, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\RegisterAdministrator\RegisterAdministratorRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\RegisterAdministrator\RegisterAdministratorRequestHandler.cs", "C#", 0, 19, 0, 0, 0, 0, 0, 4, 23
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\ChangeCategoryName\ChangeCategoryNameHandler.cs", "C#", 0, 16, 0, 0, 0, 0, 0, 4, 20
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\ChangeCategoryName\ChangeCategoryNameRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SaveNewCategory\SaveNewCategoryHandler.cs", "C#", 0, 21, 0, 0, 0, 0, 0, 4, 25
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SaveNewCategory\SaveNewCategoryRequest.cs", "C#", 0, 8, 0, 0, 0, 0, 0, 1, 9
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SetIsActiveToCategory\SetIsActiveToCategoryHandler.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 4, 21
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SetIsActiveToCategory\SetIsActiveToCategoryRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetAllCategories\GetAllCategoriesHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetAllCategories\GetAllCategoriesRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategoriesListbyIDs\GetCategoriesListResponse.cs", "C#", 0, 14, 0, 0, 0, 0, 0, 2, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategoriesListbyIDs\GetCategoriesListbyIDsRequestHandler.cs", "C#", 0, 28, 0, 0, 0, 0, 0, 4, 32
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategoriesListbyIDs\GetCategoriesListbyIDsRequestRequest.cs", "C#", 0, 15, 0, 0, 0, 0, 0, 2, 17
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategory\GetCategoryHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategory\GetCategoryRequest.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 2, 15
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\BuyExtraTime\BuyExtraTimeHandler.cs", "C#", 0, 30, 0, 0, 0, 0, 0, 2, 32
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\BuyExtraTime\BuyExtraTimeRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\SkipCurrentMission\SkipCurrentMissionHandler.cs", "C#", 0, 30, 0, 0, 0, 0, 0, 2, 32
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\SkipCurrentMission\SkipCurrentMissionRequst.cs", "C#", 0, 8, 0, 0, 0, 0, 0, 1, 9
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\StartNewMission\SartNewMissionRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\StartNewMission\StartNewMissionHandler.cs", "C#", 0, 75, 0, 0, 0, 0, 4, 13, 92
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Queries\GetCurrentMission\GetCurrentMissionHandler.cs", "C#", 0, 34, 0, 0, 0, 0, 0, 4, 38
-"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Queries\GetCurrentMission\GetCurrentMissionRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\DependencyInjection.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 1, 14
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\SaveNewMission\SaveNewMissionHandler.cs", "C#", 0, 27, 0, 0, 0, 0, 0, 7, 34
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\SaveNewMission\SaveNewMissionRequest.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 1, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\UpdateMission\UpdateMissionHandler.cs", "C#", 0, 24, 0, 0, 0, 0, 0, 6, 30
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\UpdateMission\UpdateMissionRequest.cs", "C#", 0, 12, 0, 0, 0, 0, 0, 1, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetAllMissions\GetAllMissionsHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetAllMissions\GetAllMissionsRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMissionByLevel\GetMissionByLevelHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMissionByLevel\GetMissionByLevellRequest.cs", "C#", 0, 12, 0, 0, 0, 0, 0, 3, 15
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMission\GetMissionHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMission\GetMissionRequest.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 1, 14
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SaveNewPartner\SaveNewPartnerHandler.cs", "C#", 0, 30, 0, 0, 0, 0, 0, 9, 39
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SaveNewPartner\SaveNewPartnerRequest.cs", "C#", 0, 26, 0, 0, 0, 0, 0, 10, 36
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SetIsActiveToPartner\SetIsActiveToPartnerHandler.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 4, 21
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SetIsActiveToPartner\SetIsActiveToPartnerRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 2, 11
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\UpdatePartner\UpdatePartnerHandler.cs", "C#", 0, 27, 0, 0, 0, 0, 0, 8, 35
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\UpdatePartner\UpdatePartnerRequest.cs", "C#", 0, 27, 0, 0, 0, 0, 0, 11, 38
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetPartner\GetPartnerHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetPartner\GetPartnerRequest.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 1, 14
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetRangeOfPartners\GetRangeOfPartnerHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetRangeOfPartners\GetRangeOfPartnerRequest.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 1, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginPlayer\LoginPlayerHandler.cs", "C#", 0, 31, 0, 0, 0, 0, 0, 3, 34
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginPlayer\LoginPlayerReponse.cs", "C#", 0, 5, 0, 0, 0, 0, 0, 0, 5
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginPlayer\LoginPlayerRequest.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 1, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\RegisterPlayer\RegisterPlayerRequest.cs", "C#", 0, 14, 0, 0, 0, 0, 0, 1, 15
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\RegisterPlayer\RegistrationPlayerHandler.cs", "C#", 0, 19, 0, 0, 0, 0, 0, 3, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetLeaderboard\GetLeaderboardHandler.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 3, 20
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetLeaderboard\GetLeaderboardRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetPlayerByID\GetPlayerByIDHandler.cs", "C#", 0, 30, 0, 0, 0, 0, 0, 3, 33
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetPlayerByID\GetPlayerByIDRequest copy.cs", "C#", 0, 15, 0, 0, 0, 0, 0, 1, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetPlayerByID\GetPlayerByIDRequest.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 3, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SaveNewProduct\SaveNewProductHandler.cs", "C#", 0, 47, 0, 0, 0, 0, 5, 10, 62
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SaveNewProduct\SaveNewProductRequest.cs", "C#", 0, 26, 0, 0, 0, 0, 0, 11, 37
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SetIsActiveToProduct\SetIsActiveToProductHandler.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 4, 21
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SetIsActiveToProduct\SetIsActiveToProductRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 2, 11
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\UpdateProduct\UpdateProductHandler.cs", "C#", 0, 36, 0, 0, 0, 0, 4, 7, 47
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\UpdateProduct\UpdateProductRequest.cs", "C#", 0, 22, 0, 0, 0, 0, 0, 11, 33
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductCategoriesByPriceRange\GetRangeOfProductHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductCategoriesByPriceRange\GetRangeOfProductRequest.cs", "C#", 0, 21, 0, 0, 0, 0, 0, 4, 25
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProduct\GetProductHandler.cs", "C#", 0, 19, 0, 0, 0, 0, 0, 4, 23
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProduct\GetProductRequest.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 1, 14
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetRangeOfPoduct\GetRangeOfProductHandler.cs", "C#", 0, 18, 0, 0, 0, 0, 0, 4, 22
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetRangeOfPoduct\GetRangeOfProductRequest.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 1, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SI.application.csproj", "XML", 0, 0, 16, 0, 0, 0, 0, 5, 21
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\ActivateBaseBonus\ActivateBaseBonusHandler.cs", "C#", 0, 21, 0, 0, 0, 0, 0, 4, 25
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\ActivateBaseBonus\ActivateBaseBonusRequest.cs", "C#", 0, 6, 0, 0, 0, 0, 0, 1, 7
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\IncreaseBonus\IncreaseBonusHandler.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 1, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\IncreaseBonus\IncreaseBonusRequest.cs", "C#", 0, 7, 0, 0, 0, 0, 0, 1, 8
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\SaveBaseBonus\SaveBaseBonusHandler.cs", "C#", 0, 20, 0, 0, 0, 0, 0, 4, 24
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\SaveBaseBonus\SaveBaseBonusRequest.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetActiveBonus\GetActiveBonusHandler.cs", "C#", 0, 16, 0, 0, 0, 0, 0, 4, 20
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetActiveBonus\GetActiveBonusRequest.cs", "C#", 0, 6, 0, 0, 0, 0, 0, 1, 7
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetPendingBonus\GetPendingBonusHandler.cs", "C#", 0, 16, 0, 0, 0, 0, 0, 4, 20
-"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetPendingBonus\GetPendingBonusRequest.cs", "C#", 0, 6, 0, 0, 0, 0, 0, 1, 7
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Commands\SaveAllLanguages\SaveAllLanguagesHandler.cs", "C#", 0, 35, 0, 0, 0, 0, 0, 6, 41
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Commands\SaveAllLanguages\SaveAllLanguagesRequest.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 3, 20
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\ITranslationsRepository.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 4, 17
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\ITranslationsService.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 4, 17
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Queries\GetAllLanuages\GetAllLanuagesHandler.cs", "C#", 0, 21, 0, 0, 0, 0, 0, 4, 25
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Queries\GetAllLanuages\GetAllLanuagesRequest.cs", "C#", 0, 7, 0, 0, 0, 0, 0, 1, 8
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\TranslationModel.cs", "C#", 0, 69, 0, 0, 0, 0, 1, 10, 80
-"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\TranslationsService.cs", "C#", 0, 42, 0, 0, 0, 0, 2, 9, 53
-"c:\projects\salesImitation\SalesImitation\src\SI.common\Abstractions\Logging\ILogger.cs", "C#", 0, 8, 0, 0, 0, 0, 0, 1, 9
-"c:\projects\salesImitation\SalesImitation\src\SI.common\Models\Result.cs", "C#", 0, 22, 0, 0, 0, 0, 0, 7, 29
-"c:\projects\salesImitation\SalesImitation\src\SI.common\SI.common.csproj", "XML", 0, 0, 5, 0, 0, 0, 0, 3, 8
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Authentication\ICurrentUser.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 1, 14
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\DomainEvents\IDomainEvent.cs", "C#", 0, 5, 0, 0, 0, 0, 0, 1, 6
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\DomainEvents\IDomainEventDispatcher.cs", "C#", 0, 8, 0, 0, 0, 0, 0, 1, 9
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\ICategoryRepository.cs", "C#", 0, 15, 0, 0, 0, 0, 0, 2, 17
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\ICurrentMissionRepository.cs", "C#", 0, 15, 0, 0, 0, 0, 0, 2, 17
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IMissionRepository.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 2, 19
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IPartnerRepository.cs", "C#", 0, 14, 0, 0, 0, 0, 0, 2, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IPlayerRepository.cs", "C#", 0, 14, 0, 0, 0, 0, 0, 1, 15
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IProductRepository.cs", "C#", 0, 16, 0, 0, 0, 0, 0, 3, 19
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IRepository.cs", "C#", 0, 10, 0, 0, 0, 0, 0, 3, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\ISuperBonusRepository.cs", "C#", 0, 14, 0, 0, 0, 0, 0, 2, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IUserRepository.cs", "C#", 0, 14, 0, 0, 0, 0, 0, 5, 19
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\BaseEntity.cs", "C#", 0, 6, 0, 0, 0, 0, 0, 2, 8
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Category\Category.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 2, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMission.cs", "C#", 0, 125, 0, 0, 0, 0, 1, 19, 145
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionCategory.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 1, 14
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionPlayer.cs", "C#", 0, 15, 0, 0, 0, 0, 0, 2, 17
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionProduct.cs", "C#", 0, 23, 0, 0, 0, 0, 0, 2, 25
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionStatuses.cs", "C#", 0, 10, 0, 0, 0, 0, 0, 0, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\MIssion\MissioinRange.cs", "C#", 0, 10, 0, 0, 0, 0, 0, 0, 10
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\MIssion\Mission.cs", "C#", 0, 23, 0, 0, 0, 0, 0, 3, 26
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\MIssion\MissionStatuses.cs", "C#", 0, 7, 0, 0, 0, 0, 0, 0, 7
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\Partner.cs", "C#", 0, 16, 0, 0, 0, 0, 0, 8, 24
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerAddress.cs", "C#", 0, 8, 0, 0, 0, 0, 0, 4, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerContactInfo.cs", "C#", 0, 10, 0, 0, 0, 0, 0, 3, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerContactPerson.cs", "C#", 0, 14, 0, 0, 0, 0, 0, 2, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerLogo.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 3, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Player\HashedPassword.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 3, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Player\Player.cs", "C#", 0, 108, 0, 0, 0, 0, 1, 15, 124
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ConnectedProduct.cs", "C#", 0, 40, 0, 0, 0, 0, 0, 16, 56
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\Money.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 4, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\Product.cs", "C#", 0, 50, 0, 0, 0, 0, 0, 20, 70
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ProductCategory.cs", "C#", 0, 10, 0, 0, 0, 0, 0, 3, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ProductImage.cs", "C#", 0, 10, 0, 0, 0, 0, 0, 3, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ProductPartner.cs", "C#", 0, 10, 0, 0, 0, 0, 0, 3, 13
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\SuperBonus\SuperBonus.cs", "C#", 0, 32, 0, 0, 0, 0, 0, 8, 40
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\SuperBonus\SuperBonusIncrease.cs", "C#", 0, 6, 0, 0, 0, 0, 0, 1, 7
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\SuperBonus\SuperBonusStatuses.cs", "C#", 0, 7, 0, 0, 0, 0, 0, 0, 7
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\User\HashedPassword.cs", "C#", 0, 13, 0, 0, 0, 0, 0, 3, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\User\User.cs", "C#", 0, 73, 0, 0, 0, 0, 0, 10, 83
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\User\UserTypes.cs", "C#", 0, 7, 0, 0, 0, 0, 0, 0, 7
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Exceptions\LocalizableException.cs", "C#", 0, 11, 0, 0, 0, 0, 0, 1, 12
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\SI.domain.csproj", "XML", 0, 0, 11, 0, 0, 0, 0, 5, 16
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Services\Players\IPlayerService.cs", "C#", 0, 12, 0, 0, 0, 0, 0, 2, 14
-"c:\projects\salesImitation\SalesImitation\src\SI.domain\Services\Players\PlayerService.cs", "C#", 0, 41, 0, 0, 0, 0, 6, 8, 55
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\Authentication\Administrator\CurrentUser.cs", "C#", 0, 48, 0, 0, 0, 0, 0, 7, 55
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\CategoryRepository.cs", "C#", 0, 105, 0, 0, 0, 0, 0, 18, 123
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\CurrentMissionRepository.cs", "C#", 0, 238, 0, 0, 0, 0, 14, 45, 297
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\MissionRepository.cs", "C#", 0, 177, 0, 0, 0, 0, 0, 14, 191
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\PartnerRepository.cs", "C#", 0, 158, 0, 0, 0, 0, 0, 20, 178
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\PlayerRepository.cs", "C#", 0, 125, 0, 0, 0, 0, 0, 16, 141
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\ProductRepository.cs", "C#", 0, 407, 0, 0, 0, 0, 48, 44, 499
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\RepositoryBase.cs", "C#", 0, 55, 0, 0, 0, 0, 13, 13, 81
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\SuperBonusRepository.cs", "C#", 0, 83, 0, 0, 0, 0, 3, 17, 103
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\TranslationsRepository.cs", "C#", 0, 157, 0, 0, 0, 0, 0, 32, 189
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\UserRepository.cs", "C#", 0, 95, 0, 0, 0, 0, 0, 13, 108
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Scripts\Init.sql", "SQL", 0, 0, 0, 0, 0, 222, 0, 20, 242
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Scripts\initNeutralLanguage.sql", "SQL", 0, 0, 0, 0, 0, 75, 1, 14, 90
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\TransactionalRepository.cs", "C#", 0, 42, 0, 0, 0, 0, 0, 6, 48
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DependencyInjection.cs", "C#", 0, 38, 0, 0, 0, 0, 0, 7, 45
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\Logging\SerilogClient.cs", "C#", 0, 30, 0, 0, 0, 0, 0, 5, 35
-"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\SI.infrastructure.csproj", "XML", 0, 0, 24, 0, 0, 0, 1, 5, 30
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\ActionFilters\ErrorHandlerFilter.cs", "C#", 0, 41, 0, 0, 0, 0, 2, 4, 47
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\AccountController.cs", "C#", 0, 41, 0, 0, 0, 0, 0, 7, 48
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\ApiController.cs", "C#", 0, 15, 0, 0, 0, 0, 0, 3, 18
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\BonusController.cs", "C#", 0, 22, 0, 0, 0, 0, 0, 3, 25
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\CategoriesController.cs", "C#", 0, 36, 0, 0, 0, 0, 1, 8, 45
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\LanguagesController.cs", "C#", 0, 39, 0, 0, 0, 0, 0, 8, 47
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\MissionsController.cs", "C#", 0, 31, 0, 0, 0, 0, 0, 7, 38
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\PartnersController.cs", "C#", 0, 34, 0, 0, 0, 0, 0, 7, 41
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\ProuctsController.cs", "C#", 0, 34, 0, 0, 0, 0, 0, 7, 41
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Middlewares\ExceptionLoggerMiddlware.cs", "C#", 0, 18, 0, 0, 0, 0, 4, 1, 23
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Program.cs", "C#", 0, 24, 0, 0, 0, 0, 0, 3, 27
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Properties\launchSettings.json", "JSON", 0, 0, 0, 30, 0, 0, 0, 1, 31
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\SI.administration.web.csproj", "XML", 0, 0, 17, 0, 0, 0, 0, 6, 23
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Startup.cs", "C#", 0, 80, 0, 0, 0, 0, 5, 15, 100
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\appsettings.Development.json", "JSON", 0, 0, 0, 9, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\appsettings.json", "JSON", 0, 0, 0, 30, 0, 0, 0, 0, 30
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ActionFilters\ErrorHandlerFilter.cs", "C#", 0, 36, 0, 0, 0, 0, 2, 4, 42
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\AccountController.cs", "C#", 0, 39, 0, 0, 0, 0, 0, 5, 44
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\ApiController.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 2, 19
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\GameController.cs", "C#", 0, 55, 0, 0, 0, 0, 0, 8, 63
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\HomeController.cs", "C#", 0, 32, 0, 0, 0, 0, 0, 6, 38
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\LanguagesController.cs", "C#", 0, 41, 0, 0, 0, 0, 0, 6, 47
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\PlayersController.cs", "C#", 0, 17, 0, 0, 0, 0, 0, 2, 19
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Models\ErrorViewModel.cs", "C#", 0, 9, 0, 0, 0, 0, 0, 3, 12
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Program.cs", "C#", 0, 24, 0, 0, 0, 0, 0, 3, 27
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Properties\launchSettings.json", "JSON", 0, 0, 0, 27, 0, 0, 0, 1, 28
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\SI.web.csproj", "XML", 0, 0, 15, 0, 0, 0, 0, 5, 20
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Startup.cs", "C#", 0, 83, 0, 0, 0, 0, 6, 14, 103
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Home\Index.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 4, 0, 0, 1, 5
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Home\Privacy.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 5, 0, 0, 2, 7
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Shared\Error.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 22, 0, 0, 4, 26
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Shared\_Layout.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 47, 0, 0, 2, 49
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Shared\_ValidationScriptsPartial.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 2, 0, 0, 1, 3
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\_ViewImports.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 3, 0, 0, 1, 4
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\_ViewStart.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 3, 0, 0, 1, 4
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\appsettings.Development.json", "JSON", 0, 0, 0, 9, 0, 0, 0, 1, 10
-"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\appsettings.json", "JSON", 0, 0, 0, 30, 0, 0, 0, 0, 30
-"Total", "-", 1, 5064, 88, 135, 86, 297, 124, 947, 6742
+"filename", "language", "Markdown", "XML", "C#", "JSON", "aspnetcorerazor", "HTML", "SQL", "CSS", "JavaScript", "comment", "blank", "total"
+"c:\projects\salesImitation\README.md", "Markdown", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Abstractions\IFacebookService.cs", "C#", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 3, 26
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\LoginAdministrator\LoginAdministratorHandler.cs", "C#", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 3, 34
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\LoginAdministrator\LoginAdministratorReponse.cs", "C#", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\LoginAdministrator\LoginAdministratorRequest.cs", "C#", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\RegisterAdministrator\RegisterAdministratorRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Administrators\Commands\RegisterAdministrator\RegisterAdministratorRequestHandler.cs", "C#", 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 4, 23
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SaveNewCategory\SaveNewCategoryHandler.cs", "C#", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 4, 29
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SaveNewCategory\SaveNewCategoryRequest.cs", "C#", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SetIsActiveToCategory\SetIsActiveToCategoryHandler.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 4, 21
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\SetIsActiveToCategory\SetIsActiveToCategoryRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\UpdateCategory\UpdateCategoryHandler.cs", "C#", 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 4, 23
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Commands\UpdateCategory\UpdateCategoryRequest.cs", "C#", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 1, 15
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetAllCategories\GetAllCategoriesHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetAllCategories\GetAllCategoriesRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategoriesListbyIDs\GetCategoriesListResponse.cs", "C#", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 2, 18
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategoriesListbyIDs\GetCategoriesListbyIDsRequestHandler.cs", "C#", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 4, 34
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategoriesListbyIDs\GetCategoriesListbyIDsRequestRequest.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 2, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategory\GetCategoryHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Categories\Queries\GetCategory\GetCategoryRequest.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 2, 15
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Contents\ContentModel.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Contents\IContentRepository.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 11
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\BuyExtraTime\BuyExtraTimeHandler.cs", "C#", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 2, 32
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\BuyExtraTime\BuyExtraTimeRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\SkipCurrentMission\SkipCurrentMissionHandler.cs", "C#", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 2, 32
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\SkipCurrentMission\SkipCurrentMissionRequst.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\StartNewMission\SartNewMissionRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 1, 1, 11
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Commands\StartNewMission\StartNewMissionHandler.cs", "C#", 0, 0, 79, 0, 0, 0, 0, 0, 0, 4, 14, 97
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Queries\GetCurrentMission\GetCurrentMissionHandler.cs", "C#", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 4, 38
+"c:\projects\salesImitation\SalesImitation\src\SI.application\CurrentMissions\Queries\GetCurrentMission\GetCurrentMissionRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\DependencyInjection.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.application\EventHandlers\CurrentMissions\CreateCurrentMissionEventHandler.cs", "C#", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 2, 36
+"c:\projects\salesImitation\SalesImitation\src\SI.application\EventHandlers\DomainEvent.cs", "C#", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 2, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\FAQs\FAQModel.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 11
+"c:\projects\salesImitation\SalesImitation\src\SI.application\FAQs\IFAQsRepository.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\SaveNewMission\SaveNewMissionHandler.cs", "C#", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 7, 34
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\SaveNewMission\SaveNewMissionRequest.cs", "C#", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\UpdateMission\UpdateMissionHandler.cs", "C#", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 6, 30
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Commands\UpdateMission\UpdateMissionRequest.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 1, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetAllMissions\GetAllMissionsHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetAllMissions\GetAllMissionsRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMissionByLevel\GetMissionByLevelHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMissionByLevel\GetMissionByLevellRequest.cs", "C#", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMission\GetMissionHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Missions\Queries\GetMission\GetMissionRequest.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Notifications\Commands\SaveStartMissionNotification\SaveStartMissionNotificationHandler.cs", "C#", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 2, 32
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Notifications\Commands\SaveStartMissionNotification\SaveStartMissionNotificationRequest.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 2, 23
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Notifications\Queries\GetNewNotificationsHandler.cs", "C#", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 3, 28
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Notifications\Queries\GetNewNotificationsRequest.cs", "C#", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Notifications\Queries\GetNewNotificationsResponse.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 6
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SaveNewPartner\SaveNewPartnerHandler.cs", "C#", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 9, 39
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SaveNewPartner\SaveNewPartnerRequest.cs", "C#", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 10, 36
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SetIsActiveToPartner\SetIsActiveToPartnerHandler.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 4, 21
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\SetIsActiveToPartner\SetIsActiveToPartnerRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 2, 11
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\UpdatePartner\UpdatePartnerHandler.cs", "C#", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 8, 35
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Commands\UpdatePartner\UpdatePartnerRequest.cs", "C#", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 11, 38
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetPartner\GetPartnerHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetPartner\GetPartnerRequest.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetRangeOfPartners\GetRangeOfPartnerHandler.cs", "C#", 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 4, 32
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetRangeOfPartners\GetRangeOfPartnerRequest.cs", "C#", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Partners\Queries\GetRangeOfPartners\GetangeOfPartnerResponse.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LogOutPlayer\LogOutPlayerHandler.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 2, 23
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LogOutPlayer\LogOutPlayerRequest.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 2, 8
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginPlayer\LoginPlayerHandler.cs", "C#", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 3, 34
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginPlayer\LoginPlayerReponse.cs", "C#", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginPlayer\LoginPlayerRequest.cs", "C#", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginWithFacebook\LoginWithFacebookHandler.cs", "C#", 0, 0, 65, 0, 0, 0, 0, 0, 0, 0, 3, 68
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginWithFacebook\LoginWithFacebookRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\LoginWithFacebook\LoginWithFacebookResponse.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 1, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\RegisterPlayer\RegisterPlayerRequest.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 1, 18
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Commands\RegisterPlayer\RegistrationPlayerHandler.cs", "C#", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 3, 23
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetLeaderboard\GetLeaderboardHandler.cs", "C#", 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 4, 53
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetLeaderboard\GetLeaderboardRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetLeaderboard\GetLeaderboardResponse.cs", "C#", 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 2, 21
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetPlayerByID\GetPlayerByIDHandler.cs", "C#", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 3, 34
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetPlayerByID\GetPlayerByIDRequest.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Players\Queries\GetPlayerByID\GetPlayerByIDResponse.cs", "C#", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 1, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SaveNewProduct\SaveNewProductHandler.cs", "C#", 0, 0, 47, 0, 0, 0, 0, 0, 0, 5, 10, 62
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SaveNewProduct\SaveNewProductRequest.cs", "C#", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 12, 39
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SetIsActiveToProduct\SetIsActiveToProductHandler.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 4, 21
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\SetIsActiveToProduct\SetIsActiveToProductRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 2, 11
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\UpdateProduct\UpdateProductHandler.cs", "C#", 0, 0, 36, 0, 0, 0, 0, 0, 0, 4, 7, 47
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Commands\UpdateProduct\UpdateProductRequest.cs", "C#", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 11, 34
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductCategoriesByPriceRangeAndConnections\GetProductCategoriesByPriceRangeAndConnectionsHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductCategoriesByPriceRangeAndConnections\GetProductCategoriesByPriceRangeAndConnectionsRequest.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 4, 25
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductCategoriesByPriceRange\GetRangeOfProductHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductCategoriesByPriceRange\GetRangeOfProductRequest.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 4, 25
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProduct\GetProductHandler.cs", "C#", 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 4, 23
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProduct\GetProductRequest.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductsByGroup\GetProductsBuGroupHandler.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 3, 24
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetProductsByGroup\GetProductsBuGroupRequest.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetRangeOfPoduct\GetRangeOfProductHandler.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 4, 22
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Products\Queries\GetRangeOfPoduct\GetRangeOfProductRequest.cs", "C#", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SI.application.csproj", "XML", 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 5, 21
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\ActivateBaseBonus\ActivateBaseBonusHandler.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 4, 25
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\ActivateBaseBonus\ActivateBaseBonusRequest.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\IncreaseBonus\IncreaseBonusHandler.cs", "C#", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\IncreaseBonus\IncreaseBonusRequest.cs", "C#", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\SaveBaseBonus\SaveBaseBonusHandler.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 4, 25
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Commands\SaveBaseBonus\SaveBaseBonusRequest.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetActiveBonus\GetActiveBonusHandler.cs", "C#", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 4, 20
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetActiveBonus\GetActiveBonusRequest.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetPendingBonus\GetPendingBonusHandler.cs", "C#", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 4, 20
+"c:\projects\salesImitation\SalesImitation\src\SI.application\SuperBonus\Queries\GetPendingBonus\GetPendingBonusRequest.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Commands\SaveAllLanguages\SaveAllLanguagesHandler.cs", "C#", 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Commands\SaveAllLanguages\SaveAllLanguagesRequest.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 3, 20
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\ITranslationsRepository.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 4, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\ITranslationsService.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 4, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Queries\GetAllLanuages\GetAllLanuagesHandler.cs", "C#", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 4, 25
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\Queries\GetAllLanuages\GetAllLanuagesRequest.cs", "C#", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\TranslationModel.cs", "C#", 0, 0, 69, 0, 0, 0, 0, 0, 0, 1, 10, 80
+"c:\projects\salesImitation\SalesImitation\src\SI.application\Translations\TranslationsService.cs", "C#", 0, 0, 42, 0, 0, 0, 0, 0, 0, 2, 9, 53
+"c:\projects\salesImitation\SalesImitation\src\SI.common\Abstractions\Logging\ILogger.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\SI.common\Models\Result.cs", "C#", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 7, 29
+"c:\projects\salesImitation\SalesImitation\src\SI.common\SI.common.csproj", "XML", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 3, 8
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Authentication\ICurrentUser.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\DomainEvents\CurrentMissions\CurrentMissionCreated.cs", "C#", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 2, 24
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\DomainEvents\IDomainEvent.cs", "C#", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\DomainEvents\IDomainEventDispatcher.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\ICategoryRepository.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 2, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\ICurrentMissionRepository.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 2, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IMissionRepository.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 2, 19
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\INotificationRepository.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 2, 20
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IPartnerRepository.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 2, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IPlayerRepository.cs", "C#", 0, 0, 16, 0, 0, 0, 0, 0, 0, 1, 2, 19
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IProductRepository.cs", "C#", 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 4, 24
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IRepository.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 3, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\ISuperBonusRepository.cs", "C#", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 2, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Abstractions\Repositories\IUserRepository.cs", "C#", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 5, 19
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\BaseEntity.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Category\Category.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 3, 18
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMission.cs", "C#", 0, 0, 128, 0, 0, 0, 0, 0, 0, 1, 19, 148
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionCategory.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionPlayer.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 2, 17
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionProduct.cs", "C#", 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 2, 27
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\CurrentMission\CurrentMissionStatuses.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\MIssion\MissioinRange.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\MIssion\Mission.cs", "C#", 0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 4, 48
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\MIssion\MissionStatuses.cs", "C#", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Notifications\Notification.cs", "C#", 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 2, 25
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Notifications\NotificationTypes.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 9
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\Partner.cs", "C#", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 8, 24
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerAddress.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 4, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerContactInfo.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 3, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerContactPerson.cs", "C#", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 2, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Partner\PartnerLogo.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Player\HashedPassword.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Player\Player.cs", "C#", 0, 0, 135, 0, 0, 0, 0, 0, 0, 1, 15, 151
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Player\PlayerAvatars.cs", "C#", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 8
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ConnectedProduct.cs", "C#", 0, 0, 42, 0, 0, 0, 0, 0, 0, 0, 16, 58
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\Money.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 4, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\Product.cs", "C#", 0, 0, 51, 0, 0, 0, 0, 0, 0, 0, 21, 72
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ProductCategory.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 3, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ProductImage.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 3, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Products\ProductPartner.cs", "C#", 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 3, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\SuperBonus\SuperBonus.cs", "C#", 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 8, 40
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\SuperBonus\SuperBonusIncrease.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\SuperBonus\SuperBonusStatuses.cs", "C#", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\User\HashedPassword.cs", "C#", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\User\User.cs", "C#", 0, 0, 73, 0, 0, 0, 0, 0, 0, 0, 10, 83
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\User\UserTypes.cs", "C#", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Withdraw\Withdraw.cs", "C#", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Withdraw\WithdrawPlayer.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 6
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Entities\Withdraw\WithdrawStatuses.cs", "C#", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Events\PlayerStartNewMissionEvent.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Exceptions\LocalizableException.cs", "C#", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\SI.domain.csproj", "XML", 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 5, 16
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Services\Players\IPlayerService.cs", "C#", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 2, 14
+"c:\projects\salesImitation\SalesImitation\src\SI.domain\Services\Players\PlayerService.cs", "C#", 0, 0, 41, 0, 0, 0, 0, 0, 0, 6, 8, 55
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\Authentication\Administrator\CurrentUser.cs", "C#", 0, 0, 47, 0, 0, 0, 0, 0, 0, 0, 6, 53
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\CategoryRepository.cs", "C#", 0, 0, 141, 0, 0, 0, 0, 0, 0, 0, 18, 159
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\ContentRepository.cs", "C#", 0, 0, 77, 0, 0, 0, 0, 0, 0, 0, 13, 90
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\CurrentMissionRepository.cs", "C#", 0, 0, 270, 0, 0, 0, 0, 0, 0, 14, 47, 331
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\FAQsReposiotry.cs", "C#", 0, 0, 105, 0, 0, 0, 0, 0, 0, 0, 17, 122
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\MissionRepository.cs", "C#", 0, 0, 183, 0, 0, 0, 0, 0, 0, 0, 14, 197
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\NotificationsRepository.cs", "C#", 0, 0, 163, 0, 0, 0, 0, 0, 0, 0, 22, 185
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\PartnerRepository.cs", "C#", 0, 0, 220, 0, 0, 0, 0, 0, 0, 0, 24, 244
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\PlayerRepository.cs", "C#", 0, 0, 186, 0, 0, 0, 0, 0, 0, 1, 20, 207
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\ProductRepository.cs", "C#", 0, 0, 498, 0, 0, 0, 0, 0, 0, 49, 49, 596
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\RepositoryBase.cs", "C#", 0, 0, 55, 0, 0, 0, 0, 0, 0, 13, 13, 81
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\SuperBonusRepository.cs", "C#", 0, 0, 103, 0, 0, 0, 0, 0, 0, 3, 17, 123
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\TranslationsRepository.cs", "C#", 0, 0, 157, 0, 0, 0, 0, 0, 0, 0, 32, 189
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Repository\UserRepository.cs", "C#", 0, 0, 95, 0, 0, 0, 0, 0, 0, 0, 13, 108
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Scripts\Init.sql", "SQL", 0, 0, 0, 0, 0, 0, 582, 0, 0, 11, 27, 620
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\Scripts\initNeutralLanguage.sql", "SQL", 0, 0, 0, 0, 0, 0, 75, 0, 0, 1, 14, 90
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DAL\TransactionalRepository.cs", "C#", 0, 0, 42, 0, 0, 0, 0, 0, 0, 0, 6, 48
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DependencyInjection.cs", "C#", 0, 0, 51, 0, 0, 0, 0, 0, 0, 0, 6, 57
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\DomainEvents\DomainEventDispacherExtension.cs", "C#", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 3, 25
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\Logging\SerilogClient.cs", "C#", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 5, 35
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\SI.infrastructure.csproj", "XML", 0, 26, 0, 0, 0, 0, 0, 0, 0, 1, 5, 32
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\ServiceClients\Facebook\FacebookService.cs", "C#", 0, 0, 55, 0, 0, 0, 0, 0, 0, 0, 5, 60
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\ServiceLocator.cs", "C#", 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 7, 40
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\Storage\FIleService.cs", "C#", 0, 0, 84, 0, 0, 0, 0, 0, 0, 1, 16, 101
+"c:\projects\salesImitation\SalesImitation\src\SI.infrastructure\Storage\IFileService.cs", "C#", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\ActionFilters\ErrorHandlerFilter.cs", "C#", 0, 0, 41, 0, 0, 0, 0, 0, 0, 2, 4, 47
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\AccountController.cs", "C#", 0, 0, 41, 0, 0, 0, 0, 0, 0, 0, 7, 48
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\ApiController.cs", "C#", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 3, 18
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\BonusController.cs", "C#", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 3, 25
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\CategoriesController.cs", "C#", 0, 0, 36, 0, 0, 0, 0, 0, 0, 1, 8, 45
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\ContentController.cs", "C#", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 5, 36
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\FAQsController.cs", "C#", 0, 0, 37, 0, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\LanguagesController.cs", "C#", 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 8, 47
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\MediaController.cs", "C#", 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 4, 36
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\MissionsController.cs", "C#", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 7, 38
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\PartnersController.cs", "C#", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 7, 41
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Controllers\ProuctsController.cs", "C#", 0, 0, 46, 0, 0, 0, 0, 0, 0, 0, 8, 54
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Middlewares\ExceptionLoggerMiddlware.cs", "C#", 0, 0, 18, 0, 0, 0, 0, 0, 0, 4, 1, 23
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Program.cs", "C#", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 3, 27
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Properties\launchSettings.json", "JSON", 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 1, 31
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\SI.administration.web.csproj", "XML", 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 6, 23
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\Startup.cs", "C#", 0, 0, 100, 0, 0, 0, 0, 0, 0, 2, 20, 122
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\appsettings.Development.json", "JSON", 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\appsettings.json", "JSON", 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 35
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\css\app.31b14415.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\css\bootstrap4.4.1.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 6, 0, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\css\chunk-vendors.e136dace.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\css\main.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1880, 0, 24, 151, 2055
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\css\normalize.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 146, 0, 129, 75, 350
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\css\pretty.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 10, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\css\toastr.min.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\BG.svg", "XML", 0, 4725, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4726
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\Eye.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\arrows.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\bg-cover.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\big-user.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\blue.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\boy.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\check.svg", "XML", 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\close.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\coin.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\down.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\fb.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\gg.svg", "XML", 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 1, 15
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\girl.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\large-star.svg", "XML", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\logo-white.svg", "XML", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\logout.svg", "XML", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\people.svg", "XML", 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 1, 17
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\play.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\progress-banner-bg.svg", "XML", 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\rocket.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\search.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\star.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\tick.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\time.svg", "XML", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\user-white.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\img\wallet.svg", "XML", 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\index.html", "HTML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\js\app.998bc0c7.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 2
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\js\chunk-vendors.0a0282a5.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 6, 27, 0, 33
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\js\main.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\js\plugins.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 2, 10, 3, 15
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\js\vendor\jquery-3.4.1.min.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.administration.web\wwwroot\js\vendor\modernizr-3.8.0.min.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ActionFilters\ErrorHandlerFilter.cs", "C#", 0, 0, 36, 0, 0, 0, 0, 0, 0, 2, 4, 42
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\css\app.83b019eb.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\css\bootstrap4.4.1.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 6, 0, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\css\chunk-vendors.ca0b18fc.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\css\main.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 798, 0, 24, 131, 953
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\css\normalize.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 146, 0, 129, 75, 350
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\css\pretty.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 10, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\css\toastr.min.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\BG.svg", "XML", 0, 4725, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4726
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\Eye.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\arrows.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\bg-cover.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\blue.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\boy.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\check.svg", "XML", 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\close.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\coin.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\down.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\fb.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\gg.svg", "XML", 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 1, 15
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\large-star.svg", "XML", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\logo-white.svg", "XML", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\people.svg", "XML", 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 1, 17
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\play.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\progress-banner-bg.svg", "XML", 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\rocket.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\star.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\tick.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\time.svg", "XML", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\user-white.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\img\wallet.svg", "XML", 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\index.html", "HTML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\js\app.7543f565.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 2
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\js\chunk-vendors.c8459363.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 6, 27, 0, 33
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\js\main.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\js\plugins.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 2, 10, 3, 15
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\js\vendor\jquery-3.4.1.min.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\ClientApp\build\js\vendor\modernizr-3.8.0.min.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\AccountController.cs", "C#", 0, 0, 59, 0, 0, 0, 0, 0, 0, 0, 7, 66
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\ApiController.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 2, 19
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\BonusController.cs", "C#", 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 4, 35
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\ContentController.cs", "C#", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 4, 30
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\FAQController.cs", "C#", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 4, 31
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\GameController.cs", "C#", 0, 0, 55, 0, 0, 0, 0, 0, 0, 0, 8, 63
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\HomeController.cs", "C#", 0, 0, 28, 0, 0, 0, 0, 0, 0, 5, 6, 39
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\LanguagesController.cs", "C#", 0, 0, 41, 0, 0, 0, 0, 0, 0, 0, 6, 47
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\MediaController.cs", "C#", 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 4, 36
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\NotificationsController.cs", "C#", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 4, 31
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Controllers\PlayersController.cs", "C#", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 2, 19
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Models\ErrorViewModel.cs", "C#", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Program.cs", "C#", 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 3, 27
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Properties\launchSettings.json", "JSON", 0, 0, 0, 27, 0, 0, 0, 0, 0, 0, 1, 28
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\SI.web.csproj", "XML", 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Startup.cs", "C#", 0, 0, 106, 0, 0, 0, 0, 0, 0, 17, 24, 147
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Home\Index.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Home\Privacy.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 2, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Shared\Error.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 4, 26
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Shared\_Layout.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 47, 0, 0, 0, 0, 0, 2, 49
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\Shared\_ValidationScriptsPartial.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\_ViewImports.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\Views\_ViewStart.cshtml", "aspnetcorerazor", 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\appsettings.Development.json", "JSON", 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\appsettings.json", "JSON", 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 30
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\css\app.31b14415.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\css\bootstrap4.4.1.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 6, 0, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\css\chunk-vendors.e136dace.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\css\main.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1880, 0, 24, 151, 2055
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\css\normalize.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 146, 0, 129, 75, 350
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\css\pretty.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 0, 10, 1, 12
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\css\toastr.min.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\BG.svg", "XML", 0, 4725, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4726
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\Eye.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\arrows.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\bg-cover.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\big-user.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\blue.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\boy.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\check.svg", "XML", 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\close.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\coin.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\down.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\fb.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\gg.svg", "XML", 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 1, 15
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\girl.svg", "XML", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\large-star.svg", "XML", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\logo-white.svg", "XML", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\logout.svg", "XML", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\people.svg", "XML", 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 1, 17
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\play.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\progress-banner-bg.svg", "XML", 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\rocket.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\search.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\star.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\tick.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\time.svg", "XML", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\user-white.svg", "XML", 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\img\wallet.svg", "XML", 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\index.html", "HTML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\js\app.998bc0c7.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 2
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\js\chunk-vendors.0a0282a5.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 6, 27, 0, 33
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\js\main.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\js\plugins.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 2, 10, 3, 15
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\js\vendor\jquery-3.4.1.min.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 3
+"c:\projects\salesImitation\SalesImitation\src\presenter\SI.web\wwwroot\js\vendor\modernizr-3.8.0.min.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 3
+"Total", "-", 1, 14740, 6937, 140, 89, 3, 657, 5008, 39, 783, 1913, 30310

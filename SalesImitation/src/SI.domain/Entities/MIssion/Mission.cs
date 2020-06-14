@@ -10,7 +10,6 @@ namespace SI.Domain.Entities
         public Mission(Guid id, string name, string description, int level, int durationInHours, MissionMoneyRange range)
         {
             ID = id;
-            Id = id;
             Name = name;
             Description = description;
             PriceRange = range;
@@ -28,7 +27,6 @@ namespace SI.Domain.Entities
             DurationInHours = durationInHours;
         }
 
-        public Guid Id { get; }
         public string Name { get; set; }
         public string Description { get; set; }
         public MissionMoneyRange PriceRange { get; set; }

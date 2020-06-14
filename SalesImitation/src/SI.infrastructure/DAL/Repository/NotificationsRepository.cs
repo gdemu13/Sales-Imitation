@@ -61,7 +61,7 @@ namespace SI.Infrastructure.DAL.Repository
                         Deadline = notification.Deadline,
                         PlayerID = notification.PlayerID,
                         Type = (int)notification.Type,
-                        Seen = false,
+                        Seen = 0,
                         LastUpdateDate = @DateTime.Now
                     });
             }
@@ -145,11 +145,11 @@ namespace SI.Infrastructure.DAL.Repository
 
         public async Task<IEnumerable<Notification>> GetUnseenByPlayer(Guid playerID)
         {
-            string sql = "SELECT * From Notifications Where PlayerID = @PlayerID and Seen = false;";
+            string sql = "SELECT * From Notifications Where PlayerID = @PlayerID and Seen = 0 and Deadline > @Now;";
             IEnumerable<Notification> notifications = null;
             using (var connection = Connection)
             {
-                var res = await connection.QueryAsync(sql);
+                var res = await connection.QueryAsync(sql, new { PlayerID = playerID, Now = DateTime.Now });
                 if (res != null)
                 {
                     notifications = res.Select(r =>
@@ -162,22 +162,21 @@ namespace SI.Infrastructure.DAL.Repository
             return notifications;
         }
 
-        public async Task<Result> SetSeen(List<Guid> ids)
+        public async Task<Result> SetSeen(IEnumerable<Guid> ids)
         {
-            string sql = @"UPDATE Categories SET
-                        Seen = @Seen,
+            string sql = @"UPDATE Notifications SET
+                        Seen = 1,
                         LastUpdateDate = @LastUpdateDate
             where ID in @IDs;";
 
             using (var connection = Connection)
             {
                 var affectedRows = await connection.ExecuteAsync(sql,
-                    ids.Select(i => new
-                    {
-                        ID = i,
-                        Seen = true,
-                        LastUpdateDate = DateTime.Now
-                    }));
+                   new
+                   {
+                       LastUpdateDate = DateTime.Now,
+                       IDs = ids
+                   });
             }
 
             return await Task.FromResult(Result.CreateSuccessReqest());

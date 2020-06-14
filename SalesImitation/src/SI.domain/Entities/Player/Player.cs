@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography;
+using SI.Common.Models;
 using SI.Domain.Exceptions;
 
 namespace SI.Domain.Entities
@@ -32,10 +33,10 @@ namespace SI.Domain.Entities
             Phone = phone;
         }
         public PlayerAvatars Avatar { get; set; }
-        public string Phone { get; }
+        public string Phone { get; set; }
         public string Username { get; }
-        public PlayerHashedPassword PasswordHash { get; }
-        public string Mail { get; }
+        public PlayerHashedPassword PasswordHash { get; private set; }
+        public string Mail { get; set; }
         private string _firstName;
         public string Firstname
         {
@@ -82,7 +83,7 @@ namespace SI.Domain.Entities
         public void SpendCoins(decimal coinsToSpend, string reason)
         {
             if (Coins - coinsToSpend < 0)
-                throw new LocalizableException("not_enought_coins", "not_enought_coins");
+                throw new LocalizableException("not_enought_coins", "თქვენ არ გაქვ საკმარისი რაოდენობის მონეტები");
 
             Coins -= coinsToSpend;
         }
@@ -95,6 +96,18 @@ namespace SI.Domain.Entities
         public void LevelUp()
         {
             CurrentLevel++;
+        }
+
+        public Result ChangePassword(string oldPassword, string newPassword)
+        {
+            if (IsPasswordValid(oldPassword))
+                return new Result(false, "მიმდინარე პაროლი არასწორია");
+
+            if (newPassword.Length < 7 || newPassword.Length > 20)
+                return new Result(false, "პაროლი უნდა იყოს მინიმუმ 6 და მაქსიმუმ 7 სიმბოლოიანი");
+
+            PasswordHash = new PlayerHashedPassword(HashPassword(newPassword));
+            return Result.CreateSuccessReqest("პაროლი წარმატებით შეიცვალა");
         }
 
         #region Constants

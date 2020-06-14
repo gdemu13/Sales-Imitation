@@ -522,5 +522,75 @@ namespace SI.Infrastructure.DAL.Repository
                 return products;
             }
         }
+
+        public async Task<IEnumerable<Product>> GetByGroup(Guid groupID)
+        {
+            string sql = @"SELECT
+                                    prod.*, part.Name as PartnerName, img.ID as ImageID,
+                                    cat.Name as CategoryName, img.Url as ImageUrl
+                        FROM		Products prod
+                        LEFT JOIN	Partners part
+                            ON		prod.PartnerID = part.ID
+                        LEFT JOIN	Categories cat
+                            ON		prod.CategoryID = cat.ID
+                        LEFT JOIN	ProductImages img
+                            ON		img.ProductID = prod.ID
+                        WHERE       prod.ProductGroupID = @GroupID
+                        ORDER BY	Ordering
+                        ;";
+
+            List<Product> products = null;
+            using (var connection = Connection)
+            {
+                var productsResult = await connection.QueryAsync(sql, new
+                {
+                    @GroupID = groupID
+                });
+                if (productsResult != null)
+                {
+
+                    var res = from prod in productsResult
+                              let partner = new ProductPartner(prod.PartnerID, prod.PartnerName)
+                              let price = new Money(prod.Price)
+                              let category = prod.CategoryID == null ? null : new ProductCategory(prod.CategoryID, prod.CategoryName)
+                              group prod
+                              by new Product(prod.ID, prod.Name, prod.Description, partner, price, prod.Point, prod.ProductGroupID, prod.Gift, prod.IsActive) { Category = category } into p
+                              select p;
+
+                    products = new List<Product>();
+                    foreach (var prod in res)
+                    {
+                        Product pr = prod.Key;
+                        foreach (var img in prod)
+                        {
+                            Console.WriteLine(img.ImageID == null ? Guid.Empty : img.ImageID);
+                            if (img != null && img.ImageID != null)
+                                pr.AddImage(img.ImageID, img.ImageUrl);
+                        }
+                        products.Add(pr);
+                    }
+                }
+
+                //make connections by groupid
+                foreach (var prod in products)
+                {
+                    var connections = products.Where(p => p.ProductGroupID == prod.ProductGroupID && p.ID != prod.ID)
+                        .Select(p =>
+                        {
+                            var cp = new ConnectedProduct(p.ID, p.Name, p.Description, p.Partner, p.Price, p.Coin, p.ProductGroupID, p.Gift) { Category = p.Category };
+                            foreach (var i in p.Images)
+                            {
+                                cp.AddImage(i);
+                            }
+                            return cp;
+                        });
+                    foreach (var con in connections)
+                    {
+                        prod.AddConnectedProduct(con);
+                    }
+                }
+                return products;
+            }
+        }
     }
 }

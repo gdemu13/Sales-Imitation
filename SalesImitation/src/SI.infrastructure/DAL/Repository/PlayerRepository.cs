@@ -96,7 +96,8 @@ namespace SI.Infrastructure.DAL.Repository
                                                 Level = @Level,
                                                 Coins = @Coins,
                                                 Avatar = @Avatar,
-                                                Phone = @Phone
+                                                Phone = @Phone,
+                                                PasswordHash = @PasswordHash
                                where ID = @ID AND LastUpdateDate = @CheckDate;";
 
             using (var connection = Connection)
@@ -113,9 +114,10 @@ namespace SI.Infrastructure.DAL.Repository
                         Coins = player.Coins,
                         Avatar = player.Avatar,
                         Phone = player.Phone,
+                        PasswordHash = player.PasswordHash.Value,
                     }, _transaction);
             }
-
+//TODO tu ver daaupdatda success ar unda daabrunos
             return await Task.FromResult(Result.CreateSuccessReqest());
         }
 

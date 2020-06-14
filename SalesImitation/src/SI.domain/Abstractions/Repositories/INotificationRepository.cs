@@ -15,6 +15,6 @@ namespace SI.Domain.Abstractions.Repositories
         Task<IEnumerable<Notification>> GetUnseenByPlayer(Guid playerID);
         Task<Result> Insert(Notification category);
         Task<Result> Update(Guid id, Notification category);
-        Task<Result> SetSeen(List<Guid> ids);
+        Task<Result> SetSeen(IEnumerable<Guid> ids);
     }
 }
