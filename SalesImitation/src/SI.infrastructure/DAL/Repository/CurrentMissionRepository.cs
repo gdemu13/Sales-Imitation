@@ -236,83 +236,7 @@ namespace SI.Infrastructure.DAL.Repository
                 });
                 if (res != null)
                 {
-                    // System.Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6}", res.Prod1ID, res.Prod1Name, res.Prod1Desc,
-                    //                 res.Prod1PartnerName, res.Prod1PartnerAddress, res.Prod1Benefits, res.Point);
-                    var player = new CurrentMissionPlayer(res.PlayerID, res.PlayerFullName, res.PlayerLevel);
-
-                    var currentMissionProduct1 = new CurrentMissionProduct(res.Prod1ID, res.Prod1Name, res.Prod1Desc,
-                                    res.Prod1PartnerName, res.Prod1ImageUrl, res.Prod1PartnerAddress, res.Prod1Benefits, res.Prod1Point);
-
-                    var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
-                                    res.Prod2PartnerName, res.Prod2ImageUrl, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Point);
-
-
-                    var currentMissionCategory = new CurrentMissionCategory(res.CategoryID, res.CategoryName);
-
-
-
-                    currentMission = (CurrentMission)Activator.CreateInstance(typeof(CurrentMission), true);
-
-                    currentMission.GetType()
-                    .GetProperty("ID", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                   .SetValue(currentMission, res.ID, null);
-
-                    currentMission.GetType()
-                     .GetProperty("Name", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, res.Name, null);
-
-                    currentMission.GetType()
-                  .GetProperty("Description", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                 .SetValue(currentMission, res.Description, null);
-
-                    currentMission.GetType()
-                     .GetProperty("Level", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, res.Level, null);
-
-                    currentMission.GetType()
-                     .GetField("_status", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, res.Status);
-
-                    currentMission.GetType()
-                     .GetProperty("Product1", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, currentMissionProduct1, null);
-
-                    currentMission.GetType()
-                     .GetProperty("Product2", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, currentMissionProduct2, null);
-
-                    currentMission.GetType()
-                     .GetProperty("Category", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, currentMissionCategory, null);
-
-                    currentMission.GetType()
-                     .GetProperty("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, player, null);
-
-                    currentMission.GetType()
-                     .GetProperty("StartedDate", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, res.StartedDate, null);
-
-                    currentMission.GetType()
-                     .GetProperty("DurationHours", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, res.Duration, null);
-
-                    currentMission.GetType()
-                     .GetProperty("PromoCode", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    .SetValue(currentMission, res.PromoCode, null);
-
-                    currentMission.GetType()
-                    .GetProperty("AddedHours", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                   .SetValue(currentMission, res.AddedHours, null);
-
-                    currentMission.GetType()
-                    .GetProperty("EarnedCoints", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                   .SetValue(currentMission, res.EarnedCoints, null);
-
-
-                    currentMission.GetType()
-                    .GetProperty("CategoryUpdated", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                   .SetValue(currentMission, res.CategoryUpdated, null);
+                    currentMission = ExtractModel(res);
 
                     lastUpdateDate = res.LastUpdateDate;
                 }
@@ -320,12 +244,112 @@ namespace SI.Infrastructure.DAL.Repository
             return (currentMission, lastUpdateDate);
         }
 
+        private static CurrentMission ExtractModel(dynamic res)
+        {
+            CurrentMission currentMission;
+            var player = new CurrentMissionPlayer(res.PlayerID, res.PlayerFullName, res.PlayerLevel);
+
+            var currentMissionProduct1 = new CurrentMissionProduct(res.Prod1ID, res.Prod1Name, res.Prod1Desc,
+                            res.Prod1PartnerName, res.Prod1ImageUrl, res.Prod1PartnerAddress, res.Prod1Benefits, res.Prod1Point);
+
+            var currentMissionProduct2 = new CurrentMissionProduct(res.Prod2ID, res.Prod2Name, res.Prod2Desc,
+                            res.Prod2PartnerName, res.Prod2ImageUrl, res.Prod2PartnerAddress, res.Prod2Benefits, res.Prod2Point);
+
+
+            var currentMissionCategory = new CurrentMissionCategory(res.CategoryID, res.CategoryName);
+
+
+
+            currentMission = (CurrentMission)Activator.CreateInstance(typeof(CurrentMission), true);
+
+            currentMission.GetType()
+            .GetProperty("ID", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+           .SetValue(currentMission, res.ID, null);
+
+            currentMission.GetType()
+             .GetProperty("Name", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, res.Name, null);
+
+            currentMission.GetType()
+          .GetProperty("Description", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+         .SetValue(currentMission, res.Description, null);
+
+            currentMission.GetType()
+             .GetProperty("Level", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, res.Level, null);
+
+            currentMission.GetType()
+             .GetField("_status", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, res.Status);
+
+            currentMission.GetType()
+             .GetProperty("Product1", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, currentMissionProduct1, null);
+
+            currentMission.GetType()
+             .GetProperty("Product2", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, currentMissionProduct2, null);
+
+            currentMission.GetType()
+             .GetProperty("Category", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, currentMissionCategory, null);
+
+            currentMission.GetType()
+             .GetProperty("Player", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, player, null);
+
+            currentMission.GetType()
+             .GetProperty("StartedDate", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, res.StartedDate, null);
+
+            currentMission.GetType()
+             .GetProperty("DurationHours", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, res.Duration, null);
+
+            currentMission.GetType()
+             .GetProperty("PromoCode", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            .SetValue(currentMission, res.PromoCode, null);
+
+            currentMission.GetType()
+            .GetProperty("AddedHours", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+           .SetValue(currentMission, res.AddedHours, null);
+
+            currentMission.GetType()
+            .GetProperty("EarnedCoints", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+           .SetValue(currentMission, res.EarnedCoints, null);
+
+
+            currentMission.GetType()
+            .GetProperty("CategoryUpdated", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+           .SetValue(currentMission, res.CategoryUpdated, null);
+            return currentMission;
+        }
 
         public async Task<CurrentMission> GetByUser(Guid id)
         {
             //TODO
             return null;
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<CurrentMission>> GetHistoryOfPlayer(Guid playerID)
+        {
+            string sql = @"select c.*, p.FirstName + ' ' + p.LastName as PlayerFullName,
+                        p.Level as PlayerLevel from CurrentMissions c
+                        left join Players p
+                        on c.PlayerID = p.ID
+                        Where PlayerID = @ID;";
+            IEnumerable<CurrentMission> history = null;
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryAsync(sql, new
+                {
+                    ID = playerID,
+                });
+                if (res != null)
+                    history = res.Select(r => (CurrentMission)ExtractModel(r));
+            }
+            return history;
         }
     }
 }

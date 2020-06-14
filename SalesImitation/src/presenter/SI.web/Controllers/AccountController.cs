@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using SI.Application.Administrators;
 using SI.Application.Categories;
 using SI.Application.Players;
+using SI.Application.CurrentMissions;
 using SI.Common.Models;
 using SI.Domain.Entities;
 using SI.Domin.Abstractions.Authentication;
+using System.Collections.Generic;
 
 namespace SI.Web.Controllers
 {
@@ -35,7 +37,6 @@ namespace SI.Web.Controllers
         }
 
         [HttpPost("logout")]
-        [AllowAnonymous]
         public async Task<Result> Logout()
         {
             return await Mediator.Send(new LogOutPlayerRequest());
@@ -61,6 +62,26 @@ namespace SI.Web.Controllers
                     StayLogedIn = true
                 });
             return res;
+        }
+
+        [HttpPost("ChangePassword")]
+        public async Task<Result> ChangePassword([FromBody] ChangePasswordRequest request)
+        {
+            request.PlayerID = _currentUser.ID.Value;
+            return await Mediator.Send(request);
+        }
+
+        [HttpPost("UpdateInfo")]
+        public async Task<Result> UpdateInfo([FromBody] UpdatePlayerInfoRequest request)
+        {
+            request.ID = _currentUser.ID.Value;
+            return await Mediator.Send(request);
+        }
+
+        [HttpGet("History")]
+        public async Task<IEnumerable<CurrentMission>> History()
+        {
+            return await Mediator.Send(new GetHistoryOfPlayerRequest(_currentUser.ID.Value));
         }
     }
 }

@@ -45,9 +45,40 @@ namespace SI.Infrastructure.Storage
             return Result<string>.CreateSuccessReqest(fileName);
         }
 
+        public async Task<Result<string>> SavePersonalFile(IFormFile file, Guid userID)
+        {
+            int maxFile;
+            if (!int.TryParse(_config["media:images:maxSize"], out maxFile))
+                maxFile = 5 * 1024 * 1024;
+            if (file.Length > maxFile)
+                return new Result<string>(false, "ფაილის ზომა ლიმიტზე მეტია", string.Empty);
+
+            // var directoryPath = "D:\\si\\images\\";
+            var directoryPath = _config["media:images:personalpath"];
+            var fileName = userID.ToString() + Guid.NewGuid() + "." + file.FileName.Split('.').Last();
+
+            Directory.CreateDirectory(directoryPath);
+
+            if (file.Length <= 0)
+                return new Result<string>(false, "ფაილი ცარიელია", string.Empty);
+
+            var filePath = Path.Combine(directoryPath, fileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return Result<string>.CreateSuccessReqest(fileName);
+        }
+
         public async Task<byte[]> GetFile(string fileName)
         {
             var directoryPath = _config["media:images:path"];
+            return await File.ReadAllBytesAsync(directoryPath + fileName);
+        }
+
+        public async Task<byte[]> GetPersonalFile(string fileName)
+        {
+            var directoryPath = _config["media:images:personalpath"];
             return await File.ReadAllBytesAsync(directoryPath + fileName);
         }
 

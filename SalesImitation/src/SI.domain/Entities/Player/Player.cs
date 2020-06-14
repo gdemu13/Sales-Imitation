@@ -77,6 +77,8 @@ namespace SI.Domain.Entities
             }
         }
 
+        public IdentificationInfo IdentificationInfo { get; set; }
+
         //TODO
         public decimal Coins { get; private set; }
 
@@ -100,7 +102,7 @@ namespace SI.Domain.Entities
 
         public Result ChangePassword(string oldPassword, string newPassword)
         {
-            if (IsPasswordValid(oldPassword))
+            if (!IsPasswordValid(oldPassword))
                 return new Result(false, "მიმდინარე პაროლი არასწორია");
 
             if (newPassword.Length < 7 || newPassword.Length > 20)

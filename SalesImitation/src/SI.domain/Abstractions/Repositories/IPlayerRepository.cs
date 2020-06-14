@@ -15,5 +15,7 @@ namespace SI.Domain.Abstractions.Repositories {
 
         //reports
         Task<(int, decimal, int)> GetPlayerPlaceInLeaderboard(Guid id);
+        Task<(IdentificationInfo Info, DateTime? Date)> GetIdentificationInfo(Guid playerID);
+        Task<Result> SaveIdentificationInfo(Guid id, IdentificationInfo identificationInfo, DateTime? value);
     }
 }

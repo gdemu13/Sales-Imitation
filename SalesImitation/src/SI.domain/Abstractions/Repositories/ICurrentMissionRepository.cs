@@ -13,5 +13,6 @@ namespace SI.Domain.Abstractions.Repositories {
         Task<Result> UpdateIfNotChanged (Guid id, CurrentMission mission, DateTime checkDate);
         Task<(CurrentMission, DateTime?)> GetActiveByUser(Guid ID);
         Task<CurrentMission> GetByUser(Guid id);
+        Task<IEnumerable<CurrentMission>> GetHistoryOfPlayer(Guid guid);
     }
 }

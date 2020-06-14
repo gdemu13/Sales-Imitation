@@ -117,7 +117,7 @@ namespace SI.Infrastructure.DAL.Repository
                         PasswordHash = player.PasswordHash.Value,
                     }, _transaction);
             }
-//TODO tu ver daaupdatda success ar unda daabrunos
+            //TODO tu ver daaupdatda success ar unda daabrunos
             return await Task.FromResult(Result.CreateSuccessReqest());
         }
 
@@ -204,6 +204,54 @@ namespace SI.Infrastructure.DAL.Repository
                 var res = await connection.QueryFirstOrDefaultAsync(sql, new { ID = id });
                 return ((int)res.Place, res.Coins, res.Avatar);
             }
+        }
+
+        public async Task<(IdentificationInfo Info, DateTime? Date)> GetIdentificationInfo(Guid playerID)
+        {
+            string sql = "SELECT * From PlayerIdentificationInfos Where PlayerID = @PlayerID;";
+            IdentificationInfo info = null;
+            DateTime? lastUpdateDate = null;
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new { playerID = playerID });
+                if (res != null)
+                {
+                    var pass = new PlayerHashedPassword(res.PasswordHash);
+                    info = new IdentificationInfo(res.ID);
+                    info.IDCardBackUrl = res.IDCardBackUrl;
+                    info.IDCardFrontUrl = res.IDCardFrontUrl;
+                    info.IDNumber = res.IDNumber;
+                    info.SelfieUrl = res.SelfieUrl;
+
+                    lastUpdateDate = res.LastUpdateDate;
+                }
+            }
+            return (info, lastUpdateDate);
+        }
+
+        public async Task<Result> SaveIdentificationInfo(Guid playerID, IdentificationInfo identificationInfo, DateTime? value)
+        {
+            string sql = @"DELETE FROM [dbo].[PlayerIdentificationInfos] WHERE PlayerID = @PlayerID;
+            INSERT INTO [dbo].[PlayerIdentificationInfos]
+           ([ID] ,[IDCardFrontUrl] ,[IDCardBackUrl] ,[SelfieUrl] ,[IDNumber] ,[PlayerID])
+                VALUES
+           (@ID, @IDCardFrontUrl, @IDCardBackUrl, @SelfieUrl, @IDNumber, @PlayerID);";
+//TODO check date
+            using (var connection = Connection)
+            {
+                var affectedRows = await connection.ExecuteAsync(sql,
+                    new
+                    {
+                        @ID = identificationInfo.ID,
+                        @IDCardFrontUrl = identificationInfo.IDCardFrontUrl,
+                        @IDCardBackUrl = identificationInfo.IDCardBackUrl,
+                        @SelfieUrl = identificationInfo.SelfieUrl,
+                        @IDNumber = identificationInfo.IDNumber,
+                        @PlayerID = playerID
+                    });
+            }
+
+            return await Task.FromResult(Result.CreateSuccessReqest());
         }
     }
 }

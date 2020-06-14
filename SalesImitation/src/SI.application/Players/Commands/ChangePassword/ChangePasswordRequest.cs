@@ -6,8 +6,8 @@ namespace SI.Application.Players
 {
     public class ChangePasswordRequest : IRequest<Result>
     {
-        public Guid PlayerID { get; internal set; }
-        public string CurrentPassword { get; internal set; }
-        public string NewPassword { get; internal set; }
+        public Guid PlayerID { get; set; }
+        public string CurrentPassword { get; set; }
+        public string NewPassword { get; set; }
     }
 }
