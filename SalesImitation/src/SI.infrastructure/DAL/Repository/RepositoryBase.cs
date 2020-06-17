@@ -49,8 +49,6 @@ namespace SI.Infrastructure.DAL.Repository
 
         public R ContinueTransactionWith<R>(R repo, Action<R> act) where R : IRepository<R>
         {
-            System.Console.WriteLine(repo == null  ? "aaaaaaaaa" : "oooooooo");
-            System.Console.WriteLine(repo.GetType().Name);
             repo.GetType().GetField("_connection", (
                          BindingFlags.NonPublic |
                          BindingFlags.Instance)).SetValue(repo, _connection);

@@ -5,43 +5,52 @@ using SI.Common.Models;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Entities;
 using System;
+using System.Linq;
 
-namespace SI.Application.Products {
-    public class UpdateProductHandler : IRequestHandler<UpdateProductRequest, Result> {
+namespace SI.Application.Products
+{
+    public class UpdateProductHandler : IRequestHandler<UpdateProductRequest, Result>
+    {
 
         IProductRepository _productRepository;
         IPartnerRepository _partnerRepository;
         ICategoryRepository _categoryRepository;
 
-        public UpdateProductHandler (IProductRepository productRepository,
+        public UpdateProductHandler(IProductRepository productRepository,
             IPartnerRepository partnerRepository,
-            ICategoryRepository categoryRepository) {
+            ICategoryRepository categoryRepository)
+        {
 
             _productRepository = productRepository;
             _partnerRepository = partnerRepository;
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<Result> Handle (UpdateProductRequest req, CancellationToken token) {
+        public async Task<Result> Handle(UpdateProductRequest req, CancellationToken token)
+        {
+
             //partner
-            var p = await _partnerRepository.Get (req.Partner.ID);
+            var p = await _partnerRepository.Get(req.Partner.ID);
             if (p == null)
-                throw new Exception ("incorrect_partner");
+                throw new Exception("incorrect_partner");
             var partner = new ProductPartner(p.ID, p.Name);
             //price
-            var price = new Money (req.Price);
-
+            var price = new Money(req.Price);
+            System.Console.WriteLine(req.GroupID);
             //product
-            var product = new Product (req.ID, req.Name, req.Description, partner, price, req.Point, req.GroupID, req.Gift, req.IsActive);
+            var product = new Product(req.ID, req.Name, req.Description, partner, price, req.Point, req.GroupID ?? Guid.NewGuid(), req.Gift, req.IsActive);
+
+            product.AddImage(Guid.NewGuid(), req.Images?.FirstOrDefault()?.Url);
 
             //category
-            if (req.Category != null) {
-                var c = await _categoryRepository.Get (req.Category.ID);
+            if (req.Category != null)
+            {
+                var c = await _categoryRepository.Get(req.Category.ID);
                 if (c == null)
-                    throw new Exception ("incorrect_category");
-                product.Category = new ProductCategory (c.ID, c.Name);
+                    throw new Exception("incorrect_category");
+                product.Category = new ProductCategory(c.ID, c.Name);
             }
-            return await _productRepository.Update (product.ID, product);
+            return await _productRepository.Update(product.ID, product);
         }
     }
 }

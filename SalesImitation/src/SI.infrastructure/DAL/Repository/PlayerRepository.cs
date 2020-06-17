@@ -186,7 +186,6 @@ namespace SI.Infrastructure.DAL.Repository
             return player;
         }
 
-
         //reports
         public async Task<(int, decimal, int)> GetPlayerPlaceInLeaderboard(Guid id)
         {

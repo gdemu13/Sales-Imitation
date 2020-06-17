@@ -28,7 +28,7 @@ namespace SI.Administration.Web.Controllers
         }
 
         [HttpGet("Range")]
-        public async Task<IEnumerable<Product>> GetRange([FromQuery] GetRangeOfProductsRequest request)
+        public async Task<GetRangeOfProductResponse> GetRange([FromQuery] GetRangeOfProductsRequest request)
         {
             return await Mediator.Send(request);
         }

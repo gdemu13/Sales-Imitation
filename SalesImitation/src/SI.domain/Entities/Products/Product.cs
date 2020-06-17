@@ -16,6 +16,7 @@ namespace SI.Domain.Entities {
             Coin = point;
             ProductGroupID = groupID;
             IsActive = isActive;
+            Gift = gift;
 
             _images = new List<ProductImage> ();
             _connectedProduct = new List<ConnectedProduct> ();

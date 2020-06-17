@@ -43,7 +43,6 @@ namespace SI.Infrastructure.DAL.Repository
                         Amount = amount,
                         Status = SuperBonusStatuses.Pending
                     });
-                Console.WriteLine(affectedRows);
             }
 
             return await Task.FromResult(Result.CreateSuccessReqest());
@@ -56,7 +55,6 @@ namespace SI.Infrastructure.DAL.Repository
             using (var connection = Connection)
             {
                 var affectedRows = await connection.ExecuteAsync(sql, new { ID = id, Amount = amount });
-                Console.WriteLine(affectedRows);
             }
 
             return await Task.FromResult(Result.CreateSuccessReqest());
@@ -86,7 +84,6 @@ namespace SI.Infrastructure.DAL.Repository
                     ID = id,
                     Status = (int)status,
                 });
-                Console.WriteLine(affectedRows);
             }
 
             return await Task.FromResult(Result.CreateSuccessReqest());

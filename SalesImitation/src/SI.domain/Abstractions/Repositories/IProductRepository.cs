@@ -18,6 +18,8 @@ namespace SI.Domain.Abstractions.Repositories
         Task<IEnumerable<ProductCategory>> GetProductCategories(decimal fromPrice, decimal toPrice);
 
         Task<IEnumerable<ProductCategory>> GetProductCategoriesWithConnectedProducts(decimal fromPrice, decimal toPrice, int minConnections);
+        Task<IEnumerable<Product>> GetRange(int skip, int take, string searchWord);
+        Task<int> Count(string searchWord);
         Task<IEnumerable<Product>> GetByGroup(Guid groupID);
         Task<IEnumerable<Product>> GetByCategoryAndPriceRange(Guid categoryID, decimal from, decimal to);
     }

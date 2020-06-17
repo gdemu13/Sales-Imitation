@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using MediatR;
 using SI.Common.Models;
 
@@ -6,7 +7,7 @@ namespace SI.Application.Products {
     public class UpdateProductRequest : IRequest<Result> {
         public Guid ID { get; set; }
 
-        public Guid GroupID { get; set; }
+        public Guid? GroupID { get; set; }
 
         public string Name { get; set; }
 
@@ -29,6 +30,13 @@ namespace SI.Application.Products {
         public class UpdateCategory {
             public Guid ID { get; set; }
         }
+
+        public List<UpdateProductRequestImage> Images { get; set; }
+    }
+
+    public class UpdateProductRequestImage {
+        public string Url { get; set; }
+
     }
 
 }

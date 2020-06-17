@@ -7,7 +7,7 @@ using SI.Domain.Abstractions.Repositories;
 using System.Collections.Generic;
 
 namespace SI.Application.Products {
-    public class GetRangeOfProductsHandler : IRequestHandler<GetRangeOfProductsRequest, IEnumerable<Product>> {
+    public class GetRangeOfProductsHandler : IRequestHandler<GetRangeOfProductsRequest, GetRangeOfProductResponse> {
 
         IProductRepository _productRepository;
 
@@ -15,8 +15,14 @@ namespace SI.Application.Products {
             _productRepository = productRepository;
         }
 
-        public async Task<IEnumerable<Product>> Handle(GetRangeOfProductsRequest request, CancellationToken token){
-           return await _productRepository.GetRange(request.Skip, request.Take);
+        public async Task<GetRangeOfProductResponse> Handle(GetRangeOfProductsRequest request, CancellationToken token){
+            var items = await _productRepository.GetRange(request.Skip, request.Take, request.SearchWord);
+            int quantity = await _productRepository.Count(request.SearchWord);
+            return new GetRangeOfProductResponse
+            {
+                Items = items,
+                Quantity = quantity
+            };
         }
     }
 }
