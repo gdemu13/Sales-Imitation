@@ -8,6 +8,7 @@ namespace SI.Domain.Abstractions.Repositories {
 
     public interface ICurrentMissionRepository : IRepository<ICurrentMissionRepository> {
         Task<CurrentMission> Get (Guid ID);
+        Task<(CurrentMission, DateTime?)> GetActiveByCode(string code);
         Task<IEnumerable<CurrentMission>> GetRange (int skip, int take);
         Task<Result> Insert (CurrentMission mission);
         Task<Result> UpdateIfNotChanged (Guid id, CurrentMission mission, DateTime checkDate);

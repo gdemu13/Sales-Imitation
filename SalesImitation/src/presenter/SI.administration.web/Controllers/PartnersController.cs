@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SI.Application.Partners;
+using SI.Application.PartnerUsers;
 using SI.Common.Models;
 using SI.Domain.Entities;
 using System;
@@ -35,6 +36,11 @@ namespace SI.Administration.Web.Controllers {
 
         [HttpPatch ("SetIsActive")]
         public async Task<Result> SetIsActive ([FromBody] SetIsActiveToPartnerRequest request) {
+            return await Mediator.Send (request);
+        }
+
+         [HttpPost ("RegisterUser")]
+        public async Task<Result> RegisterUser ([FromBody] RegisterNewPartnerUserRequest request) {
             return await Mediator.Send (request);
         }
     }

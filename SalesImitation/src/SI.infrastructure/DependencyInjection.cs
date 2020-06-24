@@ -35,6 +35,7 @@ namespace SI.Infrastructure
             services.AddSingleton<INotificationRepository, NotificationRepository>();
             services.AddSingleton<IContentRepository, ContentRepository>();
             services.AddSingleton<IFAQsRepository, FAQsReposiotry>();
+            services.AddSingleton<IPartnerUserRepository, PartnerUserRepository>();
             services.AddScoped<SI.Common.Abstractions.ILogger, SerilogClient>();
             services.AddSingleton<IFacebookService, FacebookService>();
             services.AddSingleton<IFIleService, FileService>();

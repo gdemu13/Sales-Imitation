@@ -2,9 +2,9 @@ namespace SI.Domain.Entities
 {
     public enum CurrentMissionStatuses
     {
-        Pending,
-        Active,
-        Finished,
-        Skipped,
+        Pending = 0,
+        Active = 1,
+        Finished = 2,
+        Skipped = 3,
     }
 }

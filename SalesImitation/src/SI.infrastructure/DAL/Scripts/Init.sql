@@ -460,6 +460,34 @@ go
 
 END
 go
+	if not exists (
+		select
+			*
+		from
+			sysobjects
+		where
+			name = 'PartnerUsers'
+			and xtype = 'U'
+	) create table PartnerUsers (
+		ID uniqueidentifier PRIMARY KEY,
+		Username varchar(MAX),
+		PasswordHash nvarchar(MAX),
+		Fullname nvarchar(MAX),
+		PartnerID uniqueidentifier NOT NULL,
+		Ordering INT IDENTITY(1, 1) NOT NULL,
+		FOREIGN KEY (PartnerID) REFERENCES Partners(ID),
+	) IF NOT EXISTS(
+		SELECT
+			*
+		FROM
+			sys.indexes
+		WHERE
+			name = 'PartnerUsers_Ordering'
+			AND object_id = OBJECT_ID('PartnerUsers')
+	) BEGIN CREATE UNIQUE INDEX PartnerUsers_Ordering ON PartnerUsers (Ordering);
+
+END
+go
 	-- ADD FACEBOOK ID FOR PLAYERS
 	IF NOT EXISTS (
 		SELECT

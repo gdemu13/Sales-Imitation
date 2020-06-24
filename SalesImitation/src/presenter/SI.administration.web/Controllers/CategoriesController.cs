@@ -27,7 +27,7 @@ namespace SI.Administration.Web.Controllers {
         }
 
         [HttpPost ("SaveNew")]
-        public async Task<Result> SaveBonus (SaveNewCategoryRequest request) {
+        public async Task<Result> SaveCategory (SaveNewCategoryRequest request) {
             return await Mediator.Send (request);
         }
 

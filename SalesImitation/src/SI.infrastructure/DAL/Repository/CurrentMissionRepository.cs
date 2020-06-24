@@ -244,6 +244,35 @@ namespace SI.Infrastructure.DAL.Repository
             return (currentMission, lastUpdateDate);
         }
 
+          public async Task<(CurrentMission, DateTime?)> GetActiveByCode(string code)
+        {
+            string sql = @"select c.*, p.FirstName + ' ' + p.LastName as PlayerFullName,
+                        p.Level as PlayerLevel from CurrentMissions c
+                        left join Players p
+                        on c.PlayerID = p.ID
+                        Where PromoCode = @Code
+                        and c.Status = @status
+                        and dateadd(HOUR, c.Duration + c.AddedHours, c.StartedDate) > @NowDate;"; //TODO active unda gamovtvalo
+            CurrentMission currentMission = null;
+            DateTime? lastUpdateDate = null;
+            using (var connection = Connection)
+            {
+                var res = await connection.QueryFirstOrDefaultAsync(sql, new
+                {
+                    Code = code,
+                    Status = CurrentMissionStatuses.Active,
+                    NowDate = DateTime.Now
+                });
+                if (res != null)
+                {
+                    currentMission = ExtractModel(res);
+
+                    lastUpdateDate = res.LastUpdateDate;
+                }
+            }
+            return (currentMission, lastUpdateDate);
+        }
+
         private static CurrentMission ExtractModel(dynamic res)
         {
             CurrentMission currentMission;

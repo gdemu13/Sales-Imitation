@@ -40,10 +40,9 @@ namespace SI.administration.web
                         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                         options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     }
-            )
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+            ).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
 
- services.AddResponseCompression();
+            services.AddResponseCompression();
             services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddApplication();
