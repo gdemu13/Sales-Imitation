@@ -45,14 +45,11 @@ namespace SI.Domain.Entities
         {
             get
             {
-                return DateTime.Now >= DeadlineDate ? CurrentMissionStatuses.Finished : _status;
+                return DateTime.Now >= DeadlineDate ? CurrentMissionStatuses.TimeOut : _status;
             }
             set
             {
-                if (_status != CurrentMissionStatuses.Finished)
-                {
-                    _status = value;
-                }
+                _status = value;
             }
         }
 
@@ -82,29 +79,30 @@ namespace SI.Domain.Entities
                                Product1.Name, Product2.Name, PromoCode));
         }
 
-        public void SellProduct(string code, Guid productID, DateTime saleDate)
+        public void SellProduct(string code, Guid productID, DateTime saleDate, Guid partnerUserID)
         {
             if (code == PromoCode && (productID == Product1.ID || productID == Product2.ID))
             {
-                if (Status == CurrentMissionStatuses.Active)
+                if (Status != CurrentMissionStatuses.TimeOut)
                 {
-                    Status = CurrentMissionStatuses.Finished;
+                    Status = CurrentMissionStatuses.FinishedSuccessfully;
                     FinishedDate = saleDate;
-                    EarnedCoints += productID == Product1.ID ? Product1.ExpectedCoin : Product2.ExpectedCoin;
-                    //TODO: throw event to increase level
+                    var soldProduct = productID == Product1.ID ? Product1 : Product2;
+                    EarnedCoints += soldProduct.ExpectedCoin;
+                    Events.Add(new CurrentMissionSoldProduct(Player.ID, soldProduct.PartnerID, partnerUserID, productID,soldProduct.ExpectedCoin));
                 }
                 else
                 {
-                    EarnedCoints += productID == Product1.ID ? Product1.ExpectedCoin : Product2.ExpectedCoin;
+                    throw new LocalizableException("timeout", "ნივთის გასაყიდი დრო ამოიწურა");
                 }
             }
             else
-                throw new LocalizableException("promo_is_incorrect", "promo_is_incorrect");
+                throw new LocalizableException("promo_is_incorrect", "კორი არასწორია");
         }
 
         public void AddExtraHours(int hours)
         {
-            if (Status == CurrentMissionStatuses.Active || (Status == CurrentMissionStatuses.Finished && DeadlineDate > DateTime.Now))
+            if (Status == CurrentMissionStatuses.Active)
                 AddedHours += hours;
             else
                 throw new LocalizableException("cant_add_extratime", "cant_add_extratime");

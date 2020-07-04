@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using SI.Domain.Entities;
 using SI.Application.Players;
 using SI.Common.Models;
-using SI.Application.SuperBonus;
+using SI.Application.SuperBonuses;
 
 namespace SI.Administration.Web.Controllers {
     [Route("/api/Bonus")]

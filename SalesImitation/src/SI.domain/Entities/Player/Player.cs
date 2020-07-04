@@ -90,7 +90,7 @@ namespace SI.Domain.Entities
             Coins -= coinsToSpend;
         }
 
-        public void AddCoins(decimal newCoins, string source)
+        public void DepositCoins(decimal newCoins, string source)
         {
             Coins += newCoins;
         }

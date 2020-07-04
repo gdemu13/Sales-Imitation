@@ -62,12 +62,12 @@ namespace SI.Application.CurrentMissions
             //create new current mission, generate promo code and start
             var currentMissionPlayer = new CurrentMissionPlayer(player.ID, $"{player.Firstname} {player.Lastname}", player.CurrentLevel);
             var partner = await partnerRepository.Get(randomProduct.Partner.ID);
-            var currentMissionProduct1 = new CurrentMissionProduct(randomProduct.ID, randomProduct.Name, randomProduct.Description,
-                                                                    partner.Name, randomProduct.Images.FirstOrDefault()?.Url, partner.Address.Street,
+            var currentMissionProduct1 = new CurrentMissionProduct(randomProduct.ID, randomProduct.Price.Amount, randomProduct.Name, randomProduct.Description,
+                                                                    partner.Name, partner.ID, randomProduct.Images.FirstOrDefault()?.Url, partner.Address.Street,
                                                                     randomProduct.Gift, randomProduct.Coin);
 
-            var currentMissionProduct2 = new CurrentMissionProduct(randomProduct2.ID, randomProduct2.Name, randomProduct2.Description,
-                                                                     partner.Name, randomProduct2.Images.FirstOrDefault()?.Url, partner.Address.Street,
+            var currentMissionProduct2 = new CurrentMissionProduct(randomProduct2.ID, randomProduct2.Price.Amount, randomProduct2.Name, randomProduct2.Description,
+                                                                     partner.Name, partner.ID, randomProduct2.Images.FirstOrDefault()?.Url, partner.Address.Street,
                                                                      randomProduct2.Gift, randomProduct2.Coin);
 
             var currentMissionCategory = new CurrentMissionCategory(category.ID, category.Name);

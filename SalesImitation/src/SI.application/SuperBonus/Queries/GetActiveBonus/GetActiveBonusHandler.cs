@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SI.Domain.Abstractions.Repositories;
 
-namespace SI.Application.SuperBonus {
+namespace SI.Application.SuperBonuses {
     public class GetActiveBonusHandler : IRequestHandler<GetActiveBonusRequest, SI.Domain.Entities.SuperBonus> {
 
         ISuperBonusRepository _bonusRepository;

@@ -20,6 +20,8 @@ namespace SI.Infrastructure.DomainEvents
                 var instance = Activator.CreateInstance(type, item);
                 mediator.Publish(instance);
             }
+
+            entity.Events.Clear();
         }
     }
 }

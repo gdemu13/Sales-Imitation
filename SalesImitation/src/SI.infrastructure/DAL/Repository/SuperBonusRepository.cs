@@ -29,7 +29,7 @@ namespace SI.Infrastructure.DAL.Repository
             }
         }
 
-        public async Task<Result> InsertSuperBonusBase(Guid id, decimal amount)
+        public async Task<Result> InsertSuperBonusBase(SuperBonus bonus)
         {
 
             string sql = "INSERT INTO SuperBonuses (ID, BaseAmount, Status) Values (@ID, @Amount, @Status);";
@@ -39,9 +39,9 @@ namespace SI.Infrastructure.DAL.Repository
                 var affectedRows = await connection.ExecuteAsync(sql,
                     new
                     {
-                        ID = id,
-                        Amount = amount,
-                        Status = SuperBonusStatuses.Pending
+                        ID = bonus.ID,
+                        Amount = bonus.BaseAmount,
+                        Status = bonus.Status
                     });
             }
 

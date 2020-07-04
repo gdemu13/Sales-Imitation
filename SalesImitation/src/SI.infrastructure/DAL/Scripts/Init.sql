@@ -674,3 +674,74 @@ ADD
 	Prod2Point decimal(9, 2);
 
 END
+go
+	-- ADD Point2 fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod1PartnerID'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod1PartnerID uniqueidentifier;
+
+END
+
+go
+	-- ADD Point2 fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod2PartnerID'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod2PartnerID uniqueidentifier;
+
+END
+
+go
+	-- ADD Prod1Price fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod1Price'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod1Price decimal(9, 2) NOT NULL;
+
+END
+
+go
+	-- ADD Prod2Price fields FOR CurrentMissions
+	IF NOT EXISTS (
+		SELECT
+			*
+		FROM
+			sys.columns
+		WHERE
+			object_id = OBJECT_ID(N'[dbo].[CurrentMissions]')
+			AND name = 'Prod2Price'
+	) BEGIN
+ALTER TABLE
+	CurrentMissions
+ADD
+	Prod2Price decimal(9, 2) NOT NULL;
+
+END

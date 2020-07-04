@@ -5,22 +5,20 @@ using System.Collections;
 using System.Collections.Generic;
 using SI.Domain.Entities;
 using SI.Common.Models;
-using SI.Application.SuperBonus;
+using SI.Application.SuperBonuses;
 using System;
 using MediatR;
 using SI.Domin.Abstractions.Authentication;
 using SI.Application.Administrators;
+using Microsoft.AspNetCore.Authorization;
 
 
 
 namespace SI.Administration.Web.Controllers
 {
     [Route("/api/Account")]
-    public class AccountController : ControllerBase
+    public class AccountController : ApiController
     {
-       private IMediator _mediator;
-
-        protected IMediator Mediator => _mediator ?? (_mediator = HttpContext.RequestServices.GetService<IMediator> ());
         ICurrentUser _currentUser;
         public AccountController(ICurrentUser currentUser)
         {
@@ -34,15 +32,17 @@ namespace SI.Administration.Web.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<Result> Login([FromBody]LoginAdministratorRequest request)
+        [AllowAnonymous]
+        public async Task<Result> Login([FromBody] LoginAdministratorRequest request)
         {
-            return await Mediator.Send (request);
+            return await Mediator.Send(request);
         }
 
-         [HttpPost("Register")]
-    public async Task<Result> Register([FromBody]RegisterAdministratorRequest request)
+        [HttpPost("Register")]
+         [AllowAnonymous]
+        public async Task<Result> Register([FromBody] RegisterAdministratorRequest request)
         {
-             return await Mediator.Send (request);
+            return await Mediator.Send(request);
         }
     }
 }

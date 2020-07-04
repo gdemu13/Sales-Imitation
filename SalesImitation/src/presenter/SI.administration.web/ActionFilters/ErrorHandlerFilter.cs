@@ -30,7 +30,7 @@ namespace SI.Administration.Web.ActionFilters
                 if (result.Exception is LocalizableException)
                 {
                     var ex = result.Exception as LocalizableException;
-                    errorText = ex.MessageKey;
+                    errorText = ex.Message;
                     // errorText = _sharedLocalizer[ex.MessageKey]?.Value;
                 }
                 else

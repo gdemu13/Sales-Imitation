@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using SI.Domain.Entities;
 using SI.Common.Models;
-using SI.Application.SuperBonus;
 using System;
 using MediatR;
 using SI.Domin.Abstractions.Authentication;

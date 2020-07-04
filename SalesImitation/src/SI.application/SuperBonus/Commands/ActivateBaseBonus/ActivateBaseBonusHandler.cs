@@ -5,7 +5,7 @@ using SI.Common.Models;
 using SI.Domain.Abstractions.Repositories;
 using SI.Domain.Entities;
 
-namespace SI.Application.SuperBonus {
+namespace SI.Application.SuperBonuses {
     public class ActivateBaseBonusHandler : IRequestHandler<ActivateBaseBonusRequest, Result> {
 
         ISuperBonusRepository _bonusRepository;

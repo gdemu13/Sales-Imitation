@@ -4,7 +4,8 @@ namespace SI.Domain.Entities
     {
         Pending = 0,
         Active = 1,
-        Finished = 2,
+        FinishedSuccessfully = 2,
         Skipped = 3,
+        TimeOut = 4,
     }
 }

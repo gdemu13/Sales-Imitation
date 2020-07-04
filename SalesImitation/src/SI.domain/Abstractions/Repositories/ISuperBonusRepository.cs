@@ -6,7 +6,7 @@ using System;
 namespace SI.Domain.Abstractions.Repositories {
 
     public interface ISuperBonusRepository {
-        Task<Result> InsertSuperBonusBase (Guid id, decimal amount);
+        Task<Result> InsertSuperBonusBase(SuperBonus bonus);
         Task<Result> UpdateSuperBonusBase (Guid id, decimal amount);
         Task<SuperBonus> GetPending();
         Task<Result> UpdateStatus (Guid id, SuperBonusStatuses status);
