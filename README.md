@@ -4,8 +4,8 @@
 
 On this website, customers are able to sell products and make money by it. On the last round, they can win the jackpot.
 
-There are 10 rounds and 1 super round on the website. On each round customers are given random products and a deadline to sell them. on every sold product, they earn coins that can be withdrawn and customer will be moved to the next round.
-Every next round is harder than previous, because of products price increment, but also they have more time to sell products.
+There are 10 rounds and 1 super round on the website. On each round customers are given random products and a deadline to sell them. On every sold product, they earn coins that can be withdrawn and customer will be moved to the next round.
+Every next round is harder than previous because of products price increment, but also customers have more time to sell products.
 
 ### Playground
 
@@ -46,6 +46,7 @@ The solution contains three web projects:
 * dependency injection
 * optimistic locking
 * domain event pattern
+
 (all code should be mockable and testable)
 #### Languages, frameworks, db
 * dotnet core 3.X with C# for backend
@@ -55,10 +56,10 @@ The solution contains three web projects:
 * dapper as orm
 * serilog for logging
 #### cli, package managers
-dotnet cli
-vue cli
-npm for frontend package manager
-nuget for backend package manager
+* dotnet cli
+* vue cli
+* npm for frontend package manager
+* nuget for backend package manager
 
 ## Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
