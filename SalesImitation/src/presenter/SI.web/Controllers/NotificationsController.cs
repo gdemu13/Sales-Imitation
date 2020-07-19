@@ -22,7 +22,7 @@ namespace SI.Web.Controllers
         }
 
         [HttpGet("New")]
-        public async Task<IEnumerable<Notification>> GetNewNotifications()
+        public async Task<Notification> GetNewNotifications()
         {
             var request = new GetNewNotificationsRequest() { PlayerID = currentUser.ID.Value };
             return await Mediator.Send(request);

@@ -5,7 +5,7 @@ using SI.Domain.Entities;
 
 namespace SI.Application.Notifications
 {
-    public class GetNewNotificationsRequest : IRequest<IEnumerable<Notification>>
+    public class GetNewNotificationsRequest : IRequest<Notification>
     {
         public Guid PlayerID { get;  set; }
     }
