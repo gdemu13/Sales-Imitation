@@ -5,7 +5,7 @@ module.exports = {
       open: process.platform === 'darwin',
       host: '0.0.0.0',
       port: 8080, // CHANGE YOUR PORT HERE!
-      // https: true,
+      https: true,
       hotOnly: false,
       proxy: {
         // proxy all requests starting with /api to jsonplaceholder

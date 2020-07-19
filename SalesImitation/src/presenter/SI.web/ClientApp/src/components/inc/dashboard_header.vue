@@ -7,7 +7,7 @@
             <div class="lf-side">
               <div class="logo">
                 <h1>
-                  <img src="/img/logo-blue.png" alt="si.ge logo" />
+                 <a href="/"><img src="/img/logo-blue.png" alt="si.ge logo" /></a>
                 </h1>
               </div>
               <div class="menu-item">

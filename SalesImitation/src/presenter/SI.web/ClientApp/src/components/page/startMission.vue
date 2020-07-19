@@ -33,9 +33,7 @@
               />
             </svg>
           </div>
-          <div class="txt">
-            დაიწყე მისია
-          </div>
+          <div class="txt">დაიწყე მისია</div>
         </div>
       </div>
     </div>
@@ -49,19 +47,11 @@
             :checked="isCheckedCategory(mission.id)"
           />
           <div class="mission-inner-box">
-            <div
-              class="img-item"
-              :style="{ backgroundImage: 'url(' + mission.iconUrl + ')' }"
-            ></div>
+            <div class="img-item" :style="{ backgroundImage: 'url(' + mission.iconUrl + ')' }"></div>
             <div class="desc-info">
-              <h4>
-                {{ mission.name }}
-              </h4>
+              <h4>{{ mission.name }}</h4>
               <div class="check-box">
-                <div
-                  class="checker"
-                  :style="{ backgroundColor: mission.color }"
-                >
+                <div class="checker" :style="{ backgroundColor: mission.color }">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="15.799"
@@ -77,9 +67,7 @@
                     />
                   </svg>
                 </div>
-                <div class="label">
-                  {{ isCheckedCategory(mission.id) ? "არჩეულია" : "არჩევა" }}
-                </div>
+                <div class="label">{{ isCheckedCategory(mission.id) ? "არჩეულია" : "არჩევა" }}</div>
               </div>
             </div>
           </div>
@@ -96,19 +84,11 @@
                 :checked="isCheckedCategory(mission.id)"
               />
               <div class="mission-inner-box">
-                <div
-                  class="img-item"
-                  :style="{ backgroundImage: 'url(' + mission.iconUrl + ')' }"
-                ></div>
+                <div class="img-item" :style="{ backgroundImage: 'url(' + mission.iconUrl + ')' }"></div>
                 <div class="desc-info">
-                  <h4>
-                    {{ mission.name }}
-                  </h4>
+                  <h4>{{ mission.name }}</h4>
                   <div class="check-box">
-                    <div
-                      class="checker"
-                      :style="{ backgroundColor: mission.color }"
-                    >
+                    <div class="checker" :style="{ backgroundColor: mission.color }">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.799"
@@ -126,7 +106,7 @@
                     </div>
                     <div class="label">
                       {{
-                        isCheckedCategory(mission.id) ? "არჩეულია" : "არჩევა"
+                      isCheckedCategory(mission.id) ? "არჩეულია" : "არჩევა"
                       }}
                     </div>
                   </div>
@@ -160,13 +140,9 @@
         </div>
         <div class="content-wrapper-item">
           <div class="congrats-content" style="margin-top: 55px;">
-            <h5>
-              შეტყობინება
-            </h5>
+            <h5>შეტყობინება</h5>
 
-            <p>
-              გთხოვთ აირჩიოთ კატეგორია
-            </p>
+            <p>გთხოვთ აირჩიოთ კატეგორია</p>
           </div>
         </div>
       </div>
@@ -194,13 +170,9 @@
         </div>
         <div class="content-wrapper-item">
           <div class="congrats-content" style="margin-top: 55px;">
-            <h5>
-              ნამდვილად გსურთ მისიის დაწყება?
-            </h5>
+            <h5>ნამდვილად გსურთ მისიის დაწყება?</h5>
 
-            <div class="confirm-btn" @click="letStartMission">
-              დიახ
-            </div>
+            <div class="confirm-btn" @click="letStartMission">დიახ</div>
           </div>
         </div>
       </div>
@@ -208,11 +180,11 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import Vue from "vue";
 import VModal from "vue-js-modal";
 import VueCarousel from "vue-carousel";
 import { Carousel, Slide } from "vue-carousel";
+import request from "@/Request";
 Vue.use(VueCarousel);
 Vue.use(VModal);
 
@@ -223,7 +195,7 @@ export default {
     return {
       missions: [],
       selectedCategory: "",
-      selectedColor: "",
+      selectedColor: ""
     };
   },
   methods: {
@@ -255,10 +227,13 @@ export default {
     },
     letStartMission() {
       var self = this;
-       axios
-        .post("/api/game/startMission", {
-          selectedCategoryID: self.selectedCategory,
-        })
+      request({
+        url: "/api/game/startMission",
+        method: "post",
+        data: {
+          selectedCategoryID: self.selectedCategory
+        }
+      })
         .then(function(response) {
           console.log(response);
           self.$modal.hide("confirmMission");
@@ -272,20 +247,22 @@ export default {
   components: {
     PerfectScrollbar,
     Carousel,
-    Slide,
+    Slide
   },
   props: ["onstart"],
   mounted() {
     var self = this;
-    axios
-      .get("/api/game/getAvaliableCategories")
+    request({
+        url: "/api/game/getAvaliableCategories",
+        method: "get"
+      })
       .then(function(response) {
         console.log(response);
-        self.missions =  response.data;
+        self.missions = response.data;
       })
       .catch(function(error) {
         console.log(error);
       });
-  },
+  }
 };
 </script>

@@ -19,6 +19,7 @@ namespace SI.Application.Events
         {
             this.mediator = mediator;
         }
+
         public async Task Handle(DomainEvent<CurrentMissionSoldProduct> n, CancellationToken cancellationToken)
         {
             await mediator.Send(new AddCoinsToPlayerRequest

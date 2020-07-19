@@ -15,51 +15,39 @@
                         'step-button': true,
                         'blue-bg': player.currentLevel >= 1,
                       }"
-                    >
-                      1
-                    </div>
+                    >1</div>
                     <div
                       :class="{
                         'step-button': true,
                         'blue-bg': player.currentLevel >= 2,
                       }"
-                    >
-                      2
-                    </div>
+                    >2</div>
                     <div
                       :class="{
                         'step-button': true,
                         'blue-bg': player.currentLevel >= 3,
                       }"
-                    >
-                      3
-                    </div>
+                    >3</div>
                     <div
                       :class="{
                         'step-button': true,
                         'blue-bg': player.currentLevel >= 4,
                       }"
-                    >
-                      4
-                    </div>
+                    >4</div>
                     <div
                       :class="{
                         'step-button': true,
                         'blue-bg': player.currentLevel >= 5,
                       }"
-                    >
-                      5
-                    </div>
+                    >5</div>
                     <div
                       :class="{
                         'step-button': true,
                         'blue-bg': player.currentLevel >= 6,
                       }"
-                    >
-                      6
-                    </div>
+                    >6</div>
                     <div
-                       :class="{
+                      :class="{
                         'step-button ': true,
                         'blue-bg': player.currentLevel >= 7,
                         'with-arrow': !currentMission && dataIsLoaded,
@@ -83,8 +71,7 @@
                               fill="#fff"
                             />
                           </svg>
-                        </div>
-                        გამოტოვე 1-7 მისიები
+                        </div>გამოტოვე 1-7 მისიები
                       </div>
                     </div>
                     <div
@@ -92,25 +79,19 @@
                         'step-button yell-bg': true,
                         'blue-bg': player.currentLevel >= 8,
                       }"
-                    >
-                      8
-                    </div>
+                    >8</div>
                     <div
                       :class="{
                         'step-button yell-bg': true,
                         'blue-bg': player.currentLevel >= 9,
                       }"
-                    >
-                      9
-                    </div>
+                    >9</div>
                     <div
                       :class="{
                         'step-button yell-bg': true,
                         'blue-bg': player.currentLevel >= 10,
                       }"
-                    >
-                      10
-                    </div>
+                    >10</div>
                     <div
                       :class="{
                         'step-button yell-bg': true,
@@ -135,14 +116,8 @@
                   </div>
 
                   <div class="progress-row">
-                    <div
-                      class="progress"
-                      v-bind:style="{ width: progress + '%' }"
-                    ></div>
-                    <div
-                      class="status-box"
-                      v-bind:style="{ left: progress - 5 + '%' }"
-                    >
+                    <div class="progress" v-bind:style="{ width: progress + '%' }"></div>
+                    <div class="status-box" v-bind:style="{ left: progress - 5 + '%' }">
                       <span class="coin"></span>
                       <div class="amount">{{ player.coins }}₾</div>
                     </div>
@@ -153,38 +128,74 @@
                     ></div>
                   </div>
                 </div>
-                <div data-v-28a1a439="" class="release-btn"><div data-v-28a1a439="" class="icon"><svg data-v-28a1a439="" xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14"><g data-v-28a1a439="" id="Group_3663" data-name="Group 3663" transform="translate(-1392.033 -448)"><path data-v-28a1a439="" id="Path_2737" data-name="Path 2737" d="M654,513H642a2.006,2.006,0,0,0-2,2v8a2.006,2.006,0,0,0,2,2h5a1,1,0,0,0,0-2h-5v-4h14v-4A2.006,2.006,0,0,0,654,513Zm0,4H642v-2h12Z" transform="translate(752.033 -65)" fill="#fff"></path><path data-v-28a1a439="" id="Path_2738" data-name="Path 2738" d="M655,523h-1v-1a1,1,0,0,0-2,0v1h-1a1,1,0,0,0,0,2h1v1a1,1,0,0,0,2,0v-1h1a1,1,0,0,0,1-1v-1a1.871,1.871,0,0,1-.09.59A1,1,0,0,0,655,523Z" transform="translate(752.033 -65)" fill="#fff"></path><path data-v-28a1a439="" id="Path_2739" data-name="Path 2739" d="M646,520h-1a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" transform="translate(752.033 -65)" fill="#fff"></path></g></svg></div><span data-v-28a1a439="">გაანაღდება</span></div>
+                <div data-v-28a1a439 class="release-btn">
+                  <div data-v-28a1a439 class="icon">
+                    <svg
+                      data-v-28a1a439
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="14"
+                      viewBox="0 0 16 14"
+                    >
+                      <g
+                        data-v-28a1a439
+                        id="Group_3663"
+                        data-name="Group 3663"
+                        transform="translate(-1392.033 -448)"
+                      >
+                        <path
+                          data-v-28a1a439
+                          id="Path_2737"
+                          data-name="Path 2737"
+                          d="M654,513H642a2.006,2.006,0,0,0-2,2v8a2.006,2.006,0,0,0,2,2h5a1,1,0,0,0,0-2h-5v-4h14v-4A2.006,2.006,0,0,0,654,513Zm0,4H642v-2h12Z"
+                          transform="translate(752.033 -65)"
+                          fill="#fff"
+                        />
+                        <path
+                          data-v-28a1a439
+                          id="Path_2738"
+                          data-name="Path 2738"
+                          d="M655,523h-1v-1a1,1,0,0,0-2,0v1h-1a1,1,0,0,0,0,2h1v1a1,1,0,0,0,2,0v-1h1a1,1,0,0,0,1-1v-1a1.871,1.871,0,0,1-.09.59A1,1,0,0,0,655,523Z"
+                          transform="translate(752.033 -65)"
+                          fill="#fff"
+                        />
+                        <path
+                          data-v-28a1a439
+                          id="Path_2739"
+                          data-name="Path 2739"
+                          d="M646,520h-1a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"
+                          transform="translate(752.033 -65)"
+                          fill="#fff"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <span data-v-28a1a439>გაანაღდება</span>
+                </div>
                 <currentMission
                   :init.sync="init"
                   :currentmission="currentMission"
                   v-if="currentMission"
                 ></currentMission>
-                <startMission
-                  :init.sync="init"
-                  :onstart="getCurrentMission"
-                  v-else
-                ></startMission>
+                <startMission :init.sync="init" :onstart="getCurrentMission" v-else></startMission>
               </div>
 
               <div class="right-side">
                 <div class="super-bonus">
                   <div class="txt-content">
-                    <div class="sm-txt">
-                      სუპერ ბონუსი
+                    <div class="sm-txt">სუპერ ბონუსი</div>
+                    <div class="amount-txt">
+                      {{ bonus }}
+                      <span>₾</span>
                     </div>
-                    <div class="amount-txt">{{ bonus }} <span>₾</span></div>
                   </div>
                 </div>
                 <div class="rating-box">
-                  <div class="title">
-                    რეიტინგი
-                  </div>
+                  <div class="title">რეიტინგი</div>
                   <div class="rating-list">
                     <div class="my-rate">
                       <div class="lf">
-                        <div class="position">
-                          {{ leaderboard.you.place }}
-                        </div>
+                        <div class="position">{{ leaderboard.you.place }}</div>
                         <div class="avatar">
                           <div
                             class="img"
@@ -194,14 +205,10 @@
                                 : `url('/img/girl.png')`,
                             }"
                           ></div>
-                          <div class="txt">
-                            შენ
-                          </div>
+                          <div class="txt">შენ</div>
                         </div>
                       </div>
-                      <div class="points">
-                        {{ leaderboard.you.coins }}
-                      </div>
+                      <div class="points">{{ leaderboard.you.coins }}</div>
                     </div>
                     <div class="others">
                       <perfect-scrollbar>
@@ -211,9 +218,7 @@
                           :key="player.place"
                         >
                           <div class="lf">
-                            <div class="position">
-                              {{ player.place }}
-                            </div>
+                            <div class="position">{{ player.place }}</div>
                             <div class="avatar">
                               <div
                                 class="img"
@@ -223,14 +228,10 @@
                                     : `url('/img/girl.png')`,
                                 }"
                               ></div>
-                              <div class="txt">
-                                {{ player.name }}
-                              </div>
+                              <div class="txt">{{ player.name }}</div>
                             </div>
                           </div>
-                          <div class="points">
-                            {{ player.coins }}
-                          </div>
+                          <div class="points">{{ player.coins }}</div>
                         </div>
                       </perfect-scrollbar>
                     </div>
@@ -249,7 +250,7 @@ import DHeader from "../inc/dashboard_header";
 import currentMission from "./currentMission";
 import startMission from "./startMission";
 import { PerfectScrollbar } from "vue2-perfect-scrollbar";
-import axios from "axios";
+import request from "@/Request";
 
 export default {
   name: "LogedInMain",
@@ -262,32 +263,34 @@ export default {
       player: {
         avatar: 1,
         coins: 0,
-        currentLevel: 0,
+        currentLevel: 0
       },
       leaderboard: {
         you: {
           coins: 115,
           avatar: 0,
           name: "player",
-          place: 1,
+          place: 1
         },
         others: [
           {
             coins: 115,
             avatar: 1,
             name: "p*****r",
-            place: 1,
-          },
-        ],
-      },
+            place: 1
+          }
+        ]
+      }
     };
   },
   methods: {
     init() {
       let self = this;
       self.getCurrentMission();
-      axios
-        .get("api/Bonus/Current")
+      request({
+        url: "api/Bonus/Current",
+        method: "get"
+      })
         .then(function(response) {
           console.log(response);
           self.bonus = response.data;
@@ -296,8 +299,10 @@ export default {
           console.log(error);
         });
 
-      axios
-        .get("api/account/UserInfo")
+      request({
+        url: "api/account/UserInfo",
+        method: "get"
+      })
         .then(function(response) {
           console.log(response);
           self.player = response.data;
@@ -307,8 +312,10 @@ export default {
           console.log(error);
         });
 
-      axios
-        .get("/api/players/Leaderboard?quantity=10")
+      request({
+        url: "/api/players/Leaderboard?quantity=10",
+        method: "get"
+      })
         .then(function(response) {
           console.log(response);
           self.leaderboard = response.data;
@@ -352,8 +359,10 @@ export default {
     },
     getCurrentMission() {
       var self = this;
-      axios
-        .get("api/game/currentMission")
+      request({
+        url: "api/game/currentMission",
+        method: "get"
+      })
         .then(function(response) {
           console.log(response);
           self.currentMission = response.data;
@@ -362,17 +371,17 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-    },
+    }
   },
   components: {
     "d-header": DHeader,
     PerfectScrollbar,
     currentMission,
-    startMission,
+    startMission
   },
   mounted: function() {
     this.init();
-  },
+  }
 };
 </script>
 <style src="vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css" />

@@ -1096,9 +1096,9 @@ import VModal from "vue-js-modal";
 import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import { PerfectScrollbar } from "vue2-perfect-scrollbar";
 import { Tabs, Tab } from "@hiendv/vue-tabs";
-import axios from "axios";
 import Vuelidate from "vuelidate";
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import request from "@/Request";
 Vue.use(Vuelidate);
 Vue.use(VModal);
 // import facebookLogin from "facebook-login-vuejs";
@@ -1257,8 +1257,10 @@ export default {
       this.showReg = 0;
     },
     getUserData() {
-      axios
-        .get("/api/Bonus/Current")
+      request({
+        url: "/api/Bonus/Current",
+        method: "get",
+      })
         .then(function(response) {
           console.log(response);
         })
@@ -1268,8 +1270,11 @@ export default {
     },
     submitLogin() {
       var self = this;
-      axios
-        .post("/api/account/login", self.loginModel)
+      request({
+        url: "/api/account/login",
+        method: "post",
+        data: self.loginModel
+      })
         .then(function(response) {
           console.log(response);
           if (!response.data.isSuccess) {
@@ -1304,8 +1309,11 @@ export default {
         return;
       }
 
-      axios
-        .post("/api/account/register", self.registerModel)
+      request({
+        url: "/api/account/register",
+        method: "post",
+        data: self.registerModel
+      })
         .then(function(response) {
           console.log("reg", response);
           if (response.data.isSuccess) {
@@ -1558,7 +1566,7 @@ export default {
     height: 1090px;
     right: 0;
     bottom: 0;
-    left: auto;
+    left: 50px;
   }
 }
 .full-screen-view .bgfull-image::before {

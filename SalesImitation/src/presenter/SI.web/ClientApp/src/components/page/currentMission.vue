@@ -137,26 +137,26 @@
                         {{ currentmission.product1.partnerName }}
                       </div>
                     </div>
-                    <div class="spec-item">
+                    <!-- <div class="spec-item">
                       <div class="label">
                         მისამართი:
                       </div>
                       <div class="value">
                         {{ currentmission.product1.partnetaAddress }}
                       </div>
-                    </div>
+                    </div> -->
                     <div class="spec-item">
                       <div class="label">
                         ფასი:
                       </div>
-                      <div class="value"></div>
+                        <div class="value"> {{ currentmission.product2.price }}₾</div>
                     </div>
                     <div class="spec-item">
                       <div class="label">
                         საჩუქარი:
                       </div>
                       <div class="value">
-                        {{ currentmission.product1.benefits }}
+                        {{ currentmission.product1.gift }}
                       </div>
                     </div>
                   </div>
@@ -205,26 +205,26 @@
                         {{ currentmission.product2.partnerName }}
                       </div>
                     </div>
-                    <div class="spec-item">
+                    <!-- <div class="spec-item">
                       <div class="label">
                         მისამართი:
                       </div>
                       <div class="value">
                         {{ currentmission.product2.partnetaAddress }}
                       </div>
-                    </div>
+                    </div> -->
                     <div class="spec-item">
                       <div class="label">
                         ფასი:
                       </div>
-                      <div class="value"></div>
+                      <div class="value"> {{ currentmission.product2.price }}₾</div>
                     </div>
                     <div class="spec-item">
                       <div class="label">
                         საჩუქარი:
                       </div>
                       <div class="value">
-                        {{ currentmission.product2.benefits }}
+                        {{ currentmission.product2.gift }}
                       </div>
                     </div>
                   </div>

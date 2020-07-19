@@ -17,6 +17,7 @@ namespace SI.Application.Players {
         {
             var player = await repository.GetByID(request.PlayerID);
             player.Item1.DepositCoins(request.Coins, request.Reason);
+            player.Item1.LevelUp();
             return await repository.UpdatePlayer(player.Item1, player.Item2.Value);
         }
     }

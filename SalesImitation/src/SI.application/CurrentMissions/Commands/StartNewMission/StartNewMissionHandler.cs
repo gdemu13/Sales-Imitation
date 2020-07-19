@@ -42,14 +42,14 @@ namespace SI.Application.CurrentMissions
         {
             var (curMission, _) = await currentMissionRepository.GetActiveByUser(currentUser.ID.Value);
             if (curMission != null)
-                throw new LocalizableException("user_already_has_current_mission", "user_already_has_current_mission");
+                throw new LocalizableException("user_already_has_current_mission", "მომხამრებელს უკვე დაწყებუ");
 
             var (player, _) = await playerRepository.GetByID(currentUser.ID.Value);
 
             //get category that is chosen by player
             var category = await categoryRepository.Get(request.SelectedCategoryID);
             if (category == null)
-                throw new LocalizableException("invalid_category_is_selected", "invalid category is selected");
+                throw new LocalizableException("invalid_category_is_selected", "არასწორი კატეგორია არის არჩეული");
 
             //get mission that player should start
             var mission = await missionRepository.GetByLevel(player.CurrentLevel);
