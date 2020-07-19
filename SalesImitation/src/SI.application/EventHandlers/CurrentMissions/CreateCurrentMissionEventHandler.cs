@@ -27,7 +27,7 @@ namespace SI.Application.Events
                  e.PlayerID,
                  "შეტყობინება",
                  e.Desc,
-                 NotificationTypes.SUCCESS,
+                 NotificationTypes.INFO,
                  e.Deadline,
                  false
              ));
