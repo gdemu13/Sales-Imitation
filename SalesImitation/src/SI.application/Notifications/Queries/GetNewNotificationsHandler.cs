@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using SI.Domain.Entities;
 
 namespace SI.Application.Notifications
 {
-    public class GetNewNotificationsHandler : IRequestHandler<GetNewNotificationsRequest, IEnumerable<Notification>>
+    public class GetNewNotificationsHandler : IRequestHandler<GetNewNotificationsRequest, Notification>
     {
         private readonly INotificationRepository repository;
 
@@ -18,11 +19,12 @@ namespace SI.Application.Notifications
             this.repository = repository;
         }
 
-        public async Task<IEnumerable<Notification>> Handle(GetNewNotificationsRequest request, CancellationToken cancellationToken)
+        public async Task<Notification> Handle(GetNewNotificationsRequest request, CancellationToken cancellationToken)
         {
             var notifications = await repository.GetUnseenByPlayer(request.PlayerID);
-            await repository.SetSeen(notifications.Select(s => s.ID));
-            return notifications;
+            if(notifications != null && notifications.Count() > 0)
+                await repository.SetSeen(new List<Guid>(){notifications.First().ID});
+            return notifications?.FirstOrDefault();
         }
     }
 }

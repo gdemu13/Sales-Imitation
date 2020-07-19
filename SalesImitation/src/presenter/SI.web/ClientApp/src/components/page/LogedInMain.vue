@@ -243,6 +243,62 @@
         </div>
       </div>
     </div>
+
+    <modal name="notification" class="si__style-pop">
+      <div class="modal-content-item">
+        <div class="modal-item-header">
+          <div class="close-btn" @click="closeModal()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15.828"
+              height="15.913"
+              viewBox="0 0 15.828 15.913"
+            >
+              <path
+                id="Path_2411"
+                data-name="Path 2411"
+                d="M521.353,712.03l6.225-6.259a1,1,0,0,0,0-1.407.986.986,0,0,0-1.4,0l-6.225,6.259-6.225-6.259a.986.986,0,0,0-1.4,0,1,1,0,0,0,0,1.407l6.225,6.259-6.225,6.259a1,1,0,0,0,0,1.406.986.986,0,0,0,1.4,0l6.225-6.259,6.225,6.259a.992.992,0,0,0,1.4-1.406Z"
+                transform="translate(-512.04 -704.073)"
+                fill="#fff"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="content-wrapper-item">
+          <div class="congrats-content">
+            <!-- <h5>შეტყობინება</h5> -->
+            <div class="icon" v-if="notification ? notification.type == 0 : false">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="85.682"
+                height="85.682"
+                viewBox="0 0 85.682 85.682"
+              >
+                <g id="Group_3663" data-name="Group 3663" transform="translate(-68.192 -3.159)">
+                  <path
+                    id="Path_8342"
+                    data-name="Path 8342"
+                    d="M330.841,32a42.841,42.841,0,1,0,42.841,42.841A42.891,42.891,0,0,0,330.841,32Zm0,74.971a32.131,32.131,0,1,1,32.131-32.131A32.129,32.129,0,0,1,330.841,106.971Z"
+                    transform="translate(-219.808 -28.841)"
+                    fill="#00bd83"
+                  />
+                  <path
+                    id="Path_8343"
+                    data-name="Path 8343"
+                    d="M325.7,38.57,308.066,56.2l-6.924-6.924a5.354,5.354,0,1,0-7.572,7.572l10.71,10.71a5.352,5.352,0,0,0,7.572,0l21.42-21.42A5.354,5.354,0,0,0,325.7,38.57Z"
+                    transform="translate(-202.388 -7.066)"
+                    fill="#00bd83"
+                  />
+                </g>
+              </svg>
+            </div>
+            <h3>{{notification ? notification.title : ""}}</h3>
+            <p>{{notification ?notification.description : ""}}</p>
+          </div>
+        </div>
+      </div>
+    </modal>
+
   </div>
 </template>
 <script>
@@ -251,6 +307,11 @@ import currentMission from "./currentMission";
 import startMission from "./startMission";
 import { PerfectScrollbar } from "vue2-perfect-scrollbar";
 import request from "@/Request";
+
+import Vue from "vue";
+import VModal from "vue-js-modal";
+
+Vue.use(VModal);
 
 export default {
   name: "LogedInMain",
@@ -280,10 +341,30 @@ export default {
             place: 1
           }
         ]
-      }
+
+      },
+      notification: null,
     };
   },
   methods: {
+    closeModal(){
+      this.$modal.hide("notification");
+    },
+    getNotifications() {
+      var self = this;
+      request({
+        url: "api/notifications/new",
+        method: "get"
+      })
+        .then(function(response) {
+          self.notification = response.data;
+          if(self.notification)
+              self.$modal.show("notification");
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     init() {
       let self = this;
       self.getCurrentMission();
@@ -381,6 +462,7 @@ export default {
   },
   mounted: function() {
     this.init();
+    this.getNotifications();
   }
 };
 </script>
