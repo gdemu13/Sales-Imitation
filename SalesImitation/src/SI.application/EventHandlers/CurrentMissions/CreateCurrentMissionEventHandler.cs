@@ -10,7 +10,7 @@ using SI.Domain.Entities;
 
 namespace SI.Application.Events
 {
-    public class CreateCurrentMissionEventHandler : INotificationHandler<DomainEvent<CurrentMissionCreated>>
+    public class CreateCurrentMissionEventHandler //: INotificationHandler<DomainEvent<CurrentMissionCreated>>
     {
         private readonly IMediator mediator;
         private readonly INotificationRepository repository;

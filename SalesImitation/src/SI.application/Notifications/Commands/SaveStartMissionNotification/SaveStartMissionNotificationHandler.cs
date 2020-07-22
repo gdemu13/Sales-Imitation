@@ -9,7 +9,7 @@ using SI.Domin.Abstractions.Authentication;
 
 namespace SI.Application.Notifications
 {
-    public class SaveStartMissionNotificationHandler// : IRequestHandler<SaveStartMissionNotificationRequest, Result>
+    public class SaveStartMissionNotificationHandler : IRequestHandler<SaveStartMissionNotificationRequest, Result>
     {
         private readonly INotificationRepository repository;
 
