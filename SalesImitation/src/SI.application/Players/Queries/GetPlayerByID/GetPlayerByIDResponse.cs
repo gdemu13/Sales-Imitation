@@ -13,5 +13,6 @@ namespace SI.Application.Categories
         public int CurrentLevel { get; set; }
         public decimal Coins { get; set; }
         public int Avatar { get; set; }
+        public string Phone { get; set; }
     }
 }

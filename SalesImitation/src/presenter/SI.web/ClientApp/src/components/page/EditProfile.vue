@@ -1,6 +1,5 @@
 <template>
   <div class="general-page-wrapper">
-
     <div class="page-content-wrapper">
       <div class="container">
         <div class="row">
@@ -14,10 +13,7 @@
                     </a>
                   </li>
                   <li>
-                    <router-link
-                      :to="`/${$i18n.locale}/editProfile`"
-                      class="active"
-                    >
+                    <router-link :to="`/${$i18n.locale}/editProfile`" class="active">
                       <span>პროფილის რედაქტირება</span>
                     </router-link>
                   </li>
@@ -40,9 +36,7 @@
               </div>
               <div class="content-view">
                 <div class="title-row">
-                  <h3>
-                    პროფილის რედაქტირება
-                  </h3>
+                  <h3>პროფილის რედაქტირება</h3>
                 </div>
                 <div class="edit-content">
                   <div class="edit-side">
@@ -50,18 +44,13 @@
                       <div
                         :class="{
                           'input-item': true,
-                          'db-item': true,
+                          'db-item-short': true,
                           error:
                             submitted && $v.editProfileModel.firstname.$error,
                         }"
                       >
                         <label for>სახელი</label>
-                        <input
-                          type="text"
-                          name
-                          id
-                          v-model="editProfileModel.firstname"
-                        />
+                        <input type="text" name id v-model="editProfileModel.firstname" />
                         <div class="sub-info-row">
                           <div
                             class="error-txt"
@@ -69,27 +58,20 @@
                               submitted &&
                                 !$v.editProfileModel.firstname.required
                             "
-                          >
-                            მოცემული ველი აუცილებელია
-                          </div>
+                          >მოცემული ველი აუცილებელია</div>
                         </div>
                       </div>
                       <div
                         :class="{
                           'input-item': true,
-                          'db-item': true,
+                          'db-item-short': true,
                           error:
                             submitted && $v.editProfileModel.lastname.$error,
                         }"
                         style="margin-right: 0;"
                       >
                         <label for>გვარი</label>
-                        <input
-                          type="text"
-                          name
-                          id
-                          v-model="editProfileModel.lastname"
-                        />
+                        <input type="text" name id v-model="editProfileModel.lastname" />
                         <div class="sub-info-row">
                           <div
                             class="error-txt"
@@ -97,9 +79,7 @@
                               submitted &&
                                 !$v.editProfileModel.lastname.required
                             "
-                          >
-                            მოცემული ველი აუცილებელია
-                          </div>
+                          >მოცემული ველი აუცილებელია</div>
                         </div>
                       </div>
 
@@ -111,21 +91,14 @@
                         }"
                       >
                         <label for>ელ. ფოსტა</label>
-                        <input
-                          type="email"
-                          name
-                          id
-                          v-model="editProfileModel.mail"
-                        />
+                        <input type="email" name id v-model="editProfileModel.mail" />
                         <div class="sub-info-row">
                           <div
                             class="error-txt"
                             v-if="
                               submitted && !$v.editProfileModel.mail.required
                             "
-                          >
-                            მოცემული ველი აუცილებელია
-                          </div>
+                          >მოცემული ველი აუცილებელია</div>
                         </div>
                       </div>
 
@@ -138,21 +111,14 @@
                         style="margin-right: 0;"
                       >
                         <label for>ტელეფონი</label>
-                        <input
-                          type="tel"
-                          name
-                          id
-                          v-model="editProfileModel.phone"
-                        />
+                        <input type="tel" name id v-model="editProfileModel.phone" />
                         <div class="sub-info-row">
                           <div
                             class="error-txt"
                             v-if="
                               submitted && !$v.editProfileModel.phone.required
                             "
-                          >
-                            მოცემული ველი აუცილებელია
-                          </div>
+                          >მოცემული ველი აუცილებელია</div>
                         </div>
                       </div>
                       <!--
@@ -180,17 +146,13 @@
                             მოცემული ველი აუცილებელია
                           </div>
                         </div>
-                      </div> -->
+                      </div>-->
 
                       <div class="choose-avatar">
                         <div class="label-item">აირჩიეთ ავატარი</div>
                         <div class="avatar-item">
                           <div class="pretty p-svg p-curve">
-                            <input
-                              type="checkbox"
-                              v-model="gender.girl"
-                              @click="setAavatar()"
-                            />
+                            <input type="checkbox" v-model="gender.girl" @click="setAavatar()" />
                             <div class="state p-success">
                               <svg class="svg svg-icon" viewBox="0 0 20 20">
                                 <path
@@ -201,21 +163,14 @@
                               <label></label>
                             </div>
                             <div class="avatar-img">
-                              <div
-                                class="img-item"
-                                style="background-image: url('/img/boy.png')"
-                              ></div>
+                              <div class="img-item" style="background-image: url('/img/boy.png')"></div>
                             </div>
                           </div>
                         </div>
 
                         <div class="avatar-item">
                           <div class="pretty p-svg p-curve">
-                            <input
-                              type="checkbox"
-                              v-model="gender.boy"
-                              @click="setAavatar()"
-                            />
+                            <input type="checkbox" v-model="gender.boy" @click="setAavatar()" />
                             <div class="state p-success">
                               <svg class="svg svg-icon" viewBox="0 0 20 20">
                                 <path
@@ -226,10 +181,7 @@
                               <label></label>
                             </div>
                             <div class="avatar-img">
-                              <div
-                                class="img-item"
-                                style="background-image: url('/img/girl.png')"
-                              ></div>
+                              <div class="img-item" style="background-image: url('/img/girl.png')"></div>
                             </div>
                           </div>
                         </div>
@@ -256,12 +208,8 @@
                     </div>
 
                     <div class="btn-row">
-                      <div class="btn-item" @click="resetData()">
-                        გაუქმება
-                      </div>
-                      <div class="btn-item save" @click="submitEditProfile()">
-                        შენახვა
-                      </div>
+                      <div class="btn-item" @click="resetData()">გაუქმება</div>
+                      <div class="btn-item save" @click="submitEditProfile()">შენახვა</div>
                     </div>
                   </div>
                 </div>
@@ -294,13 +242,9 @@
         </div>
         <div class="content-wrapper-item">
           <div class="congrats-content" style="margin-top: 55px;">
-            <h5>
-              შეტყობინება
-            </h5>
+            <h5>შეტყობინება</h5>
 
-            <p>
-              {{ responseAlert }}
-            </p>
+            <p>{{ responseAlert }}</p>
           </div>
         </div>
       </div>
@@ -310,57 +254,52 @@
 <script>
 import Vue from "vue";
 
-import axios from "axios";
 import Vuelidate from "vuelidate";
 import { required, email, minLength } from "vuelidate/lib/validators";
+import request from "@/Request";
 Vue.use(Vuelidate);
 //Vue.use(VModal);
 export default {
   name: "EditProfile",
-  components: {
-  },
+  components: {},
   data: function() {
     return {
       responseAlert: "",
       editProfileModel: {
         firstname: "",
         lastname: "",
-        // username: "",
         phone: "",
         avatar: 1,
-        mail: "",
+        mail: ""
       },
       gender: {
         girl: true,
-        body: false,
+        body: false
       },
-      submitted: false,
+      submitted: false
     };
   },
   validations: {
     editProfileModel: {
       firstname: {
         required,
-        minLength: minLength(2),
+        minLength: minLength(2)
       },
       lastname: {
-        required,
+        required
       },
-      // username: {
-      //   required,
-      // },
       phone: {
-        required,
+        required
       },
       mail: {
         required,
-        email,
-      },
-    },
+        email
+      }
+    }
   },
   methods: {
-     hideModal() {
-         this.$modal.hide("infoPop");
+    hideModal() {
+      this.$modal.hide("infoPop");
     },
     setAavatar() {
       if (this.gender.girl) {
@@ -379,6 +318,24 @@ export default {
       this.editProfileModel.phone = "";
       this.editProfileModel.mail = "";
     },
+    getCurrentData() {
+      var self = this;
+
+      request({
+        url: "/api/account/UserInfo",
+        method: "get"
+      })
+        .then(function(response) {
+          self.editProfileModel.firstname = response.data.firstname;
+          self.editProfileModel.lastname = response.data.lastname;
+          self.editProfileModel.avatar = response.data.avatar;
+          self.editProfileModel.mail = response.data.mail;
+          self.editProfileModel.phone = response.data.phone;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     submitEditProfile() {
       var self = this;
       self.submitted = true;
@@ -388,9 +345,13 @@ export default {
         return;
       }
 
-      axios
-        .post("/api/account/UpdateInfo", self.editProfileModel)
+      request({
+        url: "/api/account/UpdateInfo",
+        method: "post",
+        data: self.editProfileModel
+      })
         .then(function(response) {
+          self.submitted = false;
           if (response.data.isSuccess) {
             self.$modal.show("infoPop");
             self.responseAlert = response.data.message;
@@ -399,12 +360,16 @@ export default {
             self.responseAlert = response.data.message;
             self.resetData();
           }
+          self.getCurrentData();
         })
         .catch(function(error) {
           console.log(error);
         });
-    },
+    }
   },
+  mounted: function() {
+    this.getCurrentData();
+  }
 };
 </script>
 
@@ -563,6 +528,11 @@ export default {
 }
 
 .edit-side .input-item.db-item {
+  margin-right: 20px;
+  float: left;
+}
+
+.edit-side .input-item.db-item-short {
   width: calc(100% / 2 - 10px);
   margin-right: 20px;
   float: left;

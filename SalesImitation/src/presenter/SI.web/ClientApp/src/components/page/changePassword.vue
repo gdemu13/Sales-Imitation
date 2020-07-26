@@ -1,156 +1,132 @@
 <template>
-
-    <div class="page-content-wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="content-wrapper">
-              <div class="sidebar-menu">
-                <ul>
-                  <li>
-                    <a href="#">
-                      <span>ისტორია</span>
-                    </a>
-                  </li>
-                  <li>
-                    <router-link :to="`/${$i18n.locale}/editProfile`">
-                      <span>პროფილის რედაქტირება</span>
-                    </router-link>
-                  </li>
-                  <li>
-                    <router-link
-                      :to="`/${$i18n.locale}/changePassword`"
-                      class="active"
-                    >
-                      <span>პაროლის შეცვლა</span>
-                    </router-link>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>ჩემი მისიები</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span>წესები და პირობები</span>
-                    </a>
-                  </li>
-                </ul>
+  <div class="page-content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="content-wrapper">
+            <div class="sidebar-menu">
+              <ul>
+                <li>
+                  <a href="#">
+                    <span>ისტორია</span>
+                  </a>
+                </li>
+                <li>
+                  <router-link :to="`/${$i18n.locale}/editProfile`">
+                    <span>პროფილის რედაქტირება</span>
+                  </router-link>
+                </li>
+                <li>
+                  <router-link :to="`/${$i18n.locale}/changePassword`" class="active">
+                    <span>პაროლის შეცვლა</span>
+                  </router-link>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>ჩემი მისიები</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>წესები და პირობები</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="content-view">
+              <div class="title-row">
+                <h3>პაროლის შეცვლა</h3>
               </div>
-              <div class="content-view">
-                <div class="title-row">
-                  <h3>
-                    პაროლის შეცვლა
-                  </h3>
-                </div>
-                <div class="edit-content">
-                  <div class="edit-side">
-                    <form action>
-                      <div
-                        :class="{
+              <div class="edit-content">
+                <div class="edit-side">
+                  <form action>
+                    <div
+                      :class="{
                           'input-item': true,
                           'db-item': true,
                           error:
                             submitted &&
                             $v.changePassModel.currentPassword.$error,
                         }"
-                      >
-                        <label for>მიმდინარე პაროლი</label>
-                        <div
-                          class="eye-icon"
-                          @click="toggleShowPass('SetPass')"
+                    >
+                      <label for>მიმდინარე პაროლი</label>
+                      <div class="eye-icon" @click="toggleShowPass('SetPass')">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16.001"
+                          height="10"
+                          viewBox="0 0 16.001 10"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16.001"
-                            height="10"
-                            viewBox="0 0 16.001 10"
-                          >
-                            <path
-                              id="Eye"
-                              d="M1.249,8.31Q4.83,4,9,4t7.751,4.31a1.08,1.08,0,0,1,0,1.38Q13.17,14,9,14T1.249,9.69a1.08,1.08,0,0,1,0-1.38ZM9,12.5A3.5,3.5,0,1,0,5.5,9,3.5,3.5,0,0,0,9,12.5Zm0-1A2.5,2.5,0,1,1,11.5,9,2.5,2.5,0,0,1,9,11.5Z"
-                              transform="translate(-0.999 -4)"
-                              fill="#c0c8d7"
-                              fill-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <input
-                          :type="SetPass ? 'password' : 'text'"
-                          v-model="changePassModel.currentPassword"
-                        />
-                        <div class="sub-info-row">
-                          <div
-                            class="error-txt"
-                            v-if="
+                          <path
+                            id="Eye"
+                            d="M1.249,8.31Q4.83,4,9,4t7.751,4.31a1.08,1.08,0,0,1,0,1.38Q13.17,14,9,14T1.249,9.69a1.08,1.08,0,0,1,0-1.38ZM9,12.5A3.5,3.5,0,1,0,5.5,9,3.5,3.5,0,0,0,9,12.5Zm0-1A2.5,2.5,0,1,1,11.5,9,2.5,2.5,0,0,1,9,11.5Z"
+                            transform="translate(-0.999 -4)"
+                            fill="#c0c8d7"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <input
+                        :type="SetPass ? 'password' : 'text'"
+                        v-model="changePassModel.currentPassword"
+                      />
+                      <div class="sub-info-row">
+                        <div
+                          class="error-txt"
+                          v-if="
                               submitted &&
                                 !$v.changePassModel.currentPassword.required
                             "
-                          >
-                            მოცემული ველი აუცილებელია
-                          </div>
-                        </div>
+                        >მოცემული ველი აუცილებელია</div>
                       </div>
+                    </div>
 
-                      <div
-                        :class="{
+                    <div
+                      :class="{
                           'input-item': true,
                           'db-item': true,
                           error:
                             submitted && $v.changePassModel.newPassword.$error,
                         }"
-                        style="margin-right: 0"
-                      >
-                        <div
-                          class="eye-icon"
-                          @click="toggleShowPass('ConfirmPass')"
+                      style="margin-right: 0"
+                    >
+                      <div class="eye-icon" @click="toggleShowPass('ConfirmPass')">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16.001"
+                          height="10"
+                          viewBox="0 0 16.001 10"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16.001"
-                            height="10"
-                            viewBox="0 0 16.001 10"
-                          >
-                            <path
-                              id="Eye"
-                              d="M1.249,8.31Q4.83,4,9,4t7.751,4.31a1.08,1.08,0,0,1,0,1.38Q13.17,14,9,14T1.249,9.69a1.08,1.08,0,0,1,0-1.38ZM9,12.5A3.5,3.5,0,1,0,5.5,9,3.5,3.5,0,0,0,9,12.5Zm0-1A2.5,2.5,0,1,1,11.5,9,2.5,2.5,0,0,1,9,11.5Z"
-                              transform="translate(-0.999 -4)"
-                              fill="#c0c8d7"
-                              fill-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <label for>გაიმეორეთ პაროლი</label>
-                        <input
-                          :type="ConfirmPass ? 'password' : 'text'"
-                          v-model="changePassModel.newPassword"
-                        />
-                        <div class="sub-info-row">
-                          <div
-                            class="error-txt"
-                            v-if="
+                          <path
+                            id="Eye"
+                            d="M1.249,8.31Q4.83,4,9,4t7.751,4.31a1.08,1.08,0,0,1,0,1.38Q13.17,14,9,14T1.249,9.69a1.08,1.08,0,0,1,0-1.38ZM9,12.5A3.5,3.5,0,1,0,5.5,9,3.5,3.5,0,0,0,9,12.5Zm0-1A2.5,2.5,0,1,1,11.5,9,2.5,2.5,0,0,1,9,11.5Z"
+                            transform="translate(-0.999 -4)"
+                            fill="#c0c8d7"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <label for>გაიმეორეთ პაროლი</label>
+                      <input
+                        :type="ConfirmPass ? 'password' : 'text'"
+                        v-model="changePassModel.newPassword"
+                      />
+                      <div class="sub-info-row">
+                        <div
+                          class="error-txt"
+                          v-if="
                               submitted &&
                                 !$v.changePassModel.newPassword.required
                             "
-                          >
-                             მოცემული ველი აუცილებელია და უნდა შედგებოდეს მინ. 6 სიმბოლოსგან
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="save-side">
-                    <div class="btn-row">
-                      <div class="btn-item" @click="resetData()">
-                        გაუქმება
-                      </div>
-                      <div
-                        class="btn-item save"
-                        @click="changePasswordSubmit()"
-                      >
-                        შენახვა
+                        >მოცემული ველი აუცილებელია და უნდა შედგებოდეს მინ. 6 და მაქს. 20 სიმბოლოსგან</div>
                       </div>
                     </div>
+                  </form>
+                </div>
+                <div class="save-side">
+                  <div class="btn-row">
+                    <div class="btn-item" @click="resetData()">გაუქმება</div>
+                    <div class="btn-item save" @click="changePasswordSubmit()">შენახვა</div>
                   </div>
                 </div>
               </div>
@@ -158,6 +134,7 @@
           </div>
         </div>
       </div>
+    </div>
     <modal name="infoPop" class="si__style-pop">
       <div class="modal-content-item">
         <div class="modal-item-header">
@@ -180,13 +157,9 @@
         </div>
         <div class="content-wrapper-item">
           <div class="congrats-content" style="margin-top: 55px;">
-            <h5>
-              შეტყობინება
-            </h5>
+            <h5>შეტყობინება</h5>
 
-            <p>
-                {{responseAlert}}
-            </p>
+            <p>{{responseAlert}}</p>
           </div>
         </div>
       </div>
@@ -196,16 +169,15 @@
 <script>
 import Vue from "vue";
 import Vuelidate from "vuelidate";
-import axios from "axios";
+import request from "@/Request";
 import VModal from "vue-js-modal";
-import { required, minLength } from "vuelidate/lib/validators";
+import { required, minLength, maxLength } from "vuelidate/lib/validators";
 Vue.use(Vuelidate);
 Vue.use(VModal);
 
 export default {
   name: "ChangePassword",
-  components: {
-  },
+  components: {},
   data: function() {
     return {
       SetPass: true,
@@ -213,9 +185,9 @@ export default {
       responseAlert: "",
       changePassModel: {
         newPassword: "",
-        currentPassword: "",
+        currentPassword: ""
       },
-      submitted: false,
+      submitted: false
     };
   },
   validations: {
@@ -223,16 +195,16 @@ export default {
       newPassword: {
         required,
         minLength: minLength(6),
+        maxLength: maxLength(20)
       },
       currentPassword: {
-        required,
-        minLength: minLength(6),
-      },
-    },
+        required
+      }
+    }
   },
   methods: {
     hideModal() {
-         this.$modal.hide("infoPop");
+      this.$modal.hide("infoPop");
     },
     toggleShowPass: function(name) {
       switch (name) {
@@ -245,8 +217,8 @@ export default {
       }
     },
     resetData() {
-       this.changePassModel.newPassword = "";
-       this.changePassModel.currentPassword = ""
+      this.changePassModel.newPassword = "";
+      this.changePassModel.currentPassword = "";
     },
     changePasswordSubmit() {
       var self = this;
@@ -256,27 +228,30 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-      axios
-        .post("/api/account/ChangePassword", self.changePassModel)
+      request({
+        url: "/api/account/ChangePassword",
+        method: "post",
+        data: self.changePassModel
+      })
         .then(function(response) {
-          console.log("reg", response);
+           self.submitted = false;
           if (response.data.isSuccess) {
             self.responseAlert = response.data.message;
             self.$modal.show("infoPop");
             self.changePassModel.newPassword = "";
-            self.changePassModel.currentPassword = ""
+            self.changePassModel.currentPassword = "";
           } else {
             self.responseAlert = response.data.message;
             self.$modal.show("infoPop");
-              self.changePassModel.newPassword = "";
-            self.changePassModel.currentPassword = ""
+            self.changePassModel.newPassword = "";
+            self.changePassModel.currentPassword = "";
           }
         })
         .catch(function(error) {
           console.log(error);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 
