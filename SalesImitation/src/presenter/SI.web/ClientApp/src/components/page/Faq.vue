@@ -1,6 +1,4 @@
 <template>
-  <div class="general-page-wrapper">
-    <d-header></d-header>
 
     <div class="page-content-wrapper">
       <div class="container">
@@ -21,16 +19,13 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
-import DHeader from "../inc/dashboard_header";
 import VueFaqAccordion from "vue-faq-accordion";
 
 export default {
   name: "Dashboard",
   components: {
-    "d-header": DHeader,
     VueFaqAccordion,
   },
   data: function() {

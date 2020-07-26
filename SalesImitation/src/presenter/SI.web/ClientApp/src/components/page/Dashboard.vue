@@ -1,6 +1,4 @@
 <template>
-  <div class="general-page-wrapper">
-    <d-header></d-header>
 
     <div class="page-content-wrapper">
       <div class="container">
@@ -427,16 +425,13 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
-import DHeader from "../inc/dashboard_header";
 import { PerfectScrollbar } from "vue2-perfect-scrollbar";
 
 export default {
   name: "Dashboard",
   components: {
-    "d-header": DHeader,
     PerfectScrollbar,
   },
 };

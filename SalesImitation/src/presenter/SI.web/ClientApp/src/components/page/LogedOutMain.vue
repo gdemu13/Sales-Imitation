@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="logout-full">
     <div
       class="fb-login-button"
       data-scope="public_profile,email,user_birthday"
@@ -695,7 +695,7 @@
                         @login="getUserDataFB"
                         @logout="onLogout"
                         @get-initial-status="getUserDataFB"
-                      ></facebook-login> -->
+                      ></facebook-login>-->
 
                       <a href="#">
                         <svg
@@ -1110,7 +1110,7 @@ export default {
     KinesisElement,
     PerfectScrollbar,
     Tabs,
-    Tab,
+    Tab
     // facebookLogin
   },
   data: function() {
@@ -1259,7 +1259,7 @@ export default {
     getUserData() {
       request({
         url: "/api/Bonus/Current",
-        method: "get",
+        method: "get"
       })
         .then(function(response) {
           console.log(response);
@@ -1336,7 +1336,16 @@ export default {
 };
 </script>
 
+
 <style scoped>
+body{
+  background-color: #3285ff !important;
+}
+
+.general-page-wrapper {
+ background-color: #3285ff;
+}
+
 @media (min-width: 1920px) {
   .right-color {
     height: 100vw;

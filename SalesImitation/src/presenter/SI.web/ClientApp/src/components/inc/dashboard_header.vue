@@ -257,7 +257,7 @@
                 </div>
               </div>
 
-              <div class="lang-switcher">
+              <!-- <div class="lang-switcher">
                 <ol>
                   <li>
                     <a href="#" @click.prevent="setLocale('ka')">ქარ</a>
@@ -266,7 +266,7 @@
                     <a href="#" @click.prevent="setLocale('en')">Eng</a>
                   </li>
                 </ol>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

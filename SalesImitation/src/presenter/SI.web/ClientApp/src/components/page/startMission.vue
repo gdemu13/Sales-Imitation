@@ -237,7 +237,7 @@ export default {
         .then(function(response) {
           console.log(response);
           self.$modal.hide("confirmMission");
-          self.onstart();
+          self.onstart(true);
         })
         .catch(function(error) {
           console.log(error);

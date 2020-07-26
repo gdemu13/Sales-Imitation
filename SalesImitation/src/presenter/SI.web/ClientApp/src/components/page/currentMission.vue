@@ -46,7 +46,8 @@
                 </div>
               </div>
 
-              <div class="time-icon" @click="showModal('timeModal')">
+              <div class="time-icon tltp" @click="showModal('timeModal')">
+                  <span class="tooltiptext">დროის შეძენა</span>
                 <svg
                   id="Group_1820"
                   data-name="Group 1820"
@@ -256,69 +257,7 @@
       </div>
     </div>
 
-    <modal name="Notificate" class="si__style-pop">
-      <div class="modal-content-item">
-        <div class="modal-item-header">
-          <div class="close-btn" @click="hideModal('Notificate')">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15.828"
-              height="15.913"
-              viewBox="0 0 15.828 15.913"
-            >
-              <path
-                id="Path_2411"
-                data-name="Path 2411"
-                d="M521.353,712.03l6.225-6.259a1,1,0,0,0,0-1.407.986.986,0,0,0-1.4,0l-6.225,6.259-6.225-6.259a.986.986,0,0,0-1.4,0,1,1,0,0,0,0,1.407l6.225,6.259-6.225,6.259a1,1,0,0,0,0,1.406.986.986,0,0,0,1.4,0l6.225-6.259,6.225,6.259a.992.992,0,0,0,1.4-1.406Z"
-                transform="translate(-512.04 -704.073)"
-                fill="#fff"
-              />
-            </svg>
-          </div>
-        </div>
-        <div class="content-wrapper-item">
-          <div class="notification-header">
-            <h5>
-              შეტყობინება
-            </h5>
-            <p>
-              პირველი მისიისთვის თქვენ ირჩევთ პროდუქტს Samsung Galaxy S20 /
-              ზუმერიდან ან iPhone XS Max / ალტადან
-            </p>
-          </div>
-          <div class="notification-body">
-            <div class="countdown">
-              <h6>
-                ნებისმიერი ნივთის გასაყიდად თქვენ გაქვთ:
-              </h6>
-              <countdown :time="time" :interval="100" tag="p">
-                <template slot-scope="props">
-                  <div class="count-down-in">
-                    <div class="tm-item">
-                      {{ props.days }}
-                    </div>
-                    <div class="tm-item">
-                      {{ props.hours }}
-                    </div>
-                    <div class="tm-item">
-                      {{ props.minutes }}
-                    </div>
-                  </div>
-                </template>
-              </countdown>
-            </div>
-            <div class="promo-code">
-              <h6>
-                გაყიდვის დროს, გთხოვთ კონსულტანტს გადასცეთ კოდი:
-              </h6>
-              <div class="code-box">
-                838 487
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </modal>
+
 
     <modal name="Congrats" class="si__style-pop">
       <div class="modal-content-item">
@@ -591,11 +530,9 @@ export default {
     currentmission: {
       deep: true,
       handler: function(nv) {
-        console.log("before", this.time);
         var now = new Date();
         var deadline = new Date(nv.deadlineDate);
         this.time = deadline - now;
-        console.log("after", this.time);
       },
     },
   },
@@ -603,3 +540,42 @@ export default {
   mounted: function() {},
 };
 </script>
+<style scoped>
+.tltp {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tltp .tooltiptext {
+  font-family: "helv-65";
+  visibility: hidden;
+  width: 120px;
+  background-color: #3083fd;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  font-size: 13px;
+  margin-left: -60px;
+}
+
+.tltp .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #3083fd transparent transparent transparent;
+}
+
+.tltp:hover .tooltiptext {
+  visibility: visible;
+}
+</style>

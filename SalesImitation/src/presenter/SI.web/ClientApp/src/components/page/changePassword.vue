@@ -1,6 +1,4 @@
 <template>
-  <div class="general-page-wrapper">
-    <d-header></d-header>
 
     <div class="page-content-wrapper">
       <div class="container">
@@ -160,7 +158,6 @@
           </div>
         </div>
       </div>
-    </div>
     <modal name="infoPop" class="si__style-pop">
       <div class="modal-content-item">
         <div class="modal-item-header">
@@ -198,7 +195,6 @@
 </template>
 <script>
 import Vue from "vue";
-import DHeader from "../inc/dashboard_header";
 import Vuelidate from "vuelidate";
 import axios from "axios";
 import VModal from "vue-js-modal";
@@ -209,7 +205,6 @@ Vue.use(VModal);
 export default {
   name: "ChangePassword",
   components: {
-    "d-header": DHeader,
   },
   data: function() {
     return {

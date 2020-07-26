@@ -1,6 +1,5 @@
 <template>
   <div class="general-page-wrapper">
-    <d-header></d-header>
 
     <div class="page-content-wrapper">
       <div class="container">
@@ -156,7 +155,7 @@
                           </div>
                         </div>
                       </div>
-                      <!-- 
+                      <!--
                       <div
                         :class="{
                           'input-item': true,
@@ -311,7 +310,6 @@
 <script>
 import Vue from "vue";
 
-import DHeader from "../inc/dashboard_header";
 import axios from "axios";
 import Vuelidate from "vuelidate";
 import { required, email, minLength } from "vuelidate/lib/validators";
@@ -320,7 +318,6 @@ Vue.use(Vuelidate);
 export default {
   name: "EditProfile",
   components: {
-    "d-header": DHeader,
   },
   data: function() {
     return {

@@ -1,7 +1,5 @@
 <template>
-  <div class="general-page-wrapper">
-    <d-header></d-header>
-
+  <div>
     <div class="page-content-wrapper">
       <div class="container">
         <div class="row">
@@ -123,7 +121,7 @@
                     </div>
 
                     <div
-                      :class="player.avatar ? 'moving-boy' : 'moving-girl'"
+                      :class="player.avatar == null ? '' : player.avatar ? 'moving-boy' : 'moving-girl'"
                       v-bind:style="{ left: progress - 9 + '%' }"
                     ></div>
                   </div>
@@ -244,6 +242,66 @@
       </div>
     </div>
 
+    <modal name="startMissionNotification" class="si__style-pop">
+      <div class="modal-content-item">
+        <div class="modal-item-header">
+          <div class="close-btn" @click="hideModal('startMissionNotification')">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15.828"
+              height="15.913"
+              viewBox="0 0 15.828 15.913"
+            >
+              <path
+                id="Path_2411"
+                data-name="Path 2411"
+                d="M521.353,712.03l6.225-6.259a1,1,0,0,0,0-1.407.986.986,0,0,0-1.4,0l-6.225,6.259-6.225-6.259a.986.986,0,0,0-1.4,0,1,1,0,0,0,0,1.407l6.225,6.259-6.225,6.259a1,1,0,0,0,0,1.406.986.986,0,0,0,1.4,0l6.225-6.259,6.225,6.259a.992.992,0,0,0,1.4-1.406Z"
+                transform="translate(-512.04 -704.073)"
+                fill="#fff"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="content-wrapper-item">
+          <div class="notification-header">
+            <h5>შეტყობინება</h5>
+            <p>{{currentMission ? currentMission.description : ""}}</p>
+          </div>
+          <div class="notification-body startMissNotif">
+            <div class="countdown">
+              <h6>ნებისმიერი ნივთის გასაყიდად თქვენ გაქვთ:</h6>
+              <countdown :time="time" :interval="100" tag="p" :transform="transform">
+                <template slot-scope="props">
+                  <div class="count-down-in">
+                    <div class="tm-item">
+                      <div class="label">დღე</div>
+                      {{ props.days }}
+                    </div>
+                    <div class="tm-item">
+                      <div class="label">სთ</div>
+                      {{ props.hours }}
+                    </div>
+                    <div class="tm-item">
+                      <div class="label">წთ</div>
+                      {{ props.minutes }}
+                    </div>
+                    <div class="tm-item">
+                      <div class="label">წმ</div>
+                      {{ props.seconds }}
+                    </div>
+                  </div>
+                </template>
+              </countdown>
+            </div>
+            <div class="promo-code">
+              <h6>გაყიდვის დროს, გთხოვთ კონსულტანტს გადასცეთ კოდი:</h6>
+              <div class="code-box">{{currentMission ? currentMission.promoCode : ""}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </modal>
+
     <modal name="notification" class="si__style-pop">
       <div class="modal-content-item">
         <div class="modal-item-header">
@@ -298,11 +356,9 @@
         </div>
       </div>
     </modal>
-
   </div>
 </template>
 <script>
-import DHeader from "../inc/dashboard_header";
 import currentMission from "./currentMission";
 import startMission from "./startMission";
 import { PerfectScrollbar } from "vue2-perfect-scrollbar";
@@ -322,7 +378,7 @@ export default {
       currentMission: null,
       bonus: 0,
       player: {
-        avatar: 1,
+        avatar: null,
         coins: 0,
         currentLevel: 0
       },
@@ -341,13 +397,13 @@ export default {
             place: 1
           }
         ]
-
       },
       notification: null,
+      time: null
     };
   },
   methods: {
-    closeModal(){
+    closeModal() {
       this.$modal.hide("notification");
     },
     getNotifications() {
@@ -358,16 +414,22 @@ export default {
       })
         .then(function(response) {
           self.notification = response.data;
-          if(self.notification)
-              self.$modal.show("notification");
+          if (self.notification) self.$modal.show("notification");
         })
         .catch(function(error) {
           console.log(error);
         });
     },
+    hideModal(name) {
+      switch (name) {
+        case "startMissionNotification":
+          this.$modal.hide("startMissionNotification");
+          break;
+      }
+    },
     init() {
       let self = this;
-      self.getCurrentMission();
+      self.getCurrentMission(false);
       request({
         url: "api/Bonus/Current",
         method: "get"
@@ -438,24 +500,38 @@ export default {
       }
       console.log(lvl, self.progress);
     },
-    getCurrentMission() {
+    getCurrentMission(firstTime) {
       var self = this;
       request({
         url: "api/game/currentMission",
         method: "get"
       })
         .then(function(response) {
-          console.log(response);
           self.currentMission = response.data;
           self.dataIsLoaded = true;
+          if (firstTime) {
+            var now = new Date();
+            var deadline = new Date(response.data.deadlineDate);
+            self.time = deadline - now;
+            self.$modal.show("startMissionNotification");
+          }
         })
         .catch(function(error) {
           console.log(error);
         });
+    },
+    transform(props) {
+      Object.entries(props).forEach(([key, value]) => {
+        // Adds leading zero
+        const digits = value < 10 ? `0${value}` : value;
+
+        props[key] = `${digits}`;
+      });
+
+      return props;
     }
   },
   components: {
-    "d-header": DHeader,
     PerfectScrollbar,
     currentMission,
     startMission

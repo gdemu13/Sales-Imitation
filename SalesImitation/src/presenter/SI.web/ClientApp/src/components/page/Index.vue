@@ -1,5 +1,4 @@
 <template>
-
   <LogedInMain v-if="isLogedIn"></LogedInMain>
   <LogedOutMain v-else></LogedOutMain>
 </template>
@@ -9,17 +8,17 @@ import LogedOutMain from "./LogedOutMain";
 
 export default {
   name: "Index",
-  data: function (){
-      return{
-          isLogedIn: false
-      }
+  data: function() {
+    return {
+      isLogedIn: false
+    };
   },
-   components: {
+  components: {
     LogedInMain,
-  LogedOutMain
+    LogedOutMain
   },
   mounted() {
-     this.isLogedIn = localStorage.getItem("authorisedUser")
+    this.isLogedIn = localStorage.getItem("authorisedUser");
   }
 };
 </script>

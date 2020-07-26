@@ -3,6 +3,7 @@ html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+  overflow-y: scroll;
 }
 
 /* * Remove text-shadow in selection highlight: * https://twitter.com/miketaylr/status/12228805301 * * Vendor-prefixed and regular ::selection selectors cannot be combined: * https://stackoverflow.com/a/16982510/7133471 * * Customize the background color to match your design. */
@@ -216,7 +217,7 @@ textarea {
 
 body {
   overflow-x: hidden;
-  background-color: #3285ff !important;
+  /* background-color: #3285ff !important; */
 }
 
 @media (min-width: 1025px) {
@@ -549,6 +550,12 @@ body {
   width: 100%;
   background: #1F2242;
   min-height: 100vh;
+}
+
+.logout-full{
+  background-color: #3285ff;
+  width: 100%;
+  height: 100vh;
 }
 
 .general-page-wrapper .general-header-navbar {}
@@ -1896,6 +1903,12 @@ body {
 }
 
 .mission-box .mission-header .rg .countdown-box p .count-down-in .tm-item .label {
+  color: #fff;
+  font-size: 14px;
+  font-family: "helv-65";
+}
+
+.startMissNotif .count-down-in .tm-item .label {
   color: #fff;
   font-size: 14px;
   font-family: "helv-65";

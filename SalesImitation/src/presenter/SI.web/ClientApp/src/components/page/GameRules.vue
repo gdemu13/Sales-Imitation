@@ -1,6 +1,4 @@
 <template>
-  <div class="general-page-wrapper">
-    <d-header></d-header>
 
     <div class="page-content-wrapper">
       <div class="container">
@@ -17,23 +15,20 @@
                 <div class="general-page-content-wrapper" v-html="dataGameRules">
 
                 </div>
-             
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
-import DHeader from "../inc/dashboard_header";
 import request from "@/Request";
 
 export default {
   name: "Dashboard",
   components: {
-    "d-header": DHeader,
-  }, 
+  },
   data: function () {
     return {
       dataGameRules: ""
